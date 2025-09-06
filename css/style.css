@@ -3,12 +3,12 @@
   --mx-bg: #ffffff;
   --mx-text: #333333;
   --mx-muted: #606975;
-  --mx-accent: #ff4f7d;   /* rosa del título */
-  --mx-cta: #2ecc9a;  
+  --mx-accent: #FF385C;   /* rosa del título */
+  --mx-cta: #2CCDBA;  
    --mx-bg:#ffffff;
   --mx-text:#2b2f33;
-  --mx-accent:#ff4f7d;    /* por si querés usarlo en hover */
-  --mx-ring: #2ecc9a;      /* verde botón */
+  --mx-accent:#FF385C;    /* por si querés usarlo en hover */
+  --mx-ring: #2CCDBA;      /* verde botón */
 }
 
 .maverix-hero{
@@ -41,24 +41,41 @@
 }
 
 .mx-copy p{
-  margin: 0 0 22px;
-  color: var(--mx-muted);
-  font-size: clamp(16px, 1.2vw, 18px);
-  max-width: 48ch;
+
+    color: #3D424A;
+    font-family: "Kollektif";
+    font-size: 21px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 25px;
+
 }
 
-.mx-cta{
-  display: inline-block;
-  background: var(--mx-cta);
+.mx-cta {
+  font-family: "Kollektif", sans-serif;
   color: #ffffff;
-  text-decoration: none;
+  font-size: 18px;
   font-weight: 600;
-  padding: 14px 22px;
-  border-radius: 12px;
-  transition: transform .15s ease, opacity .15s ease;
+  text-transform: none;
+
+  padding: 14px 26px;
+  background-color: #2ccdba;
+  border-radius: 10px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 .mx-cta:hover,
-.mx-cta:focus{ transform: translateY(-1px); opacity: .95; }
+.mx-cta:focus {
+  background-color: #25b2a2;
+  transform: translateY(-2px);
+}
+
 
 .mx-media{
   justify-self: end;
@@ -86,13 +103,17 @@
 .mx-header{
   position: sticky; top: 0; z-index: 1000;
   background: var(--mx-bg);
-  border-bottom: 1px solid rgba(0,0,0,.06);
   backdrop-filter: saturate(150%) blur(6px);
 }
 .mx-nav{
   height: 72px;
   display: flex; align-items: center; justify-content: space-between;
   width: min(1200px, 92%); margin-inline: auto;
+}
+.mx-nav,
+.mx-nav a,
+.mx-logo {
+  font-family: "Kollektif", sans-serif;
 }
 
 /* Logo */
@@ -102,7 +123,9 @@
   display: inline-flex; align-items: center; gap: .5rem;
   font-size: 1.1rem;
 }
-
+.mx-logo img{
+    width: 250px;
+}
 /* Burger */
 .mx-burger{
   display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
@@ -114,6 +137,13 @@
   transition: transform .2s ease, opacity .2s ease;
 }
 .mx-burger:focus-visible{ outline: 3px solid var(--mx-ring); outline-offset: 3px; }
+.mx-burger span {
+  width: 22px;
+  height: 2px;
+  background: #FF385C; /* fucsia */
+  display: block;
+  transition: transform .2s ease, opacity .2s ease;
+}
 
 /* Menu */
 .mx-menu{
