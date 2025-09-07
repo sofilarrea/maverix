@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 /* ====== Maverix Hero ====== */
 :root{
   --mx-bg: #ffffff;
@@ -308,14 +310,14 @@
 }
 
 .mx-somos__word {
-  font-family: "Kollektif-Bold", serif;
+  font-family: 'Times New Roman', Times, serif;
   font-style: italic;
   font-size: clamp(20px, 2.5vw, 28px);
   margin: 0 0 12px;
 }
 
 .mx-somos__desc {
-  font-family: "Kollektif-Bold", sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: clamp(16px, 2vw, 20px);
   line-height: 1.6;
   margin-bottom: 24px;
@@ -358,18 +360,17 @@
 /* ===== Section Frase ===== */
 .mx-frase {
   background: #fff;
-  padding: clamp(40px, 6vw, 80px) 0;
+  padding-top: 2rem;
   text-align: center;
 }
 
 .mx-frase h2 {
   font-family: "Kollektif-Bold", sans-serif;
   font-weight: 700;
-  font-size: clamp(20px, 3vw, 34px);
-  line-height: 1.4;
+  font-size:42px;
   color: #2b2f33;
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 2100px;
 }
 
 /* efecto sutil de fade-up al scrollear */
@@ -386,7 +387,7 @@
 /* ===== Valores Section ===== */
 .mxv-valores {
   background: #fff;
-  padding: clamp(40px, 6vw, 72px) 0;
+  padding-top: 2rem;
 }
 
 
@@ -423,7 +424,7 @@
 
 .mxv-card h3 {
   font-family: "Kollektif-Bold", sans-serif;
-  font-size: 20px;
+  font-size: 40px;
   margin-bottom: 20px;
   color: #2b2f33;
 }
@@ -447,6 +448,8 @@
   font-size: 16px;
   line-height: 1.5;
   color: #3d424a;
+  font-family: "Roboto", sans-serif;
+
 }
 
 /* Ícono turquesa con check */
