@@ -17,7 +17,8 @@
   --mx-card: #F1F1F2;  
    --mx-wrap-max: min(1180px, 92%);              /* ancho del bloque */
   --mx-cols-3: repeat(3, minmax(300px, 1fr));   /* 3 columnas iguales */
-  --mx-gap: 24px;                  
+  --mx-gap: 24px;
+                    
 }
 
 .maverix-hero{
@@ -536,6 +537,110 @@
     justify-content: center;
     margin-top: 4rem;
 }
+/* ===== Soluciones (4 en una fila, más anchas) ===== */
+.mx-soluciones2 {
+  background: #E5E7E8;
+  padding: clamp(32px, 6vw, 72px) 0;
+  position: relative;
+}
+.mx-soluciones2::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 44px;
+  pointer-events: none;
+  background: radial-gradient(100% 60px at 50% 0, rgba(0,0,0,.08), transparent 70%);
+}
+
+/* Título */
+.mx-soluciones2__title {
+  margin: 0 0 32px;
+  font-family: "Kollektif-Bold", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight: 800;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.1;
+  text-align: center;
+  color: #2b2f33;
+}
+
+/* Contenedor más ancho */
+.mx-soluciones2__wrap {
+  width: min(1600px, 96%);  /* más ancho que antes */
+  margin-inline: auto;
+}
+
+/* Grid: 4 columnas */
+.mx-soluciones2__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* Cards */
+.mx-sol2-card {
+  background: var(--mx-bg, #fff);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 420px; /* ajustá según copy */
+}
+
+/* Títulos dentro de cards */
+.mx-sol2-card__h3 {
+  margin: 0 0 12px;
+  font-family: "Kollektif-Bold", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight: 800;
+  font-size: clamp(20px, 2vw, 26px);
+  color: #FF385C;
+}
+
+/* Texto */
+.mx-sol2-card__p {
+  margin: 0 0 20px;
+  color: #3D424A;
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.55;
+  flex: 1;
+}
+
+/* Botón */
+.mx-sol2-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  background: #2CCDBA;
+  color: #fff;
+  font-family: "Kollektif-Bold", sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 1vw, 16px);
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background .22s ease, transform .18s ease;
+}
+.mx-sol2-btn:hover {
+  background: #25b9a8;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .mx-soluciones2__grid {
+    grid-template-columns: repeat(2, 1fr); /* en tablets 2x2 */
+  }
+}
+@media (max-width: 640px) {
+  .mx-soluciones2__grid {
+    grid-template-columns: 1fr; /* en mobile, una abajo de otra */
+  }
+}
+
+
+
 
 
 
