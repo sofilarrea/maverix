@@ -16,23 +16,24 @@
   padding: clamp(32px, 6vw, 72px) 0;
 }
 
-.mx-container{
-  width: min(1180px, 92%);
+.mx-container {
+  width: min(1400px, 95%);
   margin-inline: auto;
 }
 
-.mx-grid{
+.mx-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: clamp(24px, 5vw, 56px);
+  gap: clamp(32px, 6vw, 96px);
 }
+
 
 .mx-copy h1{
 
     color: #FF385C;
     font-family: "Kollektif-Bold";
-    font-size: 40px;
+    font-size: 56px;
     text-align: left;
     margin-bottom: 23px;
     margin-top: 0px;
@@ -43,8 +44,8 @@
 .mx-copy p{
 
     color: #3D424A;
-    font-family: "Kollektif";
-    font-size: 21px;
+    font-family: "Kollektif-Bold";
+    font-size: 31px;
     text-align: left;
     width: 100%;
     margin-bottom: 25px;
@@ -52,7 +53,7 @@
 }
 
 .mx-cta {
-  font-family: "Kollektif", sans-serif;
+  font-family: "Kollektif-Bold", sans-serif;
   color: #ffffff;
   font-size: 18px;
   font-weight: 600;
@@ -82,7 +83,7 @@
 }
 .mx-media img{
   display: block;
-  width: min(560px, 100%);
+  width: min(560px, 80%);
   height: auto;
   border-radius: 20px;
   object-fit: cover;
@@ -105,15 +106,21 @@
   background: var(--mx-bg);
   backdrop-filter: saturate(150%) blur(6px);
 }
-.mx-nav{
+.mx-nav {
   height: 72px;
-  display: flex; align-items: center; justify-content: space-between;
-  width: min(1200px, 92%); margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;                /* ahora ocupa todo el ancho */
+  padding-left: 10px;
+  padding-right: 50px;            /* espacio a los lados */
+  margin-inline: 0;           /* quita centrado automático */
 }
+
 .mx-nav,
 .mx-nav a,
 .mx-logo {
-  font-family: "Kollektif", sans-serif;
+  font-family: "Kollektif-Bold", sans-serif;
 }
 
 /* Logo */
@@ -177,4 +184,144 @@
   }
   .mx-menu a{ padding: 8px 6px; }
   .mx-menu a:focus-visible{ outline: 3px solid var(--mx-ring); outline-offset: 4px; border-radius: 8px; }
+}
+
+/* ===== Clientes / Logos ===== */
+.mx-clients{
+  background: #fff;
+  padding-top: 2rem;
+}
+
+.mx-clients__title{
+  margin: 0 0 24px;
+  font-family: "Kollektif", sans-serif;
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 22px);
+  color: #2b2f33;
+}
+
+.mx-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(16px, 3vw, 40px);
+  justify-content: center;
+  padding: 8px 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mx-logos li {
+  width: 120px; 
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mx-logos img {
+  max-height: 44px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform .15s ease;
+}
+
+.mx-logos img:hover {
+  transform: translateY(-2px);
+}
+@media (max-width: 900px){
+  .mx-logos{
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr); /* 3 logos por fila */
+    overflow: visible;
+  }
+  .mx-logos li{ justify-content: flex-start; }
+  .mx-logos img{ height: 32px; }
+}
+.mx-logos img {
+  max-height: 44px;   /* todos dentro de la misma altura */
+  max-width: 120px;   /* evita que uno largo se dispare */
+  width: auto;
+  height: auto;
+  object-fit: contain; 
+  display: block;
+  transition: transform .15s ease;
+}
+
+
+
+
+
+/* ===== Mobile tweaks ===== */
+@media (max-width: 768px){
+
+  /* Contenedor con respiración */
+  .mx-container { padding-inline: 18px; }
+
+  /* Header compacto y legible */
+  .mx-nav{
+    height: 60px;
+    padding-inline: 16px;
+  }
+  .mx-logo img{ width: 160px; height: auto; }
+  .mx-burger{ width: 40px; height: 40px; }
+  .mx-burger span{ width: 22px; height: 2px; }
+
+  /* Hero en una columna y con más aire entre bloques */
+  .mx-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Título más contenido (evita 3–4 líneas enormes) */
+  .mx-copy h1{
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.15;
+    margin: 8px 0 14px;
+  }
+
+  /* Párrafo cómodo de leer */
+  .mx-copy p{
+    font-size: clamp(15px, 4.2vw, 18px);
+    line-height: 1.5;
+    margin: 0 0 18px;
+    max-width: 40ch; /* evita líneas muy largas */
+  }
+
+  /* CTA grande y cómodo para tap */
+  .mx-cta{
+    display: inline-flex;
+    width: 100%;
+    max-width: 360px;        /* no más de 360px para que no “desborde” */
+    justify-content: center;
+    font-size: 16px;
+    padding: 12px 18px;
+    border-radius: 12px;
+  }
+
+  /* Imagen: ancho completo y margen superior */
+  .mx-media{ justify-self: start; }
+  .mx-media img{
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px;
+    margin-top: 8px;
+  }
+
+  /* Menú móvil ocupa toda la anchura y con targets cómodos */
+  .mx-menu{
+    inset: 60px 0 auto 0;      /* arranca justo debajo del header más bajo */
+    padding: 8px 12px 16px;
+  }
+  .mx-menu a{
+    padding: 14px 12px;
+    font-size: 16px;
+  }
+}
+
+/* Un pelín más ajustado para teléfonos muy pequeños */
+@media (max-width: 380px){
+  .mx-copy h1{ font-size: 26px; }
+  .mx-copy p{ font-size: 15px; }
+  .mx-cta{ max-width: 320px; }
 }
