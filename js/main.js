@@ -39,3 +39,15 @@ const nav = document.querySelector('.mx-nav');
     }, {threshold: .2});
     io.observe(frase);
   }
+  // Observa cualquier elemento que tenga la clase .reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-in');
+      observer.unobserve(entry.target); // se activa una vez y listo
+    }
+  });
+}, { threshold: 0.15 });
+
+// Aplica a todos los elementos con .reveal
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));

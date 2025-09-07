@@ -195,7 +195,7 @@
 
 .mx-clients__title {
   margin: 0 0 24px;
-  font-family: "Kollektif", sans-serif;
+  font-family: "Kollektif-Bold", sans-serif;
   font-weight: 700;
   font-size: clamp(18px, 2vw, 22px);
   color: #2b2f33;
@@ -294,7 +294,7 @@
 }
 
 .mx-somos__title {
-  font-family: "Kollektif", sans-serif;
+  font-family: "Kollektif-Bold", sans-serif;
   font-weight: 700;
   font-size: clamp(22px, 3vw, 32px);
   margin: 0 0 8px;
@@ -308,14 +308,14 @@
 }
 
 .mx-somos__word {
-  font-family: "Kollektif", serif;
+  font-family: "Kollektif-Bold", serif;
   font-style: italic;
   font-size: clamp(20px, 2.5vw, 28px);
   margin: 0 0 12px;
 }
 
 .mx-somos__desc {
-  font-family: "Kollektif", sans-serif;
+  font-family: "Kollektif-Bold", sans-serif;
   font-size: clamp(16px, 2vw, 20px);
   line-height: 1.6;
   margin-bottom: 24px;
@@ -363,7 +363,7 @@
 }
 
 .mx-frase h2 {
-  font-family: "Kollektif", sans-serif;
+  font-family: "Kollektif-Bold", sans-serif;
   font-weight: 700;
   font-size: clamp(20px, 3vw, 34px);
   line-height: 1.4;
@@ -383,6 +383,91 @@
   transform: translateY(0);
 }
 
+/* ===== Valores Section ===== */
+.mxv-valores {
+  background: #fff;
+  padding: clamp(40px, 6vw, 72px) 0;
+}
+
+
+
+.mxv-title {
+  font-family: "Kollektif-Bold", sans-serif;
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 700;
+  text-align: left; /* alineado a la izquierda */
+  margin-bottom: 40px;
+  color: #2b2f33;
+}
+
+/* Grid de las cards */
+.mxv-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Card */
+.mxv-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 19px rgba(0,0,0, .1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mxv-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.mxv-card h3 {
+  font-family: "Kollektif-Bold", sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #2b2f33;
+}
+
+.mxv-card h3 span {
+  color: #FF385C; /* rosa */
+  display: block;
+}
+
+/* Lista */
+.mxv-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mxv-list li {
+  position: relative;
+  padding-left: 40px; /* espacio para el ícono */
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #3d424a;
+}
+
+/* Ícono turquesa con check */
+.mxv-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='12' fill='%232CCDBA'/%3E%3Cpath d='M9.5 16.2l-3.5-3.5 1.4-1.4 2.1 2.1 5.6-5.6 1.4 1.4-7 7z' fill='white'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+
+/* Responsive */
+@media (max-width: 960px) {
+  .mxv-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
 
 
 
