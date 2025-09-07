@@ -638,8 +638,93 @@
     grid-template-columns: 1fr; /* en mobile, una abajo de otra */
   }
 }
+/* ===== Nuestra tecnología (aislada) ===== */
+.mx-tech{
+  background: #ffffff;
+  padding: clamp(36px, 6vw, 80px) 0;
+}
+
+.mx-tech__wrap{
+  width: min(1180px, 92%);
+  margin-inline: auto;
+}
+
+/* Título */
+.mx-tech__title{
+  margin: 0 0 clamp(22px, 3vw, 36px);
+  font-family: "Kollektif-Bold", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight: 800;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.1;
+  text-align: center;
+  color: #3D424A; /* gris oscuro de tu sitio */
+}
+
+/* Lista */
+.mx-tech__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;   /* una columna como en la captura */
+  gap: clamp(14px, 2.2vw, 22px);
+}
+
+.mx-tech__list li{
+  position: relative;
+  padding-left: 44px;  /* espacio para el ícono */
+  color: #3D424A;
+  font-family: "Kollektif", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: clamp(16px, 1.6vw, 22px);
+  line-height: 1.5;
+}
+
+/* Check verde (SVG embebido) */
+.mx-tech__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.1em;
+  width: 26px; height: 26px;
+  border-radius: 999px;
+  background: 
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path d="M7.6 14.2 3.7 10.3a1 1 0 0 1 1.4-1.4l2.5 2.5 6.3-6.3a1 1 0 1 1 1.4 1.4l-7.7 7.7z"/></svg>') 
+    center/14px 14px no-repeat,
+    #2CCDBA;  /* círculo turquesa */
+  box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 8px 16px rgba(0,0,0,.08);
+}
 
 
+/* Opcional: sutil animación al aparecer */
+@media (prefers-reduced-motion: no-preference){
+  .mx-tech__list li{
+    opacity: 0; transform: translateY(6px);
+    animation: mxTechIn .5s ease forwards;
+  }
+  .mx-tech__list li:nth-child(2){ animation-delay: .03s; }
+  .mx-tech__list li:nth-child(3){ animation-delay: .06s; }
+  .mx-tech__list li:nth-child(4){ animation-delay: .09s; }
+  .mx-tech__list li:nth-child(5){ animation-delay: .12s; }
+  .mx-tech__list li:nth-child(6){ animation-delay: .15s; }
+  .mx-tech__list li:nth-child(7){ animation-delay: .18s; }
+  .mx-tech__list li:nth-child(8){ animation-delay: .21s; }
+  .mx-tech__list li:nth-child(9){ animation-delay: .24s; }
+  .mx-tech__list li:nth-child(10){ animation-delay: .27s; }
+  .mx-tech__list li:nth-child(11){ animation-delay: .30s; }
+}
+@keyframes mxTechIn{
+  to{ opacity: 1; transform: none; }
+}
+
+/* Si algún ítem es muy largo en mobile, dale aire vertical */
+@media (max-width: 560px){
+  .mx-tech__list li{ padding-left: 40px; }
+  .mx-tech__list li::before{ width: 24px; height: 24px; background-size: 12px 12px, auto; }
+}
+
+.container-ul{
+    display: flex;
+    justify-content: center;
+}
 
 
 
