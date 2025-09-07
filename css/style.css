@@ -15,6 +15,9 @@
   --mx-bg: #ffffff;
   --mx-accent: #852EFF;        
   --mx-card: #F1F1F2;  
+   --mx-wrap-max: min(1180px, 92%);              /* ancho del bloque */
+  --mx-cols-3: repeat(3, minmax(300px, 1fr));   /* 3 columnas iguales */
+  --mx-gap: 24px;                  
 }
 
 .maverix-hero{
@@ -528,7 +531,11 @@
 @media (max-width: 420px){
   .kpi-grid{ grid-template-columns: 1fr; }
 }
-
+.container-cta{
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
 
 
 
