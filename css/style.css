@@ -1,16 +1,20 @@
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 /* ====== Maverix Hero ====== */
-:root{
+:root {
   --mx-bg: #ffffff;
   --mx-text: #333333;
   --mx-muted: #606975;
-  --mx-accent: #FF385C;   /* rosa del título */
+  --mx-accent: #FF385C;   
   --mx-cta: #2CCDBA;  
-   --mx-bg:#ffffff;
-  --mx-text:#2b2f33;
-  --mx-accent:#FF385C;    /* por si querés usarlo en hover */
-  --mx-ring: #2CCDBA;      /* verde botón */
+  --mx-bg: #ffffff;
+  --mx-text: #2b2f33;
+  --mx-accent: #FF385C;   
+  --mx-ring: #2CCDBA;     
+  --mx-dark: #2b2f33;
+  --mx-text: #3D424A;
+  --mx-bg: #ffffff;
+  --mx-accent: #852EFF;        
+  --mx-card: #F1F1F2;  
 }
 
 .maverix-hero{
@@ -471,7 +475,59 @@
     gap: 24px;
   }
 }
+.mx-kpis .mx-container{ width:min(1180px,92%); margin-inline:auto; }
 
+/* Bloque */
+.mx-kpis{
+  background: var(--mx-bg);
+  padding: clamp(28px,6vw,56px) 0;
+}
+
+/* Grid */
+.kpi-grid{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(14px,2vw,24px);
+}
+
+/* Tarjeta */
+.kpi-card{
+  background: var(--mx-card);
+  border-radius: 16px;
+  padding: clamp(18px,2.2vw,24px);
+  text-align:left;
+}
+
+/* Número grande */
+.kpi-value{
+  font-family:"Kollektif", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px,3.2vw,40px);
+  line-height:1;
+  color: var(--mx-accent);
+  margin-bottom: 10px;
+}
+
+/* Texto */
+.kpi-text{
+  margin:0;
+  font-family:"Kollektif", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: clamp(15px,1.4vw,18px);
+  line-height:1.35;
+  color: var(--mx-dark);
+}
+
+/* Responsive */
+@media (max-width: 1200px){
+  .kpi-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 700px){
+  .kpi-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 420px){
+  .kpi-grid{ grid-template-columns: 1fr; }
+}
 
 
 
