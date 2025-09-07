@@ -31,3 +31,11 @@ const nav = document.querySelector('.mx-nav');
     entries.forEach(e => e.isIntersecting && e.target.classList.add('is-in'));
   }, {threshold: .1});
   items.forEach(i => io.observe(i));
+
+    const frase = document.querySelector('.mx-frase h2');
+  if(frase){
+    const io = new IntersectionObserver(e => {
+      if(e[0].isIntersecting) frase.classList.add('is-in');
+    }, {threshold: .2});
+    io.observe(frase);
+  }

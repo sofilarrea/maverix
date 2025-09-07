@@ -187,43 +187,47 @@
 }
 
 /* ===== Clientes / Logos ===== */
-.mx-clients{
+.mx-clients {
+  padding: clamp(32px,5vw,56px) 0;
   background: #fff;
-  padding-top: 2rem;
+  text-align: left; /* fuerza textos alineados a la izquierda */
 }
 
-.mx-clients__title{
+.mx-clients__title {
   margin: 0 0 24px;
   font-family: "Kollektif", sans-serif;
   font-weight: 700;
   font-size: clamp(18px, 2vw, 22px);
   color: #2b2f33;
+  text-align: left; /* asegura que quede alineado al eje izquierdo */
 }
 
 .mx-logos {
-  display: flex;
+  --gap: clamp(16px, 3vw, 40px);
+  display: flex; /* uso flex para alinearlos en fila */
   flex-wrap: wrap;
-  gap: clamp(16px, 3vw, 40px);
-  justify-content: center;
+  gap: var(--gap);
+  align-items: center;
+  justify-content: flex-start; /* <- aquí la clave: pegados a la izquierda */
   padding: 8px 0;
   margin: 0;
   list-style: none;
 }
 
 .mx-logos li {
-  width: 120px; 
-  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .mx-logos img {
-  max-height: 44px;
-  max-width: 100%;
-  object-fit: contain;
+  height: clamp(40px, 5vw, 80px);
+  width: auto;
   display: block;
-  transition: transform .15s ease;
+  transition: transform .2s ease;
+}
+.mx-logos img:hover {
+  transform: translateY(-3px);
 }
 
 .mx-logos img:hover {
@@ -239,8 +243,8 @@
   .mx-logos img{ height: 32px; }
 }
 .mx-logos img {
-  max-height: 44px;   /* todos dentro de la misma altura */
-  max-width: 120px;   /* evita que uno largo se dispare */
+  max-height: 64px;   /* todos dentro de la misma altura */
+  max-width: 110px;   /* evita que uno largo se dispare */
   width: auto;
   height: auto;
   object-fit: contain; 
@@ -274,6 +278,114 @@
 .mx-logos li.is-in:nth-child(7){ animation-delay: .30s; }
 .mx-logos li.is-in:nth-child(8){ animation-delay: .35s; }
 .mx-logos li.is-in:nth-child(9){ animation-delay: .40s; }
+/* ===== Section Somos ===== */
+.mx-somos {
+    padding-top: 2rem;
+  background: #fff;
+}
+
+.mx-somos__box {
+  background: #FF385C; /* fucsia */
+  color: #fff;
+  border-radius: 12px;
+  padding: clamp(24px, 5vw, 48px);
+  max-width: 1200px;
+  text-align: left; /* alineado a la izquierda */
+}
+
+.mx-somos__title {
+  font-family: "Kollektif", sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 32px);
+  margin: 0 0 8px;
+}
+
+.mx-somos__line {
+  border: none;
+  border-top: 2px solid #fff;
+  width: 120px;
+  margin: 12px 0 24px;
+}
+
+.mx-somos__word {
+  font-family: "Kollektif", serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 28px);
+  margin: 0 0 12px;
+}
+
+.mx-somos__desc {
+  font-family: "Kollektif", sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.mx-somos__box{
+  position: relative;
+  background: #FF385C;
+  color: #fff;
+  border-radius: 12px;
+  padding: clamp(24px, 5vw, 48px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  overflow: hidden;                 /* para contener el brillo */
+}
+
+/* brillo */
+.mx-somos__box::after{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background: linear-gradient(120deg,
+              transparent 0%,
+              rgba(255,255,255,.18) 45%,
+              rgba(255,255,255,.22) 50%,
+              rgba(255,255,255,.18) 55%,
+              transparent 100%);
+  transform: translateX(-60%) rotate(8deg);
+  animation: mxShine 6s linear infinite;
+  pointer-events:none;
+  mix-blend-mode: soft-light;
+  opacity:.4;
+}
+@keyframes mxShine{
+  to{ transform: translateX(60%) rotate(8deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mx-somos__box::after{ animation:none; opacity:.15; }
+}
+/* ===== Section Frase ===== */
+.mx-frase {
+  background: #fff;
+  padding: clamp(40px, 6vw, 80px) 0;
+  text-align: center;
+}
+
+.mx-frase h2 {
+  font-family: "Kollektif", sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 34px);
+  line-height: 1.4;
+  color: #2b2f33;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+/* efecto sutil de fade-up al scrollear */
+.mx-frase h2 {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.mx-frase h2.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
 
 
 
