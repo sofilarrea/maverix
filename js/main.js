@@ -24,3 +24,10 @@ const nav = document.querySelector('.mx-nav');
       setOpen(false);
     }
   });
+
+
+    const items = document.querySelectorAll('.mx-logos li');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('is-in'));
+  }, {threshold: .1});
+  items.forEach(i => io.observe(i));
