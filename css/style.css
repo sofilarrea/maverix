@@ -20,7 +20,15 @@
   --mx-gap: 24px;
                     
 }
-
+/* Reset global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+    background-color: white;
+}
 .maverix-hero{
   background: var(--mx-bg);
 }
@@ -363,8 +371,9 @@
 /* ===== Section Frase ===== */
 .mx-frase {
   background: #fff;
-  padding-top: 2rem;
+  padding-top: 4rem;
   text-align: center;
+  padding-bottom: 4rem;
 }
 
 .mx-frase h2 {
@@ -541,14 +550,7 @@
   background: #E5E7E8;
   padding: clamp(32px, 6vw, 72px) 0;
 }
-.mx-soluciones2::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 44px;
-  pointer-events: none;
-  background: radial-gradient(100% 60px at 50% 0, rgba(0,0,0,.08), transparent 70%);
-}
+
 
 /* Título */
 .mx-soluciones2__title {
@@ -725,11 +727,39 @@
 }
 /* ===== Testimonios (aislado) ===== */
 .mx-testis{
-  background:#fff;
+
   padding: clamp(36px, 7vw, 96px) 0;
 }
 
+/* burbujas de fondo */
+.mx-testis::before,
+.mx-testis::after{
+  content:"";
+  position:absolute;
+  z-index: 0;                  /* quedan detrás del contenido */
+  pointer-events: none;        /* no interfieren con el mouse */
+}
+
+.mx-testis::before{
+  width:200px; height:200px;
+  border-radius:50%;
+  background: rgba(123,97,255,0.14); /* un toque más visible */
+  top:-50px; left:-80px;
+  filter: blur(40px);
+}
+
+.mx-testis::after{
+  width:250px; height:250px;
+  border-radius:50%;
+  background: rgba(44,205,186,0.16);
+  bottom:-60px; right:-80px;
+  filter: blur(50px);
+}
+
+/* el contenido por encima de las burbujas */
 .mx-testis__wrap{
+  position: relative;
+  z-index: 1;
   width: min(1280px, 92%);
   margin-inline: auto;
 }
@@ -744,7 +774,7 @@
   color: #3D424A;
 }
 
-/* Grid */
+/* grid (como ya lo tenías) */
 .mx-testis__grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -829,25 +859,21 @@
 @media (max-width: 640px){
   .mx-testis__grid{ grid-template-columns: 1fr; }
 }
-.mx-testis::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 120px;
-  background: radial-gradient(ellipse at center, rgba(123,97,255,0.12), transparent 70%);
-  pointer-events: none;
-}
 
-/* ====== Testimonios (solo fondo y base) ====== */
-.mx-testis {
-  background: linear-gradient(180deg, #f9f9fb 0%, #ffffff 100%);
-  padding: clamp(48px, 6vw, 80px) 0;
+.mx-tcard__quote {
   position: relative;
+  z-index: 1; /* el texto siempre arriba */
 }
 
+.mx-tcard__quote::before {
+  content: "“";
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-size: 80px;
+  color: rgba(123,97,255,0.1);
+  z-index: 0; /* se mantiene visible detrás del texto pero sobre el fondo */
+}
 
 
 
