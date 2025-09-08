@@ -850,6 +850,121 @@ body{
   z-index: 0; /* se mantiene visible detrás del texto pero sobre el fondo */
 }
 
+.mx-footer{
+  background: #E5E7E8;
+  color: #2b2f33;
+  padding: 28px 0 0;
+}
+
+.mx-footer__wrap{
+  width: min(1280px, 92%);
+  margin-inline: auto;
+  padding-bottom: 4rem;
+}
+
+/* La fila con 4 columnas (logo + 3 columnas) */
+.mx-footer__cols{
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) 1fr 1fr 1fr; /* Logo + 3 cols */
+  align-items: start;   /* <-- alinea todo arriba */
+  gap: clamp(20px, 4vw, 60px);
+}
+
+/* Logo */
+.mx-footer__brand{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.mx-footer__brand img{
+  max-width: 160px;
+  height: auto;
+}
+
+/* Columnas */
+.mx-footer__col{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Títulos con la línea fucsia */
+.mx-footer__title{
+  margin: 0 0 10px;
+  font-family: "Kollektif-Bold", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #2b2f33;
+  position: relative;
+}
+.mx-footer__title::after{
+  content:"";
+  display:block;
+  width: 46px;
+  height: 4px;
+  margin-top: 6px;
+  background:#FF385C;
+  border-radius: 4px;
+}
+
+/* Párrafos */
+.mx-footer__col p{
+  margin: 2px 0;
+  font: 500 15px/1.5 "Roboto", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color:#3D424A;
+}
+
+/* Link del mapa */
+.mx-footer__maplink{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;            /* pequeño respiro debajo del título */
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #3D424A;
+  font-weight: 600;
+  transition: transform .18s ease, background-color .18s ease, color .18s ease;
+}
+.mx-footer__pin{
+  width: 52px; height: 52px;
+  fill:#FF385C;
+  transition: transform .18s ease, fill .18s ease;
+}
+.mx-footer__maplink:hover,
+.mx-footer__maplink:focus-visible{
+  background: rgba(255,56,92,0.08);
+  color:#2b2f33;
+  transform: translateY(-1px);
+}
+.mx-footer__maplink:hover .mx-footer__pin,
+.mx-footer__maplink:focus-visible .mx-footer__pin{
+  fill:#e12e54;
+  transform: scale(1.06);
+}
+
+/* Responsive: 2 columnas en tablet, 1 en mobile */
+@media (max-width: 900px){
+  .mx-footer__cols{
+    grid-template-columns: 1fr 1fr;
+  }
+  .mx-footer__brand{
+    grid-column: 1 / -1; /* logo ocupa el ancho */
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 560px){
+  .mx-footer__cols{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .mx-footer__brand{
+    justify-content: center;
+  }
+}
 
 
 
