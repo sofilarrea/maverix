@@ -23,7 +23,6 @@
 
 .maverix-hero{
   background: var(--mx-bg);
-  padding: clamp(32px, 6vw, 72px) 0;
 }
 
 .mx-container {
@@ -87,17 +86,19 @@
   transform: translateY(-2px);
 }
 
-
-.mx-media{
-  justify-self: end;
+.mx-media {
+  justify-self: stretch; /* en lugar de end */
 }
-.mx-media img{
+
+.mx-media img {
   display: block;
-  width: min(560px, 80%);
-  height: auto;
+  width: 100%;         /* ocupa toda la columna */
+  height: 100%;        /* opcional si querés que se estire vertical */
+  max-width: none;     /* elimina el límite */
   border-radius: 20px;
   object-fit: cover;
 }
+
 
 /* ----- Responsive ----- */
 @media (max-width: 980px){
@@ -211,6 +212,7 @@
   font-size: clamp(18px, 2vw, 22px);
   color: #2b2f33;
   text-align: left; /* asegura que quede alineado al eje izquierdo */
+  font-size: 25px;
 }
 
 .mx-logos {
@@ -219,7 +221,7 @@
   flex-wrap: wrap;
   gap: var(--gap);
   align-items: center;
-  justify-content: flex-start; /* <- aquí la clave: pegados a la izquierda */
+  justify-content: space-between; /* <- aquí la clave: pegados a la izquierda */
   padding: 8px 0;
   margin: 0;
   list-style: none;
@@ -300,7 +302,7 @@
   color: #fff;
   border-radius: 12px;
   padding: clamp(24px, 5vw, 48px);
-  max-width: 1200px;
+  max-width: 1300px;
   text-align: left; /* alineado a la izquierda */
 }
 
@@ -330,17 +332,9 @@
   font-size: clamp(16px, 2vw, 20px);
   line-height: 1.6;
   margin-bottom: 24px;
+  font-size: 25px;
 }
 
-.mx-somos__box{
-  position: relative;
-  background: #FF385C;
-  color: #fff;
-  border-radius: 12px;
-  padding: clamp(24px, 5vw, 48px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  overflow: hidden;                 /* para contener el brillo */
-}
 
 /* brillo */
 .mx-somos__box::after{
@@ -546,7 +540,6 @@
 .mx-soluciones2 {
   background: #E5E7E8;
   padding: clamp(32px, 6vw, 72px) 0;
-  position: relative;
 }
 .mx-soluciones2::after {
   content: "";
@@ -569,8 +562,8 @@
 }
 
 /* Contenedor más ancho */
-.mx-soluciones2__wrap {
-  width: min(1400px, 96%);  /* más ancho que antes */
+.mx-soluciones2__wrap{
+  width: min(1400px, 96%);
   margin-inline: auto;
 }
 
