@@ -479,7 +479,7 @@
     gap: 24px;
   }
 }
-.mx-kpis .mx-container{ width:min(1180px,92%); margin-inline:auto; }
+.mx-kpis .mx-container{ width:min(1351px,96%); margin-inline:auto; }
 
 /* Bloque */
 .mx-kpis{
@@ -501,6 +501,10 @@
   border-radius: 16px;
   padding: clamp(18px,2.2vw,24px);
   text-align:left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Número grande */
@@ -565,14 +569,14 @@
 
 /* Contenedor más ancho */
 .mx-soluciones2__wrap {
-  width: min(1600px, 96%);  /* más ancho que antes */
+  width: min(1400px, 96%);  /* más ancho que antes */
   margin-inline: auto;
 }
 
 /* Grid: 4 columnas */
 .mx-soluciones2__grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
   gap: 28px;
 }
 
@@ -602,7 +606,7 @@
   margin: 0 0 20px;
   color: #3D424A;
   font-family: "Roboto", sans-serif;
-  font-size: clamp(15px, 1.1vw, 17px);
+  font-size: 20px;
   line-height: 1.55;
   flex: 1;
 }
@@ -805,7 +809,7 @@
 .mx-tcard__quote{
   margin: 0;
   color: #222;           /* casi negro, como en la captura */
-  font-family: "Kollektif", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-family: "Kollektif-Bold", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-style: italic;
   font-size: clamp(15px, 1.25vw, 20px);
   line-height: 1.6;
