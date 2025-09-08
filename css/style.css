@@ -731,31 +731,6 @@ body{
   padding: clamp(36px, 7vw, 96px) 0;
 }
 
-/* burbujas de fondo */
-.mx-testis::before,
-.mx-testis::after{
-  content:"";
-  position:absolute;
-  z-index: 0;                  /* quedan detrás del contenido */
-  pointer-events: none;        /* no interfieren con el mouse */
-}
-
-.mx-testis::before{
-  width:200px; height:200px;
-  border-radius:50%;
-  background: rgba(123,97,255,0.14); /* un toque más visible */
-  top:-50px; left:-80px;
-  filter: blur(40px);
-}
-
-.mx-testis::after{
-  width:250px; height:250px;
-  border-radius:50%;
-  background: rgba(44,205,186,0.16);
-  bottom:-60px; right:-80px;
-  filter: blur(50px);
-}
-
 /* el contenido por encima de las burbujas */
 .mx-testis__wrap{
   position: relative;
