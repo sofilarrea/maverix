@@ -835,6 +835,20 @@
 @media (max-width: 640px){
   .mx-testis__grid{ grid-template-columns: 1fr; }
 }
+.mx-soluciones2__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  gap: 28px;
+  align-items: stretch; /* todas las cards misma altura */
+}
+
+.mxv-card {
+  display: flex;
+  flex-direction: column;
+}
+.mxv-card a.mx-sol2-btn {
+  margin-top: auto; /* botón siempre al fondo */
+}
 
 
 
