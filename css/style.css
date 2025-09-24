@@ -1,34 +1,39 @@
-
 /* ====== Maverix Hero ====== */
 :root {
   --mx-bg: #ffffff;
   --mx-text: #333333;
   --mx-muted: #606975;
-  --mx-accent: #FF385C;   
-  --mx-cta: #2CCDBA;  
+  --mx-accent: #FF385C;
+  --mx-cta: #2CCDBA;
   --mx-bg: #ffffff;
   --mx-text: #2b2f33;
-  --mx-accent: #FF385C;   
-  --mx-ring: #2CCDBA;     
+  --mx-accent: #FF385C;
+  --mx-ring: #2CCDBA;
   --mx-dark: #2b2f33;
   --mx-text: #3D424A;
   --mx-bg: #ffffff;
-  --mx-accent: #852EFF;        
-  --mx-card: #F1F1F2;  
-   --mx-wrap-max: min(1180px, 92%);              /* ancho del bloque */
-  --mx-cols-3: repeat(3, minmax(300px, 1fr));   /* 3 columnas iguales */
+  --mx-accent: #852EFF;
+  --mx-card: #F1F1F2;
+  --mx-wrap-max: min(1180px, 92%);
+  --mx-cols-3: repeat(3, minmax(300px, 1fr));
   --mx-gap: 24px;
-                    
 }
+
 /* Reset global */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
-    background-color: white;
+html, body { overflow-x: clip; }
+@supports not (overflow: clip) {
+  html, body { overflow-x: hidden; }
 }
+
+body{
+  background-color: white;
+}
+
 .maverix-hero{
   background: var(--mx-bg);
 }
@@ -42,31 +47,27 @@ body{
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: clamp(32px, 6vw, 96px);
+  gap: clamp(32px, 6vmin, 96px);
 }
-
+.mx-grid > * { min-width: 0; }
 
 .mx-copy h1{
-
-    color: #FF385C;
-    font-family: "Kollektif-Bold";
-    font-size: 56px;
-    text-align: left;
-    margin-bottom: 23px;
-    margin-top: 0px;
-    width: 100%;
-
+  color: #FF385C;
+  font-family: "Kollektif-Bold";
+  font-size: 56px;
+  text-align: left;
+  margin-bottom: 23px;
+  margin-top: 0px;
+  width: 100%;
 }
 
 .mx-copy p{
-
-    color: #3D424A;
-    font-family: "Kollektif-Bold";
-    font-size: 31px;
-    text-align: left;
-    width: 100%;
-    margin-bottom: 25px;
-
+  color: #3D424A;
+  font-family: "Kollektif-Bold";
+  font-size: 31px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 25px;
 }
 
 .mx-cta {
@@ -75,15 +76,12 @@ body{
   font-size: 18px;
   font-weight: 600;
   text-transform: none;
-
   padding: 14px 26px;
   background-color: #2ccdba;
   border-radius: 10px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -95,18 +93,17 @@ body{
 }
 
 .mx-media {
-  justify-self: stretch; /* en lugar de end */
+  justify-self: stretch;
 }
 
 .mx-media img {
   display: block;
-  width: 100%;         /* ocupa toda la columna */
-  height: 100%;        /* opcional si querés que se estire vertical */
-  max-width: none;     /* elimina el límite */
+  width: 100%;
+  height: 100%;
+  max-width: none;
   border-radius: 20px;
   object-fit: cover;
 }
-
 
 /* ----- Responsive ----- */
 @media (max-width: 980px){
@@ -118,24 +115,24 @@ body{
   }
 }
 
-
 /* Header base */
 .mx-header{
   position: sticky; top: 0; z-index: 1000;
   background: var(--mx-bg);
   backdrop-filter: saturate(150%) blur(6px);
 }
+
 .mx-nav {
   height: 72px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 90%;                /* ahora ocupa todo el ancho */
-  padding-left: 70px;
-  padding-right: 50px;            /* espacio a los lados */
-  margin-inline: 0;  
-  gap: 36%;         /* quita centrado automático */
+  justify-content: space-between;
+  width: min(1280px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 48px);
+  gap: clamp(12px, 4vw, 32px);
 }
+.mx-nav > * { min-width: 0; }
 
 .mx-nav,
 .mx-nav a,
@@ -151,8 +148,9 @@ body{
   font-size: 1.1rem;
 }
 .mx-logo img{
-    width: 250px;
+  width: 250px;
 }
+
 /* Burger */
 .mx-burger{
   display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
@@ -167,14 +165,14 @@ body{
 .mx-burger span {
   width: 22px;
   height: 2px;
-  background: #FF385C; /* fucsia */
+  background: #FF385C;
   display: block;
   transition: transform .2s ease, opacity .2s ease;
 }
 
 /* Menu */
 .mx-menu{
-  position: fixed; inset: 72px 0 auto 0; /* debajo del header */
+  position: fixed; inset: 72px 0 auto 0;
   background: var(--mx-bg);
   list-style: none; margin: 0; padding: 16px;
   display: grid; gap: 10px;
@@ -185,7 +183,8 @@ body{
 .mx-menu a{
   text-decoration: none; color: var(--mx-text);
   display: block; padding: 12px 8px; border-radius: 10px; font-weight: 500;
-  font-size: 20px;}
+  font-size: 20px;
+}
 .mx-menu a:hover{ color: var(--mx-accent); }
 
 /* Estado abierto */
@@ -208,9 +207,13 @@ body{
 
 /* ===== Clientes / Logos ===== */
 .mx-clients {
-  padding: clamp(32px,5vw,56px) 0;
+  padding-block: clamp(32px, 5%, 56px);
+  padding-inline: 0;
   background: #fff;
-  text-align: left; /* fuerza textos alineados a la izquierda */
+  text-align: left;
+}
+@supports (padding: 1svw){
+  .mx-clients { padding-block: clamp(32px, 5svw, 56px); }
 }
 
 .mx-clients__title {
@@ -219,17 +222,17 @@ body{
   font-weight: 700;
   font-size: clamp(18px, 2vw, 22px);
   color: #2b2f33;
-  text-align: left; /* asegura que quede alineado al eje izquierdo */
+  text-align: left;
   font-size: 25px;
 }
 
 .mx-logos {
-  --gap: clamp(16px, 3vw, 40px);
-  display: flex; /* uso flex para alinearlos en fila */
+  --gap: clamp(16px, 3vmin, 40px);
+  display: flex;
   flex-wrap: wrap;
   gap: var(--gap);
   align-items: center;
-  justify-content: space-between; /* <- aquí la clave: pegados a la izquierda */
+  justify-content: space-between;
   padding: 8px 0;
   margin: 0;
   list-style: none;
@@ -247,28 +250,25 @@ body{
   display: block;
   transition: transform .2s ease;
 }
-.mx-logos img:hover {
-  transform: translateY(-3px);
-}
+.mx-logos img:hover { transform: translateY(-2px); }
 
-.mx-logos img:hover {
-  transform: translateY(-2px);
-}
 @media (max-width: 900px){
   .mx-logos{
-    grid-auto-flow: row;
-    grid-template-columns: repeat(3, 1fr); /* 3 logos por fila */
-    overflow: visible;
+    justify-content: flex-start;
   }
-  .mx-logos li{ justify-content: flex-start; }
+  .mx-logos li{
+    flex: 1 1 calc(33.333% - var(--gap));
+    justify-content: flex-start;
+  }
   .mx-logos img{ height: 32px; }
 }
+
 .mx-logos img {
-  max-height: 64px;   /* todos dentro de la misma altura */
-  max-width: 110px;   /* evita que uno largo se dispare */
+  max-height: 64px;
+  max-width: 110px;
   width: auto;
   height: auto;
-  object-fit: contain; 
+  object-fit: contain;
   display: block;
   transition: transform .15s ease;
 }
@@ -299,19 +299,25 @@ body{
 .mx-logos li.is-in:nth-child(7){ animation-delay: .30s; }
 .mx-logos li.is-in:nth-child(8){ animation-delay: .35s; }
 .mx-logos li.is-in:nth-child(9){ animation-delay: .40s; }
+
 /* ===== Section Somos ===== */
 .mx-somos {
-    padding-top: 2rem;
+  padding-top: 2rem;
   background: #fff;
 }
 
 .mx-somos__box {
-  background: #FF385C; /* fucsia */
+  position: relative;              /* <- necesario para el ::after */
+  overflow: hidden;                /* recorta el brillo para que no desborde */
+  background: #FF385C;
   color: #fff;
   border-radius: 12px;
-  padding: clamp(24px, 5vw, 48px);
+  padding: clamp(24px, 5%, 48px);
   max-width: 1300px;
-  text-align: left; /* alineado a la izquierda */
+  text-align: left;
+}
+@supports (padding: 1svw){
+  .mx-somos__box { padding: clamp(24px, 5svw, 48px); }
 }
 
 .mx-somos__title {
@@ -343,12 +349,11 @@ body{
   font-size: 25px;
 }
 
-
 /* brillo */
 .mx-somos__box::after{
   content:"";
   position:absolute;
-  inset:-40%;
+  inset:-20%;                        /* <- antes -40% (desbordaba) */
   background: linear-gradient(120deg,
               transparent 0%,
               rgba(255,255,255,.18) 45%,
@@ -364,10 +369,10 @@ body{
 @keyframes mxShine{
   to{ transform: translateX(60%) rotate(8deg); }
 }
-
 @media (prefers-reduced-motion: reduce){
   .mx-somos__box::after{ animation:none; opacity:.15; }
 }
+
 /* ===== Section Frase ===== */
 .mx-frase {
   background: #fff;
@@ -385,7 +390,7 @@ body{
   max-width: 2100px;
 }
 
-/* efecto sutil de fade-up al scrollear */
+/* efecto fade-up */
 .mx-frase h2 {
   opacity: 0;
   transform: translateY(12px);
@@ -402,13 +407,11 @@ body{
   padding-top: 2rem;
 }
 
-
-
 .mxv-title {
   font-family: "Kollektif-Bold", sans-serif;
   font-size: clamp(20px, 2.6vw, 28px);
   font-weight: 700;
-  text-align: left; /* alineado a la izquierda */
+  text-align: left;
   margin-bottom: 40px;
   color: #2b2f33;
 }
@@ -442,7 +445,7 @@ body{
 }
 
 .mxv-card h3 span {
-  color: #FF385C; /* rosa */
+  color: #FF385C;
   display: block;
 }
 
@@ -455,13 +458,12 @@ body{
 
 .mxv-list li {
   position: relative;
-  padding-left: 40px; /* espacio para el ícono */
+  padding-left: 40px;
   margin-bottom: 16px;
   font-size: 19px;
   line-height: 1.5;
   color: #3d424a;
   font-family: "Roboto", sans-serif;
-
 }
 
 /* Ícono turquesa con check */
@@ -475,7 +477,6 @@ body{
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='12' fill='%232CCDBA'/%3E%3Cpath d='M9.5 16.2l-3.5-3.5 1.4-1.4 2.1 2.1 5.6-5.6 1.4 1.4-7 7z' fill='white'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
-
 /* Responsive */
 @media (max-width: 960px) {
   .mxv-cards {
@@ -483,12 +484,17 @@ body{
     gap: 24px;
   }
 }
+
+/* ===== KPIs ===== */
 .mx-kpis .mx-container{ width:min(1351px,96%); margin-inline:auto; }
 
-/* Bloque */
 .mx-kpis{
   background: var(--mx-bg);
-  padding: clamp(28px,6vw,56px) 0;
+  padding-block: clamp(28px, 6%, 56px);
+  padding-inline: 0;
+}
+@supports (padding: 1svw){
+  .mx-kpis{ padding-block: clamp(28px, 6svw, 56px); }
 }
 
 /* Grid */
@@ -496,14 +502,14 @@ body{
   list-style:none; margin:0; padding:0;
   display:grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: clamp(14px,2vw,24px);
+  gap: clamp(14px, 4vmin, 24px);
 }
 
 /* Tarjeta */
 .kpi-card{
   background: var(--mx-card);
   border-radius: 16px;
-  padding: clamp(18px,2.2vw,24px);
+  padding: clamp(18px, 2.2vmin, 24px);
   text-align:left;
   display: flex;
   flex-direction: column;
@@ -540,17 +546,22 @@ body{
 @media (max-width: 420px){
   .kpi-grid{ grid-template-columns: 1fr; }
 }
+
 .container-cta{
-    display: flex;
-    justify-content: center;
-    margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
 }
+
 /* ===== Soluciones (4 en una fila, más anchas) ===== */
 .mx-soluciones2 {
   background: #E5E7E8;
-  padding: clamp(32px, 6vw, 72px) 0;
+  padding-block: clamp(32px, 6%, 72px);
+  padding-inline: 0;
 }
-
+@supports (padding: 1svw){
+  .mx-soluciones2 { padding-block: clamp(32px, 6svw, 72px); }
+}
 
 /* Título */
 .mx-soluciones2__title {
@@ -569,7 +580,7 @@ body{
   margin-inline: auto;
 }
 
-/* Grid: 4 columnas */
+/* Grid: 3 columnas */
 .mx-soluciones2__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(260px, 1fr));
@@ -585,7 +596,7 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 420px; /* ajustá según copy */
+  min-height: 420px;
 }
 
 /* Títulos dentro de cards */
@@ -630,18 +641,23 @@ body{
 /* Responsive */
 @media (max-width: 1200px) {
   .mx-soluciones2__grid {
-    grid-template-columns: repeat(2, 1fr); /* en tablets 2x2 */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 640px) {
   .mx-soluciones2__grid {
-    grid-template-columns: 1fr; /* en mobile, una abajo de otra */
+    grid-template-columns: 1fr;
   }
 }
+
 /* ===== Nuestra tecnología (aislada) ===== */
 .mx-tech{
   background: #ffffff;
-  padding: clamp(36px, 6vw, 80px) 0;
+  padding-block: clamp(36px, 6%, 80px);
+  padding-inline: 0;
+}
+@supports (padding: 1svw){
+  .mx-tech { padding-block: clamp(36px, 6svw, 80px); }
 }
 
 .mx-tech__wrap{
@@ -657,7 +673,7 @@ body{
   font-size: clamp(30px, 4vw, 52px);
   line-height: 1.1;
   text-align: center;
-  color: #3D424A; /* gris oscuro de tu sitio */
+  color: #3D424A;
 }
 
 /* Lista */
@@ -666,13 +682,13 @@ body{
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr;   /* una columna como en la captura */
-  gap: clamp(14px, 2.2vw, 22px);
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 2.2vmin, 22px);
 }
 
 .mx-tech__list li{
   position: relative;
-  padding-left: 44px;  /* espacio para el ícono */
+  padding-left: 44px;
   color: #3D424A;
   font-family: "Kollektif", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-size: clamp(16px, 1.6vw, 22px);
@@ -686,13 +702,12 @@ body{
   left: 0; top: 0.1em;
   width: 26px; height: 26px;
   border-radius: 999px;
-  background: 
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path d="M7.6 14.2 3.7 10.3a1 1 0 0 1 1.4-1.4l2.5 2.5 6.3-6.3a1 1 0 1 1 1.4 1.4l-7.7 7.7z"/></svg>') 
+  background:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path d="M7.6 14.2 3.7 10.3a1 1 0 0 1 1.4-1.4l2.5 2.5 6.3-6.3a1 1 0 1 1 1.4 1.4l-7.7 7.7z"/></svg>')
     center/14px 14px no-repeat,
-    #2CCDBA;  /* círculo turquesa */
+    #2CCDBA;
   box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 8px 16px rgba(0,0,0,.08);
 }
-
 
 /* Opcional: sutil animación al aparecer */
 @media (prefers-reduced-motion: no-preference){
@@ -722,13 +737,17 @@ body{
 }
 
 .container-ul{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
+
 /* ===== Testimonios (aislado) ===== */
 .mx-testis{
-
-  padding: clamp(36px, 7vw, 96px) 0;
+  padding-block: clamp(36px, 7%, 96px);
+  padding-inline: 0;
+}
+@supports (padding: 1svw){
+  .mx-testis{ padding-block: clamp(36px, 7svw, 96px); }
 }
 
 /* el contenido por encima de las burbujas */
@@ -749,11 +768,11 @@ body{
   color: #3D424A;
 }
 
-/* grid (como ya lo tenías) */
+/* grid */
 .mx-testis__grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(18px, 2vw, 28px);
+  gap: clamp(18px, 3vmin, 28px);
 }
 
 /* Card */
@@ -761,11 +780,10 @@ body{
   position: relative;
   background: #fff;
   border-radius: 18px;
-  padding: clamp(18px, 2.2vw, 32px);
+  padding: clamp(18px, 3vmin, 32px);
   box-shadow:
     0 24px 60px rgba(0,0,0,.06),
     0 2px 4px rgba(0,0,0,.04);
-  /* halo sutil */
   overflow: hidden;
 }
 .mx-tcard::after{
@@ -807,7 +825,7 @@ body{
 /* Quote */
 .mx-tcard__quote{
   margin: 0;
-  color: #222;           /* casi negro, como en la captura */
+  color: #222;
   font-family: "Kollektif-Bold", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-style: italic;
   font-size: clamp(15px, 1.25vw, 20px);
@@ -835,21 +853,9 @@ body{
   .mx-testis__grid{ grid-template-columns: 1fr; }
 }
 
-.mx-tcard__quote {
-  position: relative;
-  z-index: 1; /* el texto siempre arriba */
-}
+.mx-tcard__quote { position: relative; z-index: 1; }
 
-.mx-tcard__quote::before {
-  content: "“";
-  position: absolute;
-  top: -20px;
-  left: -10px;
-  font-size: 80px;
-  color: rgba(123,97,255,0.1);
-  z-index: 0; /* se mantiene visible detrás del texto pero sobre el fondo */
-}
-
+/* ===== Footer ===== */
 .mx-footer{
   background: #E5E7E8;
   color: #2b2f33;
@@ -865,8 +871,8 @@ body{
 /* La fila con 4 columnas (logo + 3 columnas) */
 .mx-footer__cols{
   display: grid;
-  grid-template-columns: minmax(160px, 220px) 1fr 1fr 1fr; /* Logo + 3 cols */
-  align-items: start;   /* <-- alinea todo arriba */
+  grid-template-columns: minmax(160px, 220px) 1fr 1fr 1fr;
+  align-items: start;
   gap: clamp(20px, 4vw, 60px);
 }
 
@@ -920,7 +926,7 @@ body{
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 8px;            /* pequeño respiro debajo del título */
+  margin-top: 8px;
   padding: 10px 14px;
   border-radius: 12px;
   text-decoration: none;
@@ -951,7 +957,7 @@ body{
     grid-template-columns: 1fr 1fr;
   }
   .mx-footer__brand{
-    grid-column: 1 / -1; /* logo ocupa el ancho */
+    grid-column: 1 / -1;
     justify-content: center;
     margin-bottom: 10px;
   }
@@ -965,8 +971,6 @@ body{
     justify-content: center;
   }
 }
-
-
 
 /* ===== Mobile tweaks ===== */
 @media (max-width: 768px){
@@ -989,7 +993,7 @@ body{
     gap: 20px;
   }
 
-  /* Título más contenido (evita 3–4 líneas enormes) */
+  /* Título más contenido */
   .mx-copy h1{
     font-size: clamp(28px, 8vw, 36px);
     line-height: 1.15;
@@ -1001,14 +1005,14 @@ body{
     font-size: clamp(15px, 4.2vw, 18px);
     line-height: 1.5;
     margin: 0 0 18px;
-    max-width: 40ch; /* evita líneas muy largas */
+    max-width: 40ch;
   }
 
-  /* CTA grande y cómodo para tap */
+  /* CTA */
   .mx-cta{
     display: inline-flex;
     width: 100%;
-    max-width: 310px;        /* no más de 360px para que no “desborde” */
+    max-width: 310px;
     justify-content: center;
     font-size: 16px;
     padding: 12px 18px;
@@ -1021,7 +1025,7 @@ body{
     justify-items: center;
   }
 
-  /* Imagen: ancho completo y margen superior */
+  /* Imagen */
   .mx-media{ justify-self: start; }
   .mx-media img{
     width: 100%;
@@ -1030,9 +1034,9 @@ body{
     margin-top: 8px;
   }
 
-  /* Menú móvil ocupa toda la anchura y con targets cómodos */
+  /* Menú móvil */
   .mx-menu{
-    inset: 60px 0 auto 0;      /* arranca justo debajo del header más bajo */
+    inset: 60px 0 auto 0;
     padding: 8px 12px 16px;
   }
   .mx-menu a{
