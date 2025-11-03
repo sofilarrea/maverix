@@ -134,3 +134,18 @@ window.addEventListener("mousemove", (e) => {
   mouse.x = e.x;
   mouse.y = e.y;
 });
+  const lenis = new Lenis({
+    duration: 1.2,          // velocidad de ease
+    easing: (t) => 1 - Math.pow(1 - t, 3), // curva suave
+    smoothWheel: true,      
+    smoothTouch: false      // en mobile, dejamos el scroll nativo
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  

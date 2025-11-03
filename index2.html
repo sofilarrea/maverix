@@ -1,126 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maverix</title>
-
-  <!-- Fuentes + CSS -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="/css/style2.css" />
-
-  <!-- GSAP -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style2.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-
 <body>
 
-  <!-- 🔹 HEADER -->
-  <header class="mx-header" role="banner">
-    <nav class="mx-nav" aria-label="Principal">
-      <a href="/" class="mx-logo" aria-label="Maverix">
-        <img src="/assets/images/logo.png" alt="Logo Maverix" />
-      </a>
-
-      <button class="mx-burger" aria-expanded="false" aria-controls="mx-menu">
-        <span class="mx-burger__bar"></span>
-        <span class="mx-burger__bar"></span>
-        <span class="mx-burger__bar"></span>
-      </button>
-
-      <ul id="mx-menu" class="mx-menu">
-        <li><a href="#servicios">Nosotros</a></li>
-        <li><a href="#como-lo-hacemos">Soluciones</a></li>
-        <li><a href="#clientes">Tecnología</a></li>
-        <li><a href="#contacto">Testimonios</a></li>
-      </ul>
-    </nav>
-     <nav class="nav">
-
-    <!-- ✅ MOBILE: Checkbox invisible que controla el menú -->
-    <input type="checkbox" id="nav-toggle" class="nav__trigger-input" />
-
-    <!-- ✅ MOBILE: Botón hamburguesa -->
-    <label for="nav-toggle" class="nav__trigger-finger">
-      <span></span>
-    </label>
-
-    <!-- ✅ LINKS (mismo contenido para mobile y desktop) -->
-    <ul class="nav__list">
-      <li class="nav__item"><a href="#servicios" class="nav__link">Nosotros</a></li>
-      <li class="nav__item"><a href="#como-lo-hacemos" class="nav__link">Soluciones</a></li>
-      <li class="nav__item"><a href="#clientes" class="nav__link">Tecnología</a></li>
-      <li class="nav__item"><a href="#contacto" class="nav__link">Testimonios</a></li>
-    </ul>
-  </nav>
-  </header>
-
-  <!-- 🔹 PRELOADER -->
+  <!-- PRELOADER -->
   <div id="loader">
-    <div id="preloader-box">
-      <h2 class="mx-somos__title">Somos</h2>
-      <hr class="mx-somos__line" />
-      <p class="mx-somos__word">Maverix</p>
-      <p class="mx-somos__desc">
-        <span>[latinismo, del inglés] //<b>Mavericks</b>//</span><br />
-        <strong>1. (sust.)</strong> personas inusuales, inconformistas,<br />
-        que desafían el status quo, que sobresalen de modo diferente.
-      </p>
-      <hr class="mx-somos__line" />
-    </div>
-    <div id="white-overlay"></div>
+  <div id="preloader-box">
+    <h2 class="mx-somos__title">Somos</h2>
+    <hr class="mx-somos__line">
+    <p class="mx-somos__word">Maverix</p>
+    <p class="mx-somos__desc">
+      <span>[latinismo, del inglés] //<b>Mavericks</b>//</span><br>
+      <strong>1. (sust.)</strong> personas inusuales, inconformistas, <br>
+      que desafían el status quo, que sobresalen de modo diferente.
+    </p>
+    <hr class="mx-somos__line">
   </div>
+  <div id="white-overlay"></div>
+</div>
+  
 
-  <!-- 🔹 HERO + CANVAS -->
-  <section class="hero" aria-label="Hero">
-    <canvas id="heroCanvas"></canvas>
+    <h1>Bienvenido al sitio</h1>
+    <p>Este es el contenido real...</p>
+  </main>
 
-    <div class="mx-container">
-      <div class="mx-grid">
-        <!-- Texto principal -->
-        <div class="mx-copy">
-          <h1>Agilidad y consistencia<br />en tu recupero de activos.</h1>
-          <p>
-            Equipos autónomos enfocados en tu negocio,<br />
-            potenciados con la mejor tecnología de la industria.
-          </p>
-          <a href="#como-lo-hacemos" class="mx-cta">Descubrí cómo lo hacemos</a>
-        </div>
-
-        <!-- Imagen -->
-        <div class="mx-media">
-          <img
-            src="/assets/images/image-hero.jpg"
-            alt="Equipo de trabajo colaborando"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
-      </div>
-
-      <!-- LOGOS CLIENTES dentro del hero -->
-      <div class="mx-clients">
-        <h2 class="mx-clients__title">Más de 20 clientes han confiado en nosotros.</h2>
-        <ul class="mx-logos" role="list">
-          <li><img src="/assets/images/naranja.png" alt="Naranja X" /></li>
-          <li><img src="/assets/images/logo_comafi.png" alt="Banco Comafi" /></li>
-          <li><img src="/assets/images/ultra.png" alt="Ultra" /></li>
-          <li><img src="/assets/images/logo-clientes.jpeg" alt="Reba" /></li>
-          <li><img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol" /></li>
-          <li><img src="/assets/images/CREDITIA.png" alt="Creditia" /></li>
-          <li><img src="/assets/images/credicuotas.jpeg" alt="Credicuotas" /></li>
-          <li><img src="/assets/images/galicia.png" alt="Banco Galicia" /></li>
-          <li><img src="/assets/images/uala.png" alt="Ualá" /></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 🔹 SCRIPTS -->
-  <script src="/main.js"></script>
-
+  <script src="main.js"></script>
 </body>
 </html>
