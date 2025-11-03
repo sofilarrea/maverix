@@ -226,7 +226,6 @@ body {
 
   /* Ajustar título hero en mobile */
   .hero__title {
-    font-size: 3rem;
-    text-align: center;
+    font-size: 4rem;
   }
 }
