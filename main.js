@@ -20,6 +20,12 @@ window.addEventListener("load", () => {
     .from(".hero__title", { opacity: 0, y: 40, duration: 1 }, "-=0.2")
     .from(".hero__subtitle", { opacity: 0, y: 40, duration: 1 }, "-=0.8");
 });
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.querySelector(".navbar__links");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
 
 /* ✅ Hero desaparece al hacer scroll */
 gsap.to("#hero", {

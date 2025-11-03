@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Clientes — Test sin GSAP</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* RESET */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', sans-serif; color:#222; background:#fff; }
+
+  /* HERO dummy para forzar scroll */
+  .hero {
+    min-height: 100vh;
+    display:flex; align-items:center; justify-content:center;
+    color:#ff385c; font-size: clamp(1.2rem, 3vw, 2rem);
+  }
+
+  /* CLIENTES */
+  .clientes { padding: 5rem 6vw; text-align: center; }
+  .clientes__title { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight:700; margin-bottom: 3rem; }
+
+  .clientes__logos {
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+    gap: 2.5rem 3rem;
+  }
+
+  .clientes__logos img{
+    width: 120px; max-width: 22vw; height:auto;
+    opacity: 0; transform: translateY(60px);
+    filter: grayscale(100%);
+    transition:
+      opacity .6s ease, transform .6s ease, filter .3s ease;
+    will-change: opacity, transform;
+  }
+
+  /* cuando entra en viewport */
+  .clientes__logos img.is-inview{
+    opacity: 1; transform: translateY(0);
+  }
+
+  .clientes__logos img:hover{ filter: grayscale(0%); }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <p>HERO — scroll hacia abajo</p>
+</section>
+
+<section class="clientes">
+  <h2 class="clientes__title">Más de 20 clientes han confiado en nosotros.</h2>
+
+  <div class="clientes__logos" id="logos">
+    <!-- Usamos URLs públicas para descartar rutas locales -->
+    <img src="https://seeklogo.com/images/N/naranja-x-logo-29052C0238-seeklogo.com.png" alt="Naranja X">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Banco_Comafi.svg" alt="Banco Comafi">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Ultra_logo.png" alt="Ultra">
+    <img src="https://seeklogo.com/images/R/reba-logo-650A9F01BD-seeklogo.com.png" alt="Reba">
+    <img src="/assets/images/naranja.png" alt="Banco del Sol">
+    <img src="/assets/images/banco-de-sol.jpg" alt="Credicuotas">
+    <img src="/assets/images/CREDITIA.png" alt="Ualá">
+  </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener('load', () => {
+    // aseguramos estado inicial
+    gsap.set(".clientes__logos img", {opacity:0, y:60});
+
+    gsap.to(".clientes__logos img", {
+      opacity:1,
+      y:0,
+      duration:1,
+      stagger:0.15,
+      ease:"power3.out",
+      scrollTrigger:{
+        trigger: ".clientes__logos",
+        start: "top 80%",
+        toggleActions: "play none none none",
+        // markers:true // poné true solo para debug
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
