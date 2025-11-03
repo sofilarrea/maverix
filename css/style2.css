@@ -25,6 +25,13 @@ body {
 }
 
 /* 🎬 PRELOADER */
+#preloader-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--fucsia);
+  z-index: -1;
+}
+
 #loader {
   position: fixed;
   inset: 0;
@@ -41,6 +48,13 @@ body {
   max-width: 600px;
   transform-origin: center;
 }
+.mx-somos__line {
+  border: none;
+  border-top: 2px solid var(--blanco);
+  width: 120px;
+  margin: 12px 0 24px;
+}
+
 
 /* ✅ NAVBAR */
 .navbar {
@@ -226,6 +240,14 @@ body {
 
   /* Ajustar título hero en mobile */
   .hero__title {
-    font-size: 4rem;
+    font-size: 3rem;
   }
+  .br{
+    display: none;
+  }
+.navbar__logo img{
+    height: 40px;
+}
+
+   
 }
