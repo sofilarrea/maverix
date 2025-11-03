@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maverix</title>
+
+  <!-- ✅ Fuentes y CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style2.css">
+
+  <!-- ✅ GSAP y ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
+
 <body>
+
+<!-- ✅ NAVBAR -->
 <header class="navbar">
   <div class="navbar__logo">
     <img src="assets/images/logo.png" alt="Maverix Logo">
@@ -20,42 +27,37 @@
     <a href="#servicios">Servicios</a>
     <a href="#contacto">Contacto</a>
   </nav>
-
-  <!-- Ícono Hamburguesa / Cruz -->
   <div class="navbar__toggle" id="menu-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
 </header>
 
-
-
-  <!-- ✅ PRELOADER (Tu código original sin modificar) -->
-  <div id="loader">
-      <div id="preloader-bg"></div>
-  <div id="preloader-bg"></div>
-
-    <div id="preloader-box">
-      <h2 class="mx-somos__title">Somos</h2>
-      <hr class="mx-somos__line">
-      <p class="mx-somos__word">Maverix</p>
-      <p class="mx-somos__desc">
-        <span>[latinismo, del inglés] //<b>Mavericks</b>//</span><br>
-        <strong>1. (sust.)</strong> personas inusuales, inconformistas, <br>
-        que desafían el status quo, que sobresalen de modo diferente.
-      </p>
-      <hr class="mx-somos__line">
-    </div>
-    <div id="white-overlay"></div>
+<!-- ✅ PRELOADER -->
+<!-- ✅ PRELOADER -->
+<div id="loader">
+  <div id="preloader-bg"></div> <!-- Fondo rosa que explota -->
+  
+  <div id="preloader-box">
+    <h2 class="mx-somos__title">Somos</h2>
+    <hr class="mx-somos__line">
+    <p class="mx-somos__word">Maverix</p>
+    <p class="mx-somos__desc">
+      <span>[latinismo, del inglés] //<b>Mavericks</b>//</span><br>
+      <strong>1. (sust.)</strong> personas inusuales, inconformistas, <br>
+      que desafían el status quo, que sobresalen de modo diferente.
+    </p>
+    <hr class="mx-somos__line">
   </div>
 
-  <!-- ✅ HERO (Nuevo, minimalista + tu texto exacto) -->
- <section id="hero" class="hero">
+  <div id="white-overlay"></div>
+</div>
+
+<!-- ✅ HERO -->
+<section id="hero" class="hero">
   <div class="hero__content">
     <h1 class="hero__title">
-      Agilidad y consistencia
-      en <br class="br">tu recupero de activos.
+      Agilidad y consistencia<br>
+      en tu recupero de activos.
     </h1>
     <p class="hero__subtitle">
       Equipos autónomos enfocados en tu negocio,<br>
@@ -66,20 +68,27 @@
   <div class="scroll-icon">↓</div>
 </section>
 
-<main id="content">
-  <h2>Contenido real...</h2>
-  <p>Aquí comienza tu sitio...</p>
-</main>
+<!-- ✅ CLIENTES -->
+<section class="mx-clients" aria-label="Clientes" id="content">
+  <div class="mx-container">
+    <h2 class="mx-clients__title">Más de 20 clientes han confiado en nosotros.</h2>
+    <ul class="mx-logos" role="list">
+      <li><img src="/assets/images/naranja.png" alt="Naranja X"></li>
+      <li><img src="/assets/images/logo_comafi.png" alt="Banco Comafi"></li>
+      <li><img src="/assets/images/ultra.png" alt="Ultra"></li>
+      <li><img src="/assets/images/logo-clientes.jpeg" alt="Reba"></li>
+      <li><img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol"></li>
+      <li><img src="/assets/images/CREDITIA.png" alt="Creditia"></li>
+      <li><img src="/assets/images/credicuotas.jpeg" alt="Credicuotas"></li>
+      <li><img src="/assets/images/galicia.png" alt="Banco Galicia"></li>
+      <li><img src="/assets/images/uala.png" alt="Ualá"></li>
+    </ul>
+  </div>
+</section>
 
-  <!-- ✅ CONTENIDO REAL (queda igual, solo baja después del hero) -->
-  <main id="content" style="opacity:0;">
-    <h1>Bienvenido al sitio</h1>
-    <p>Este es el contenido real...</p>
-  </main>
-
+<!-- ✅ Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="main.js"></script>
+<script src="/main.js"></script>
+
 </body>
 </html>

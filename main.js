@@ -1,23 +1,29 @@
-// ✅ Activamos ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-
-/* ✅ PRELOADER + HERO */
 window.addEventListener("load", () => {
-  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-tl.from("#preloader-box", { opacity: 0, y: 50, duration: 0.8 })
-  .to("#preloader-bg", { scale: 20, duration: 1.3, ease: "power4.in" }) // ✅ escala solo fondo
-  .to("#loader", {
-    opacity: 0,
-    duration: 0.6,
-    onComplete: () => {
-      document.getElementById("loader").style.display = "none";
-      document.body.style.overflow = "auto";
-    }
-  })
+  const tl = gsap.timeline({ defaults: { ease: "power4.inOut" } });
 
-    .from("#hero", { opacity: 0, duration: 1 }, "-=0.3")
-    .from(".hero__title", { opacity: 0, y: 40, duration: 1 }, "-=0.2")
-    .from(".hero__subtitle", { opacity: 0, y: 40, duration: 1 }, "-=0.8");
+  tl.from("#preloader-box", { 
+      opacity: 1,
+      scale: 1,
+      duration: 0.5 
+    })
+    .to("#preloader-box", { 
+      scale: 15,            // ✅ Escala gigante del texto completo
+      duration: 1.5,
+      ease: "power4.in" 
+    })
+    .to("#loader", {
+      opacity: 0,
+      duration: 0.5,
+      onComplete: () => {
+        document.getElementById("loader").style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    })
+    .from("#hero", { 
+      opacity: 0, 
+      scale: 0.95, 
+      duration: 1 
+    }, "-=0.3");
 });
 
 /* ✅ Menu hamburguesa responsive */
@@ -53,33 +59,3 @@ gsap.to("#content", {
   duration: 1
 });
 
-/* ✅ THREE.JS – fondo con cruz girando */
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({
-  canvas: document.getElementById('hero-canvas'),
-  alpha: true
-});
-renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.z = 4;
-
-const geometry = new THREE.BoxGeometry(2, 0.05, 0.05);
-const material = new THREE.MeshBasicMaterial({ color: '#ff385c', wireframe: true });
-const lineX = new THREE.Mesh(geometry, material);
-const lineY = new THREE.Mesh(geometry, material);
-lineY.rotation.z = Math.PI / 2;
-
-scene.add(lineX, lineY);
-function animate() {
-  requestAnimationFrame(animate);
-  lineX.rotation.y += 0.002;
-  lineY.rotation.x += 0.002;
-  renderer.render(scene, camera);
-}
-animate();
-
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
