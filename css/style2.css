@@ -1,0 +1,361 @@
+/* ==============================
+   RESET & VARIABLES
+============================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --mx-bg: #ffffff;
+  --mx-text: #3D424A;
+  --mx-accent: #FF385C;
+  --mx-cta: #2CCDBA;
+  --mx-muted: #606975;
+  --mx-gap: clamp(16px, 3vw, 48px);
+  --mx-wrap: min(1400px, 92%);
+}
+
+/* ==============================
+   BASE GLOBAL
+============================== */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--mx-bg);
+  overflow-x: hidden;
+}
+
+/* ==============================
+   PRELOADER
+============================== */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--mx-accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#preloader-box {
+  color: #fff;
+  text-align: left;
+  max-width: 600px;
+  transform-origin: center;
+}
+
+#white-overlay {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  z-index: 1;
+}
+
+.mx-somos__title {
+  font-family: "Kollektif-Bold", sans-serif;
+  font-size: clamp(22px, 3vw, 32px);
+  margin-bottom: 8px;
+}
+
+.mx-somos__line {
+  border: none;
+  border-top: 2px solid #fff;
+  width: 120px;
+  margin: 12px 0 24px;
+}
+
+.mx-somos__word {
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.mx-somos__desc {
+  font-family: 'Times New Roman', serif;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* ==============================
+   HEADER / NAV
+============================== */
+.mx-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--mx-bg);
+  backdrop-filter: blur(6px) saturate(150%);
+}
+
+.mx-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--mx-wrap);
+  height: 72px;
+  margin-inline: auto;
+  padding-inline: var(--mx-gap);
+}
+
+.mx-logo img { width: 220px; }
+
+.mx-burger {
+  display: none;
+  background: transparent;
+  border: none;
+}
+
+/* Desktop menú */
+.mx-menu {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.mx-menu a {
+  color: var(--mx-text);
+  text-decoration: none;
+  font-family: "Kollektif-Bold", sans-serif;
+}
+
+.mx-menu a:hover {
+  color: var(--mx-accent);
+}
+
+/* ==============================
+   HERO SECTION
+============================== */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--mx-bg);
+  display: flex;
+  align-items: center;
+  padding: clamp(4rem, 6vw, 7rem) var(--mx-gap);
+  overflow: hidden;
+}
+
+#heroCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.mx-container {
+  width: var(--mx-wrap);
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.mx-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--mx-gap);
+  align-items: center;
+}
+
+.mx-copy h1 {
+  font-family: "Kollektif-Bold";
+  font-size: clamp(28px, 4vw, 56px);
+  color: var(--mx-accent);
+  margin-bottom: 16px;
+}
+
+.mx-copy p {
+  font-size: clamp(16px, 2vw, 28px);
+  color: var(--mx-text);
+  margin-bottom: 24px;
+}
+
+.mx-cta {
+  background: var(--mx-cta);
+  color: #fff;
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-family: "Kollektif-Bold";
+  font-size: 18px;
+  text-decoration: none;
+  transition: transform .2s ease;
+}
+
+.mx-cta:hover { transform: translateY(-2px); }
+
+/* Imagen */
+.mx-media img {
+  width: 100%;
+  border-radius: 20px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ==============================
+   CLIENTES / LOGOS
+============================== */
+.mx-clients {
+  margin-top: 2rem;
+}
+
+.mx-clients__title {
+  font-family: "Kollektif-Bold";
+  font-size: 20px;
+  margin-bottom: 1rem;
+  color: var(--mx-text);
+}
+
+.mx-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(16px, 2vw, 40px);
+  align-items: center;
+  list-style: none;
+}
+
+.mx-logos img {
+  max-height: 44px;
+  opacity: 0.9;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.mx-logos img:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+/* ==============================
+   MOBILE
+============================== */
+@media (max-width: 768px) {
+  .mx-grid {
+    grid-template-columns: 1fr;
+  }
+  #heroCanvas {
+    display: none; /* ✅ Sin partículas en mobile */
+  }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 425px) {
+  .hero {
+    padding: 4rem 1.5rem;
+  }
+  .mx-copy h1 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+  .mx-logos {
+    gap: 1rem;
+  }
+  .mx-logos img {
+    max-height: 36px;
+  }
+}
+/* Solo aplicamos estilos especiales si es MOBILE */
+@media (max-width: 980px) {
+
+  /* Ocultamos el menú desktop */
+  .mx-menu, .mx-nav .mx-menu {
+    display: none !important;
+  }
+
+  .nav {
+    position: relative;
+    z-index: 1000;
+  }
+
+  /* Checkbox invisible, pero activo */
+  .nav__trigger-input {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 12;
+  }
+
+  /* Icono hamburguesa */
+  .nav__trigger-finger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 28px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 11;
+  }
+
+  .nav__trigger-finger span,
+  .nav__trigger-finger span::before,
+  .nav__trigger-finger span::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #FF385C;
+    transition: transform .5s cubic-bezier(0.75, 0, 0.25, 1), top .4s;
+  }
+
+  .nav__trigger-finger span::before { top: -7px; }
+  .nav__trigger-finger span::after  { top:  7px; }
+
+  /* Cuando se hace clic → se convierte en X */
+  .nav__trigger-input:checked + .nav__trigger-finger span {
+    transform: rotate(45deg);
+  }
+  .nav__trigger-input:checked + .nav__trigger-finger span::before {
+    top: 0;
+  }
+  .nav__trigger-input:checked + .nav__trigger-finger span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  /* MENÚ MOBILE FULLSCREEN */
+  .nav__list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #FF385C;
+    list-style: none;
+    padding: 120px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transform: translateX(100%);
+    transition: transform .6s cubic-bezier(0.75, 0, 0.25, 1);
+    z-index: 10;
+  }
+
+  .nav__trigger-input:checked ~ .nav__list {
+    transform: translateX(0);
+  }
+
+  .nav__link {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+/* ✅ Desktop sigue con tu diseño original */
+@media (min-width: 981px) {
+  .nav__trigger-finger,
+  .nav__trigger-input,
+  .nav__list {
+    display: none;
+  }
+
+  /* Mostrar tu menú original (mx-menu) */
+  .mx-menu {
+    display: flex !important;
+  }
+}
