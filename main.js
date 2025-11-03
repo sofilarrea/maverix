@@ -1,151 +1,113 @@
-// ✅ PRELOADER CON GSAP
+// ✅ ACTIVAMOS GSAP ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+/* ✅ PRELOADER + HERO */
 window.addEventListener("load", () => {
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
   tl.from("#preloader-box", { opacity: 0, y: 50, duration: 0.8 })
-    .to("#preloader-box", { duration: 1.5 })
-    .to("#preloader-box", { scale: 30, duration: 1.8, ease: "power4.in" })
+    .to("#preloader-box", { duration: 1 })
+    .to("#preloader-box", { scale: 20, duration: 1.3, ease: "power4.in" })
     .to("#loader", {
       opacity: 0,
-      duration: 0.8,
+      duration: 0.6,
       onComplete: () => {
         document.getElementById("loader").style.display = "none";
         document.body.style.overflow = "auto";
       }
     })
-    .to("#hero", { opacity: 1, duration: 1 }, "-=0.3");
+    .from("#hero", { opacity: 0, duration: 1 }, "-=0.3")
+    .from(".hero__title", { opacity: 0, y: 40, duration: 1 }, "-=0.2")
+    .from(".hero__subtitle", { opacity: 0, y: 40, duration: 1 }, "-=0.8");
 });
 
-// ✅ CANVAS Y PARTÍCULAS
-const canvas = document.getElementById("heroCanvas");
-const ctx = canvas.getContext("2d");
+/* ✅ Hero desaparece al hacer scroll */
+gsap.to("#hero", {
+  scrollTrigger: {
+    trigger: "#hero",
+    start: "top top",
+    end: "bottom top",
+    scrub: true,
+  },
+  opacity: 0,
+  y: -200,
+});
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+/* ✅ Mostrar contenido luego del hero */
+gsap.to("#content", {
+  scrollTrigger: {
+    trigger: "#hero",
+    start: "bottom top"
+  },
+  opacity: 1,
+  duration: 1
+});
 
-let particles = [];
-const mouse = { x: null, y: null, radius: 120 };
+/* ✅ THREE.JS MINIMAL - sin import ES6 */
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+  75, 
+  window.innerWidth / window.innerHeight, 
+  0.1, 
+  1000
+);
+const renderer = new THREE.WebGLRenderer({
+  canvas: document.getElementById('hero-canvas'),
+  alpha: true
+});
 
-// ✅ Cantidad de partículas según ancho de pantalla
-function initParticles() {
-  particles = [];
-  let cantidad;
+renderer.setSize(window.innerWidth, window.innerHeight);
+camera.position.z = 4;
 
-  if (window.innerWidth < 475) {
-    cantidad = 10; // ✅ Muy pocas pero visibles en mobile mini
-  } else if (window.innerWidth < 768) {
-    cantidad = 25; // ✅ Tablet
-  } else if (window.innerWidth < 1200) {
-    cantidad = 45; // ✅ Desktop promedio
-  } else {
-    cantidad = 70; // ✅ Pantallas grandes
-  }
+// ✅ Cruz abstracta como en tu referencia
+const geometry = new THREE.BoxGeometry(2, 0.05, 0.05);
+const material = new THREE.MeshBasicMaterial({ color: '#ff385c', wireframe: true });
 
-  for (let i = 0; i < cantidad; i++) {
-    particles.push(new Particle());
-  }
-}
+const lineX = new THREE.Mesh(geometry, material);
+const lineY = new THREE.Mesh(geometry, material);
+lineY.rotation.z = Math.PI / 2;
 
-// ✅ Clase Partícula
-class Particle {
-  constructor() {
-    const speedFactor = window.innerWidth < 475 ? 0.4 : 0.8;
+scene.add(lineX, lineY);
 
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 2 + 0.5;
-    this.speedX = (Math.random() - 0.5) * speedFactor;
-    this.speedY = (Math.random() - 0.5) * speedFactor;
-    this.color = "rgba(230, 0, 126, 0.8)";
-  }
-
-  draw() {
-    ctx.beginPath();
-    ctx.fillStyle = this.color;
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-
-    const dx = mouse.x - this.x;
-    const dy = mouse.y - this.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-
-    if (dist < mouse.radius) {
-      this.x -= dx / 15;
-      this.y -= dy / 15;
-    }
-
-    this.draw();
-  }
-}
-
-// ✅ Líneas sutiles SOLO en pantallas medianas/grandes
-function connectLines() {
-  if (window.innerWidth < 475) return; // ❌ Nada en mobile mini
-
-  const maxDist = 150;
-
-  for (let a = 0; a < particles.length; a++) {
-    for (let b = a; b < particles.length; b++) {
-      const dx = particles[a].x - particles[b].x;
-      const dy = particles[a].y - particles[b].y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < maxDist) {
-        ctx.strokeStyle = "rgba(230, 0, 126, 0.15)";
-        ctx.lineWidth = 0.5;
-        ctx.beginPath();
-        ctx.moveTo(particles[a].x, particles[a].y);
-        ctx.lineTo(particles[b].x, particles[b].y);
-        ctx.stroke();
-      }
-    }
-  }
-}
-
-// ✅ Animación
 function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach((p) => p.update());
-  connectLines();
   requestAnimationFrame(animate);
+  lineX.rotation.y += 0.002;
+  lineY.rotation.x += 0.002;
+  renderer.render(scene, camera);
 }
-
-// ✅ Inicio
-initParticles();
 animate();
 
-// ✅ Resize dinámico
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  initParticles();
+/* ✅ Ajuste si cambiás tamaño de pantalla */
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+gsap.registerPlugin(ScrollTrigger);
+
+// HERO aparece suave al cargar
+gsap.from(".hero__title", { opacity: 0, y: 50, duration: 1 });
+gsap.from(".hero__subtitle", { opacity: 0, y: 50, delay: 0.3, duration: 1 });
+gsap.from(".hero__cta", { opacity: 0, y: 50, delay: 0.6, duration: 1 });
+
+// Al hacer scroll, el hero desaparece
+gsap.to("#hero", {
+  scrollTrigger: {
+    trigger: "#hero",
+    start: "top top",
+    end: "bottom top",
+    scrub: true,
+  },
+  opacity: 0,
+  y: -200
 });
 
-// ✅ Mouse move
-window.addEventListener("mousemove", (e) => {
-  mouse.x = e.x;
-  mouse.y = e.y;
+// El contenido aparece cuando se desliza
+gsap.to("#content", {
+  scrollTrigger: {
+    trigger: "#hero",
+    start: "bottom top"
+  },
+  opacity: 1,
+  duration: 1.2
 });
-  const lenis = new Lenis({
-    duration: 1.2,          // velocidad de ease
-    easing: (t) => 1 - Math.pow(1 - t, 3), // curva suave
-    smoothWheel: true,      
-    smoothTouch: false      // en mobile, dejamos el scroll nativo
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
-
-  

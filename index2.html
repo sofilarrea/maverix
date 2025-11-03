@@ -7,30 +7,56 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style2.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-  <!-- PRELOADER -->
+  <!-- ✅ PRELOADER (Tu código original sin modificar) -->
   <div id="loader">
-  <div id="preloader-box">
-    <h2 class="mx-somos__title">Somos</h2>
-    <hr class="mx-somos__line">
-    <p class="mx-somos__word">Maverix</p>
-    <p class="mx-somos__desc">
-      <span>[latinismo, del inglés] //<b>Mavericks</b>//</span><br>
-      <strong>1. (sust.)</strong> personas inusuales, inconformistas, <br>
-      que desafían el status quo, que sobresalen de modo diferente.
-    </p>
-    <hr class="mx-somos__line">
+    <div id="preloader-box">
+      <h2 class="mx-somos__title">Somos</h2>
+      <hr class="mx-somos__line">
+      <p class="mx-somos__word">Maverix</p>
+      <p class="mx-somos__desc">
+        <span>[latinismo, del inglés] //<b>Mavericks</b>//</span><br>
+        <strong>1. (sust.)</strong> personas inusuales, inconformistas, <br>
+        que desafían el status quo, que sobresalen de modo diferente.
+      </p>
+      <hr class="mx-somos__line">
+    </div>
+    <div id="white-overlay"></div>
   </div>
-  <div id="white-overlay"></div>
-</div>
-  
 
+  <!-- ✅ HERO (Nuevo, minimalista + tu texto exacto) -->
+ <section id="hero" class="hero">
+  <div class="hero__content">
+    <h1 class="hero__title">
+      Agilidad y consistencia<br>
+      en tu recupero de activos.
+    </h1>
+    <p class="hero__subtitle">
+      Equipos autónomos enfocados en tu negocio,<br>
+      potenciados con la mejor tecnología de la industria.
+    </p>
+    <a href="#content" class="hero__cta">Descubrí cómo lo hacemos</a>
+  </div>
+  <div class="scroll-icon">↓</div>
+</section>
+
+<main id="content">
+  <h2>Contenido real...</h2>
+  <p>Aquí comienza tu sitio...</p>
+</main>
+
+  <!-- ✅ CONTENIDO REAL (queda igual, solo baja después del hero) -->
+  <main id="content" style="opacity:0;">
     <h1>Bienvenido al sitio</h1>
     <p>Este es el contenido real...</p>
   </main>
 
-  <script src="main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
