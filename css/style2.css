@@ -24,6 +24,7 @@ body {
   color: var(--negro);
 }
 
+
 /* 🎬 PRELOADER */
 #preloader-bg {
   position: absolute;
@@ -67,7 +68,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 5vw;
+  padding: 1.2rem 7vw;
   z-index: 1000;
 }
 
@@ -161,7 +162,7 @@ body {
 .hero__subtitle {
   font-size: clamp(1rem, 2vw, 1.5rem);
   color: var(--gris);
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .hero__cta {
@@ -179,12 +180,77 @@ body {
   background-color: var(--fucsia);
 }
 
-/* 📄 CONTENIDO DESPUÉS DEL HERO */
-#content {
-  opacity: 0;
-  padding: 5rem 8vw;
-  transition: opacity 1s ease;
+/* 🎯 Sección Clientes Maximalista */
+.mx-clients {
+  padding: 6rem 8vw;
+  text-align: center;
+  background-color: var(--blanco);
+  overflow: hidden;
 }
+
+.mx-clients__title {
+  font-family: var(--font-bold);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--negro);
+  margin-bottom: 4rem;
+  text-transform: none;
+}
+
+/* 🟣 Grid de logos */
+.mx-logos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 4rem;
+  justify-items: center;
+  align-items: center;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.mx-logos li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mx-logos img {
+  max-width: 140px;
+  max-height: 70px;
+  object-fit: contain;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.mx-logos img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* 📱 Móvil */
+@media screen and (max-width: 768px) {
+  .mx-clients {
+    padding: 4rem 5vw;
+  }
+
+  .mx-clients__title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .mx-logos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .mx-logos img {
+    max-width: 100px;
+    opacity: 0.8;
+  }
+}
+
 
 /* ✅ MOBILE NAVBAR */
 @media screen and (max-width: 768px) {
