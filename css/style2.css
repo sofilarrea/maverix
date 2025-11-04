@@ -459,7 +459,7 @@ body {
 /* CONTENEDOR COMPLETO CENTRADO */
 .mx-word {
   position: relative;
-  height: 100vh;                /* Cada palabra ocupa una pantalla */
+  height: 80vh;                /* Cada palabra ocupa una pantalla */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -518,6 +518,71 @@ body {
   height: 24px;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='12' fill='%232CCDba'/%3E%3Cpath d='M9.5 16.2l-3.5-3.5 1.4-1.4 2.1 2.1 5.6-5.6 1.4 1.4-7 7z' fill='white'/%3E%3C/svg%3E")
     no-repeat center / contain;
+}
+/* ===== Sección Scroll de Valores ===== */
+.mx-scroll-words {
+  position: relative;
+  padding-top: 5vh;     /* Antes era 0 – ahora se ve antes */
+  scroll-margin-top: 10vh; /* Para que al llegar por scroll quede centrado */
+}
+
+/* === Cada slide/valor === */
+.mx-word {
+  min-height: 90vh;    /* No 100vh — permite que suba más y no quede tan bajo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 2rem 4rem;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* === Ajuste del título === */
+.mx-word__title {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 800;
+  color: var(--fucsia);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* === Eyebrow "SOMOS" === */
+.mx-word__eyebrow {
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  color: #444;
+  text-transform: uppercase;
+}
+
+/* === Lista de ítems === */
+.mxv-list {
+  max-width: 850px;
+  margin: 0 auto;
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+.mxv-list li {
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  padding-left: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.mxv-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='12' fill='%232CCDBA'/%3E%3Cpath d='M9.5 16.2l-3.5-3.5 1.4-1.4 2.1 2.1 5.6-5.6 1.4 1.4-7 7z' fill='white'/%3E%3C/svg%3E") no-repeat center/contain;
 }
 
 

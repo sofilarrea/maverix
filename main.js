@@ -50,39 +50,32 @@ gsap.registerPlugin(ScrollTrigger);
 const words = gsap.utils.toArray(".mx-word");
 
 words.forEach((word, index) => {
-  const fromX = index % 2 === 0 ? "200px" : "-200px";
+  const fromX = index % 2 === 0 ? "200px" : "-200px"; // 👉 Alterna entrada derecha/izquierda
 
-  // ✅ ENTRA — sin opacity, sin blur
+  // ✅ ENTRA (de costado al centro) — SIN SALIR HACIA ARRIBA
   gsap.fromTo(
     word,
     {
-      y: 150,
+      opacity: 0,
+      y: 0,
       x: fromX,
-      scale: 0.95
+      scale: 0.95,
     },
     {
+      opacity: 1,
       y: 0,
       x: 0,
       scale: 1,
       ease: "power3.out",
       scrollTrigger: {
         trigger: ".mx-scroll-words",
-        start: `${index * 40}%`,
-        end: `${index * 40 + 40}%`,
-        scrub: 2
+        start: `${index * 30}% center`,  // antes 40%, ahora aparece más rápido
+        end: `${index * 30 + 30}% center`,
+        scrub: 1.2,
       }
     }
   );
 
-  // ✅ SALE — solo movimiento, sin opacity
-  gsap.to(word, {
-    y: -150,
-    scale: 1.05,
-    scrollTrigger: {
-      trigger: ".mx-scroll-words",
-      start: `${index * 40 + 25}%`,
-      end: `${index * 40 + 45}%`,
-      scrub: 2
-    }
-  });
+  // ❌ Eliminamos esta parte ⛔ (ya no se va hacia arriba)
+  // gsap.to(word, { ... });
 });
