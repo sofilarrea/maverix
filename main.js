@@ -47,7 +47,7 @@ navTrigger.addEventListener("change", () => {
 // ✅ GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-// ✅ 2. ANIMACIÓN PALABRAS (SIN SALIR HACIA ARRIBA)
+// ✅ ANIMACIÓN DE PALABRAS (entrada lateral)
 const words = gsap.utils.toArray(".mx-word");
 
 words.forEach((word, index) => {
@@ -55,26 +55,23 @@ words.forEach((word, index) => {
 
   gsap.fromTo(
     word,
-    { opacity: 0, y: 0, x: fromX, scale: 0.95 },
+    { opacity: 0, x: fromX, scale: 0.95 },
     {
       opacity: 1,
-      y: 0,
       x: 0,
       scale: 1,
       ease: "power3.out",
       scrollTrigger: {
         trigger: ".mx-scroll-words",
-        start: `${index * 30}% center`,
-        end: `${index * 30 + 30}% center`,
-        scrub: 1.2,
+        start: `${index * 25}% center`,
+        end: `${index * 25 + 25}% center`,
+        scrub: 1,
       }
     }
   );
 });
 
-// === MÉTRICAS STICKY LIMPIAS (sin blur ni ghosting) ===
-gsap.registerPlugin(ScrollTrigger);
-
+// ✅ MÉTRICAS (sin blur, con contador y % si aplica)
 const panels = gsap.utils.toArray(".mx-metric");
 
 panels.forEach((panel) => {
@@ -83,58 +80,66 @@ panels.forEach((panel) => {
   const target = parseFloat(valueEl.dataset.target || "0");
   let played = false;
 
-  // Estado inicial: todo apagado
-  gsap.set(panel, { opacity: 0, scale: 0.9, filter: "none" });
+  gsap.set(panel, { opacity: 0, scale: 0.9 });
   gsap.set(labelEl, { opacity: 0, y: 30 });
 
   ScrollTrigger.create({
     trigger: panel,
     start: "top center",
     end: "bottom center",
-
-    onEnter: () => activate(),
-    onEnterBack: () => activate(),
-    onLeave: () => deactivate(),
-    onLeaveBack: () => deactivate()
+    onEnter: activate,
+    onEnterBack: activate,
+    onLeave: deactivate,
+    onLeaveBack: deactivate,
   });
 
   function activate() {
-    // Activo visual
-    gsap.to(panel, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
+    gsap.to(panel, { opacity: 1, scale: 1, duration: 0.4 });
     gsap.to(labelEl, { opacity: 1, y: 0, duration: 0.4 });
 
-    // Fondo dinámico (opcional)
-    document.documentElement.style.setProperty("--metrics-bg", panel.dataset.bg || "#fff");
-
-    // Animación de número (una sola vez)
     if (!played) {
       played = true;
-      gsap.fromTo(
-        valueEl,
-        { textContent: 0 },
-        {
-          textContent: target,
-          duration: 1.2,
-          ease: "power1.out",
-          snap: { textContent: target % 1 === 0 ? 1 : 0.1 }
+      gsap.to(valueEl, {
+        textContent: target,
+        duration: 1.2,
+        ease: "power1.out",
+        snap: { textContent: 1 },
+        onUpdate: function () {
+          if (panel.querySelector(".mx-metric__value").dataset.target.includes("%")) {
+            valueEl.textContent = Math.round(this.targets()[0].textContent) + "%";
+          }
         }
-      );
+      });
     }
   }
 
   function deactivate() {
-    gsap.to(panel, { opacity: 0, scale: 0.9, duration: 0.3 });
+    gsap.to(panel, { opacity: 0, scale: 0.95, duration: 0.3 });
     gsap.to(labelEl, { opacity: 0, y: 30, duration: 0.3 });
   }
 });
+
+// ✅ CTA FINAL APARECE DESPUÉS DE MÉTRICAS
 gsap.to(".mx-final-cta", {
   scrollTrigger: {
-    trigger: ".mx-metrics",    // se activa después de las métricas
+    trigger: ".mx-metrics",
     start: "bottom bottom",
     toggleActions: "play none none none",
   },
   opacity: 1,
   y: 0,
   duration: 1,
-  ease: "power3.out"
+  ease: "power3.out",
+});
+gsap.utils.toArray('.mx-sol2-card').forEach((card, i) => {
+  gsap.from(card, {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: card,
+      start: "top 85%",
+    }
+  });
 });

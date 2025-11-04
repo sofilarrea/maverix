@@ -707,6 +707,80 @@ body {
   color: white;
 }
 
+.mx-soluciones2 {
+  padding: 5rem 2rem;
+  background: #ffffff;
+}
+
+.mx-soluciones2__title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 3rem;
+  color: #222;
+}
+
+/* GRID */
+.mx-soluciones2__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+/* CARDS */
+.mx-sol2-card {
+  background: #f9fafc;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+}
+
+.mx-sol2-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.mx-sol2-card__h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fe3a5b; /* mismo fucsia del hero */
+}
+
+.mx-sol2-card__p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* Botones */
+.mx-sol2-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background-color: #fe3a5b;
+  color: #ffffff;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.mx-sol2-btn:hover {
+  background-color: #ff6081;
+  transform: translateY(-3px);
+}
+
+/* Botón especial Core */
+.mx-sol2-btn--two {
+  background-color: #2ccdba;
+}
+
+.mx-sol2-btn--two:hover {
+  background-color: #33e0cd;
+}
 
 
 
