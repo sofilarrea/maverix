@@ -290,6 +290,7 @@ body {
 
 /* Lista principal */
 .nav__list {
+  width: 100%;
   position: fixed;
   overflow-y: scroll;
   top: 0;
@@ -450,7 +451,7 @@ body {
 
 
 /* ✅ MOBILE NAVBAR *********************************************/
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
   .hero__cta{
     font-size: 13px;
   }
