@@ -310,6 +310,12 @@ body {
 .nav__item {
   list-style: none;
 }
+/* Cuando no estamos en el hero (scrolleaste) */
+.nav--no-bg {
+  background: transparent !important;
+  transform: translate(100vw) rotate(0deg) !important;
+  z-index: -1 !important;
+}
 
 .nav__item + .nav__item {
   margin-top: 20px;
@@ -392,64 +398,58 @@ body {
 }
 
 /* 🎯 Sección Clientes Maximalista */
+/* ===== CLIENTES ===== */
 .mx-clients-grid {
-  background: var(--blanco);
-  padding: 6rem 4vw;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
+  padding: 6rem 2rem;
 }
 
 .mx-clients-grid__title {
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 700;
-  margin-bottom: 3rem;
-  color: var(--negro);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 4rem;
+  color:#2b2f33;
 }
 
 .mx-clients-grid__title span {
-  color: var(--fucsia);
+  color: #ff3b61; /* color principal de Maverix */
 }
 
+/* Grilla de logos */
 .mx-clients-grid__wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 3rem;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
 }
 
+/* Tarjetas de clientes */
 .client-card {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  transition: transform .3s ease, box-shadow .3s ease;
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.client-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
 }
 
 .client-card img {
-  width: 120px;
+  max-width: 120px;
   max-height: 60px;
-  object-fit: contain;
-  filter: grayscale(100%) opacity(0.8);
-  transition: filter 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.client-card:hover {
+  transform: scale(1.05);
 }
 
 .client-card:hover img {
-  filter: grayscale(0%) opacity(1);
+  filter: grayscale(0);
+  opacity: 1;
 }
 
-/* ✅ Responsive */
-@media (max-width: 768px) {
-  .client-card img {
-    width: 100px;
-  }
-}
 
 
 /* ✅ MOBILE NAVBAR *********************************************/

@@ -128,7 +128,7 @@
 </section>
 
 <!-- ✅ CLIENTES -->
-<section class="mx-clients-grid" id="clientes">
+<section class="mx-clients-grid reveal" id="clientes">
   <h2 class="mx-clients-grid__title">
     Empresas que <span>confían</span> en nosotros
   </h2>
@@ -146,10 +146,42 @@
   </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<!-- ✅ Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
-<script src="/main.js"></script>
+<script src="/main.js"></script> <!-- Si usás este archivo -->
+
+<!-- ✅ Nuevo script de animación -->
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ✅ Título de la sección clientes
+  gsap.from(".mx-clients-grid__title", {
+    scrollTrigger: {
+      trigger: ".mx-clients-grid",
+      start: "top 85%",
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: "power3.out"
+  });
+
+  // ✅ Logos animados uno por uno
+  gsap.from(".mx-clients-grid .client-card", {
+    scrollTrigger: {
+      trigger: ".mx-clients-grid",
+      start: "top 80%",
+    },
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    stagger: 0.15,
+    ease: "power3.out"
+  });
+</script>
+
 
 </body>
 </html>
+
