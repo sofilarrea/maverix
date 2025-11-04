@@ -295,16 +295,18 @@ body {
   overflow-y: scroll;
   top: 0;
   left: 0;
-  bottom: 0;
-  right:50%;
+  bottom: -350px;
+  right:0;
   z-index: -1;
   background: #ff385c;
   font-size: 4rem;
   padding: 40px;
-  transform: translate(100vw) rotate(45deg);
+  transform: translate(90vw) rotate(45deg);
   transition: 0.2s cubic-bezier(0.75, 0, 0.25, 1);
 }
-
+.nav__list::-webkit-scrollbar {
+  width: 8px;
+}
 .nav__item {
   list-style: none;
 }
@@ -371,7 +373,7 @@ body {
 .hero__subtitle {
   font-size: clamp(1rem, 2vw, 1.5rem);
   color: var(--gris);
-  margin-bottom: 1.2rem;
+  margin-bottom: 3.2rem;
 }
 
 .hero__cta {
