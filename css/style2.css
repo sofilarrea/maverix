@@ -353,6 +353,15 @@ body {
   margin-top: 10px;
   padding-left: 2rem;
 }
+/* La cruz/hamburguesa siempre encima del menú */
+.nav__trigger-finger {
+  z-index: 2001 !important;
+}
+
+/* El logo también por si queda tapado */
+.nav__logo {
+  z-index: 2002 !important;
+}
 
 
 /* 🖥 HERO SECTION */
@@ -511,4 +520,6 @@ body {
 .mx-somos__title{
   margin-left: 2rem;
 }
+.mx-clients-grid__title{
+  font-size: 1.5rem;
 }

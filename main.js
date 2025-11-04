@@ -21,14 +21,27 @@ window.addEventListener("load", () => {
     .from(".hero__subtitle", { opacity: 0, y: 40, duration: 1 }, "-=0.8");
 });
 
+const navList = document.querySelector('.nav__list');
+const navTrigger = document.querySelector('.nav__trigger-input');
 
-
-  const navList = document.querySelector('.nav__list');
-
-  window.addEventListener('scroll', () => {
+// Cuando se hace scroll
+window.addEventListener('scroll', () => {
+  if (!navTrigger.checked) {  // ✅ Solo si el menú está cerrado
     if (window.scrollY > 50) {
       navList.classList.add('nav--no-bg');
     } else {
       navList.classList.remove('nav--no-bg');
     }
-  });
+  }
+});
+
+// Cuando abro o cierro el menú con la hamburguesa
+navTrigger.addEventListener('change', () => {
+  if (navTrigger.checked) {
+    navList.classList.remove('nav--no-bg'); // ✅ Siempre se muestra bien cuando está abierto
+  } else {
+    if (window.scrollY > 50) {
+      navList.classList.add('nav--no-bg');
+    }
+  }
+});
