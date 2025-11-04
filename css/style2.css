@@ -459,13 +459,15 @@ body {
   opacity: 1;
 }
 
+/* 🎬 NUEVA ESCENA FULLSCREEN */
 .mx-scroll-words {
-  height: 300vh;         /* espacio para scroll */
-  background: #000;
+  height: 300vh;
+  background: #ffffff; /* limpio, sin triángulos ni hero */
   position: relative;
-  color: white;
+  overflow: hidden;
 }
 
+/* Contenido centrado */
 .mx-word {
   position: fixed;
   top: 50%;
@@ -474,29 +476,46 @@ body {
   text-align: center;
   opacity: 0;
   pointer-events: none;
-  line-height: 1.1;
+  max-width: 900px;
+  width: 100%;
+  padding: 0 2rem;
 }
 
+/* Palabra gigante */
 .mx-word h2 {
-  font-size: 8vw;
+  font-size: clamp(3rem, 9vw, 9rem);
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  color: #ff385c;
 }
 
+/* Hover sutil lila */
+.mx-word h2:hover {
+  color: #852eff;
+}
+
+/* Lista descriptiva */
 .mx-word ul {
   list-style: none;
-  padding: 0;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  max-width: 700px;
+  color: #444;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  line-height: 1.6;
+  max-width: 650px;
   margin: 0 auto;
-  color: #ccc;
 }
 
 .mx-word ul li {
-  margin: 0.5rem 0;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1rem;
 }
 
+.mx-word ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #ff385c;
+}
 
 
 /* ✅ MOBILE NAVBAR *********************************************/
