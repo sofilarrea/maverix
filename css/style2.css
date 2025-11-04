@@ -178,7 +178,9 @@ body {
   display: block;
  
 }
-
+.nav__text{
+  color: var(--blanco);
+}
 
 
 /* Trigger Finger */
@@ -449,6 +451,9 @@ body {
 
 /* ✅ MOBILE NAVBAR *********************************************/
 @media screen and (max-width: 768px) {
+  .hero__cta{
+    font-size: 13px;
+  }
 .navbar__logo{
     position: fixed;
     top: 10px;
@@ -464,12 +469,13 @@ body {
   left: 1.5rem;
 }
 .nav__trigger-finger{
-    width: 42px;
-    height: 30px;
+    width: 38px;
+    height: 26px;
     margin: 20px;
+}
   /* Ajustar título hero en mobile */
   .hero__title {
-    font-size: 3rem;
+    font-size: 8rem;
   }
   .br{
     display: none;
@@ -477,7 +483,29 @@ body {
 .navbar__logo img{
     height: 40px;
 }
-
+.hero__title{
+   font-size: 2rem;
    
+}
+.nav__list{
+  left: auto;
+}
+.hero{
+  justify-content: flex-start;
+}
+.mx-somos__desc{
+  font-size: 1rem;
+  line-height: 20px;
+  padding: 2rem;
+}
+.mx-somos__word{
+  font-size: 2rem;
+  padding-left: 2rem;
+}
+.mx-somos__line{
+  margin-left: 2rem;
+}
+.mx-somos__title{
+  margin-left: 2rem;
 }
 }
