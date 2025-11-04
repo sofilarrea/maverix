@@ -17,7 +17,7 @@
 <body>
 
 <!-- ✅ NAVBAR -->
-<header class="navbar">
+<!-- <header class="navbar">
   <div class="navbar__logo">
     <img src="assets/images/logo.png" alt="Maverix Logo">
   </div>
@@ -30,7 +30,64 @@
   <div class="navbar__toggle" id="menu-toggle">
     <span></span><span></span><span></span>
   </div>
-</header>
+</header> -->
+<nav class="nav">
+   <a href="#" class="nav__logo">
+    <img src="/assets/images/logo.png" alt="Logo">
+  </a>
+  <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation"/>
+  <label class="nav__trigger-finger" for="trigger">
+    <span></span>
+  </label>
+  <ul class="nav__list">
+    <li class="nav__item">
+      <a href="#hoi" class="nav__link">
+        <span class="nav__text">
+          Work
+        </span>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="#hoi" class="nav__link">
+        <span class="nav__text">
+          About
+        </span>
+      </a>
+      <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+      <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+      <ul class="nav__list-child">
+        <li class="nav__item">
+          <a href="#hoi" class="nav__link">
+            <span class="nav__text">
+              About me
+            </span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="#hoi" class="nav__link">
+            <span class="nav__text">
+              About meerkats
+            </span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav__item">
+      <a href="#hoi" class="nav__link">
+        <span class="nav__text">
+          Blog
+        </span>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="#hoi" class="nav__link">
+        <span class="nav__text">
+          Contact
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -71,22 +128,24 @@
 </section>
 
 <!-- ✅ CLIENTES -->
-<section class="mx-clients" aria-label="Clientes" id="content">
-  <div class="mx-container">
-    <h2 class="mx-clients__title">Más de 20 clientes han confiado en nosotros.</h2>
-    <ul class="mx-logos" role="list">
-      <li><img src="/assets/images/naranja.png" alt="Naranja X"></li>
-      <li><img src="/assets/images/logo_comafi.png" alt="Banco Comafi"></li>
-      <li><img src="/assets/images/ultra.png" alt="Ultra"></li>
-      <li><img src="/assets/images/logo-clientes.jpeg" alt="Reba"></li>
-      <li><img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol"></li>
-      <li><img src="/assets/images/CREDITIA.png" alt="Creditia"></li>
-      <li><img src="/assets/images/credicuotas.jpeg" alt="Credicuotas"></li>
-      <li><img src="/assets/images/galicia.png" alt="Banco Galicia"></li>
-      <li><img src="/assets/images/uala.png" alt="Ualá"></li>
-    </ul>
+<section class="mx-clients-grid" id="clientes">
+  <h2 class="mx-clients-grid__title">
+    Empresas que <span>confían</span> en nosotros
+  </h2>
+
+  <div class="mx-clients-grid__wrapper">
+    <div class="client-card"><img src="/assets/images/naranja.png" alt="Naranja X"></div>
+    <div class="client-card"><img src="/assets/images/logo_comafi.png" alt="Banco Comafi"></div>
+    <div class="client-card"><img src="/assets/images/ultra.png" alt="Ultra"></div>
+    <div class="client-card"><img src="/assets/images/logo-clientes.jpeg" alt="Reba"></div>
+    <div class="client-card"><img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol"></div>
+    <div class="client-card"><img src="/assets/images/CREDITIA.png" alt="Creditia"></div>
+    <div class="client-card"><img src="/assets/images/credicuotas.jpeg" alt="Credicuotas"></div>
+    <div class="client-card"><img src="/assets/images/galicia.png" alt="Galicia"></div>
+    <div class="client-card"><img src="/assets/images/uala.png" alt="Ualá"></div>
   </div>
 </section>
+
 
 <!-- ✅ Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>

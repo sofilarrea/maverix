@@ -7,87 +7,266 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-  /* RESET */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Poppins', sans-serif; color:#222; background:#fff; }
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: HelveticaNeue, Helvetica, sans-serif;
+}
 
-  /* HERO dummy para forzar scroll */
-  .hero {
-    min-height: 100vh;
-    display:flex; align-items:center; justify-content:center;
-    color:#ff385c; font-size: clamp(1.2rem, 3vw, 2rem);
-  }
+.nav {
+  color: white;
+}
 
-  /* CLIENTES */
-  .clientes { padding: 5rem 6vw; text-align: center; }
-  .clientes__title { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight:700; margin-bottom: 3rem; }
+/* Trigger Finger */
+.nav__trigger-finger {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  width: 15px;
+  height: 10px;
+  margin: 40px;
+  color: hotpink;
+}
 
-  .clientes__logos {
-    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
-    gap: 2.5rem 3rem;
-  }
+.nav__trigger-finger::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  bottom: -5px;
+  right: -5px;
+  background: hotpink;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s cubic-bezier(0.75, 0, 0.25, 1);
+}
 
-  .clientes__logos img{
-    width: 120px; max-width: 22vw; height:auto;
-    opacity: 0; transform: translateY(60px);
-    filter: grayscale(100%);
-    transition:
-      opacity .6s ease, transform .6s ease, filter .3s ease;
-    will-change: opacity, transform;
-  }
+.nav__trigger-finger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
+}
 
-  /* cuando entra en viewport */
-  .clientes__logos img.is-inview{
-    opacity: 1; transform: translateY(0);
-  }
+.nav__trigger-finger span::before,
+.nav__trigger-finger span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.4s cubic-bezier(0.75, 0, 0.25, 1), 
+              top 0.4s 0.4s cubic-bezier(0.75, 0, 0.25, 1), 
+              background 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+}
 
-  .clientes__logos img:hover{ filter: grayscale(0%); }
+.nav__trigger-finger span::before {
+  top: 0;
+}
+
+.nav__trigger-finger span::after {
+  top: calc(100% - 2px);
+}
+
+/* Ocultar inputs */
+.nav__trigger-input,
+.nav__submenu-trigger-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  appearance: none;
+  position: fixed;
+}
+
+/* Estado focus */
+.nav__trigger-input:focus + label {
+  color: white;
+}
+
+.nav__trigger-input:focus + label::before {
+  opacity: 1;
+}
+
+/* Estado checked (nav abierto) */
+.nav__trigger-input:checked + label {
+  height: 10px;
+  color: white;
+}
+
+.nav__trigger-input:checked + label span {
+  transform: rotate(45deg);
+}
+
+.nav__trigger-input:checked + label span::before,
+.nav__trigger-input:checked + label span::after {
+  top: calc(50% - 1px);
+  transition: transform 0.4s 0.4s cubic-bezier(0.75, 0, 0.25, 1), 
+              top 0.4s cubic-bezier(0.75, 0, 0.25, 1), 
+              background 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__trigger-input:checked + label span::after {
+  transform: rotate(90deg);
+}
+
+/* Mostrar menú al abrir */
+.nav__trigger-input:checked ~ ul {
+  z-index: 9;
+  transform: none;
+  transition: 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+/* Lista principal */
+.nav__list {
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: hotpink;
+  font-size: 4rem;
+  padding: 40px;
+  transform: translate(100vw) rotate(45deg);
+  transition: 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__item {
+  list-style: none;
+}
+
+.nav__item + .nav__item {
+  margin-top: 20px;
+}
+
+/* Submenú */
+.nav__submenu-trigger-input:checked + label::after {
+  transform: translateY(10px);
+}
+
+.nav__submenu-trigger-input:checked ~ ul {
+  display: block;
+}
+
+.nav__submenu-trigger-input:focus + label::after {
+  transform: translateY(5px);
+}
+
+.nav__submenu-trigger-finger::after {
+  content: '';
+  display: inline-block;
+  border: 10px solid transparent;
+  border-top-color: white;
+  transition: 0.4s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav__list-child {
+  display: none;
+  font-size: 2rem;
+  margin-top: 10px;
+  padding-left: 2rem;
+}
+
+/* Main */
+main {
+  padding: 6rem 4rem;
+}
+
+main h1 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+main h1 span {
+  color: hotpink;
+}
+
+main p {
+  line-height: 1.5;
+  margin-top: 1.5rem;
+}
+
 </style>
 </head>
 <body>
+<nav class="nav">
+  <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation"/>
+  <label class="nav__trigger-finger" for="trigger">
+    <span></span>
+  </label>
+  <ul class="nav__list">
+    <li class="nav__item">
+      <a href="#hoi" class="nav__link">
+        <span class="nav__text">
+          Work
+        </span>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="#hoi" class="nav__link">
+        <span class="nav__text">
+          About
+        </span>
+      </a>
+      <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+      <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+      <ul class="nav__list-child">
+        <li class="nav__item">
+          <a href="#hoi" class="nav__link">
+            <span class="nav__text">
+              About me
+            </span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="#hoi" class="nav__link">
+            <span class="nav__text">
+              About meerkats
+            </span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav__item">
+      <a href="#hoi" class="nav__link">
+        <span class="nav__text">
+          Blog
+        </span>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="#hoi" class="nav__link">
+        <span class="nav__text">
+          Contact
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
-<section class="hero">
-  <p>HERO — scroll hacia abajo</p>
-</section>
-
-<section class="clientes">
-  <h2 class="clientes__title">Más de 20 clientes han confiado en nosotros.</h2>
-
-  <div class="clientes__logos" id="logos">
-    <!-- Usamos URLs públicas para descartar rutas locales -->
-    <img src="https://seeklogo.com/images/N/naranja-x-logo-29052C0238-seeklogo.com.png" alt="Naranja X">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Banco_Comafi.svg" alt="Banco Comafi">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Ultra_logo.png" alt="Ultra">
-    <img src="https://seeklogo.com/images/R/reba-logo-650A9F01BD-seeklogo.com.png" alt="Reba">
-    <img src="/assets/images/naranja.png" alt="Banco del Sol">
-    <img src="/assets/images/banco-de-sol.jpg" alt="Credicuotas">
-    <img src="/assets/images/CREDITIA.png" alt="Ualá">
-  </div>
-</section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-
-  window.addEventListener('load', () => {
-    // aseguramos estado inicial
-    gsap.set(".clientes__logos img", {opacity:0, y:60});
-
-    gsap.to(".clientes__logos img", {
-      opacity:1,
-      y:0,
-      duration:1,
-      stagger:0.15,
-      ease:"power3.out",
-      scrollTrigger:{
-        trigger: ".clientes__logos",
-        start: "top 80%",
-        toggleActions: "play none none none",
-        // markers:true // poné true solo para debug
-      }
-    });
-  });
-</script>
+<main>
+  <h1>
+    Fold out menu with <span>css only</span>;
+  </h1>
+  <p>
+    Lorem ipsum dolor amet gochujang raw denim kogi cloud bread poke lo-fi typewriter cardigan banjo. Activated charcoal letterpress hashtag yuccie. Tote bag blog YOLO vexillologist, hashtag yuccie poke chartreuse succulents hell of hot chicken taxidermy shaman biodiesel. Mustache edison bulb cray ugh everyday carry ethical banjo helvetica forage you probably haven't heard of them fanny pack tacos.
+  </p>
+  <p>
+    Flexitarian PBR&B taxidermy prism mumblecore microdosing lyft YOLO pug williamsburg fashion axe small batch palo santo. Sustainable wayfarers poke enamel pin. Iceland skateboard whatever, pop-up forage ramps vexillologist scenester af trust fund la croix everyday carry raclette fingerstache fashion axe. Offal flannel selvage yuccie kale chips blue bottle tattooed hella typewriter skateboard hoodie shabby chic poke. Adaptogen pop-up gluten-free neutra ennui cronut gentrify whatever post-ironic.
+  </p>
+</main>
 
 
 </body>
