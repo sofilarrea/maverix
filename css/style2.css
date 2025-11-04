@@ -460,23 +460,41 @@ body {
 }
 
 .mx-scroll-words {
-  height: 300vh; /* Largo para habilitar scroll */
+  height: 300vh;         /* espacio para scroll */
   background: #000;
   position: relative;
-  overflow: hidden;
+  color: white;
 }
 
 .mx-word {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  font-size: 12vw;
-  font-weight: 800;
-  color: white;
+  transform: translate(-50%, -50%);
+  text-align: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
   pointer-events: none;
+  line-height: 1.1;
+}
+
+.mx-word h2 {
+  font-size: 8vw;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.mx-word ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #ccc;
+}
+
+.mx-word ul li {
+  margin: 0.5rem 0;
 }
 
 

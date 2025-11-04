@@ -51,17 +51,26 @@ gsap.registerPlugin(ScrollTrigger);
 const words = gsap.utils.toArray(".mx-word");
 
 words.forEach((word, i) => {
+  gsap.fromTo(word, 
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      scrollTrigger: {
+        trigger: ".mx-scroll-words",
+        start: `${i * 33}% center`,
+        end: `${(i + 1) * 33}% center`,
+        scrub: true
+      }
+    });
+
   gsap.to(word, {
-    opacity: 1,
-    duration: 0.5,
-    scale: 1,
+    opacity: 0,
+    y: -50,
     scrollTrigger: {
       trigger: ".mx-scroll-words",
-      start: `${i * 25}% center`,
-      end: `${(i + 1) * 25}% center`,
-      scrub: true,
-      onLeave: () => gsap.to(word, { opacity: 0 }),
-      onEnterBack: () => gsap.to(word, { opacity: 1 }),
+      start: `${i * 33 + 20}% center`,
+      scrub: true
     }
   });
 });
