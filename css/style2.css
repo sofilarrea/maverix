@@ -461,8 +461,8 @@ body {
     padding-left: 0.5rem;
 }
 .nav__logo img{
-    height: 31px;
-    width: 165px;
+    width: 175px;
+    height: auto;
 }
 .nav__logo{
   top: 18px;
@@ -488,7 +488,7 @@ body {
    
 }
 .nav__list{
-  left: auto;
+ transform: translate(114vw) rotate(45deg);
 }
 .hero{
   justify-content: flex-start;
