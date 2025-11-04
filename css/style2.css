@@ -212,7 +212,7 @@ body {
   display: block;
   width: 100%;
   height: 2px;
-  background: white;
+  background: var(--fucsia);
   transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
 }
 
@@ -447,58 +447,26 @@ body {
 }
 
 
-/* ✅ MOBILE NAVBAR */
+/* ✅ MOBILE NAVBAR *********************************************/
 @media screen and (max-width: 768px) {
-
-  .navbar__links {
+.navbar__logo{
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--fucsia);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    display: none;
-    z-index: 1000;
-  }
-
-  .navbar__links.active {
-    display: flex;
-  }
-
-  .navbar__links a {
-    color: var(--blanco);
-    font-size: 2rem;
-  }
-
-  /* Mostrar hamburguesa */
-  .navbar__toggle {
-    display: block;
-  }
-
-  /* Animar a cruz */
-  .navbar__toggle.active::before {
-    transform: rotate(45deg);
-    top: 50%;
-    background: var(--blanco);
-  }
-  .navbar__toggle.active::after {
-    transform: rotate(-45deg);
-    bottom: 50%;
-    background: var(--blanco);
-  }
-  .navbar__toggle.active span {
-    opacity: 0;
-  }
-
-  /* Evitar scroll cuando está el menú */
-  body.menu-open {
-    overflow: hidden;
-  }
-
+    top: 10px;
+    left: 10px;
+    padding-left: 0.5rem;
+}
+.nav__logo img{
+    height: 31px;
+    width: 165px;
+}
+.nav__logo{
+  top: 18px;
+  left: 1.5rem;
+}
+.nav__trigger-finger{
+    width: 42px;
+    height: 30px;
+    margin: 20px;
   /* Ajustar título hero en mobile */
   .hero__title {
     font-size: 3rem;
@@ -511,4 +479,5 @@ body {
 }
 
    
+}
 }
