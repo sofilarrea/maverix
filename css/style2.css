@@ -167,7 +167,7 @@ body {
 .nav__logo {
   position: fixed;
   top: 20px;        /* Distancia desde arriba */
-  left: 5.5rem;       /* Distancia desde la izquierda */
+  left: 8rem;       /* Distancia desde la izquierda */
   display: flex;
   align-items: center;
 }
@@ -295,7 +295,7 @@ body {
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0;
+  right:50%;
   z-index: -1;
   background: #ff385c;
   font-size: 4rem;
@@ -450,7 +450,7 @@ body {
 
 
 /* ✅ MOBILE NAVBAR *********************************************/
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 425px) {
   .hero__cta{
     font-size: 13px;
   }
