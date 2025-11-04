@@ -460,76 +460,73 @@ body {
 }
 
 /* 🎬 NUEVA ESCENA FULLSCREEN */
-/* ✅ Corrige que cada palabra quede 100% centrada en pantalla */
-.mx-scroll-words {
-  position: relative;
-  min-height: 300vh;
-  overflow: hidden;
-}
-
-/* Cada bloque ocupa la pantalla entera (slide fullscreen) */
+/* Contenedor general de cada palabra */
 .mx-word {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-
+  text-align: center;
+  max-width: 800px;
+  width: 90%;
+  opacity: 0;
+  pointer-events: none;
   display: flex;
   flex-direction: column;
+  align-items: center; /* ✅ Centrado real */
   justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  opacity: 0; /* aparece con GSAP */
-  pointer-events: none;
 }
 
-/* Títulos más impactantes, centrados */
-.mx-word h2 {
-  font-size: clamp(3rem, 8vw, 8rem);
+/* "Somos" más sutil y centrado */
+.mx-word__somos {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+/* Título principal (“Clientecéntricos”) */
+.mx-word__title {
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
-  margin-bottom: 2rem;
   color: var(--fucsia);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  line-height: 0.95;
 }
 
-/* Lista centrada bajo el título */
+/* Lista de bullets descriptivos bien centrada */
 .mx-word ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
   color: #444;
-  font-size: clamp(1rem, 1.2vw, 1.4rem);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
   line-height: 1.6;
-  text-align: center;
-  max-width: 650px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left; /* ✅ texto alineado izquierdo, pero centrado en bloque */
 }
 
+/* Item de lista con guion estético */
 .mx-word ul li {
   margin-bottom: 1rem;
   position: relative;
-  padding-left: 1rem;
+  padding-left: 1.2rem;
 }
 
 .mx-word ul li::before {
-  content: "•";
+  content: "—";
   position: absolute;
   left: 0;
   color: var(--fucsia);
   font-weight: bold;
 }
 
-/* Mobile: que siga centrado y no se rompa */
-@media (max-width: 768px) {
-  .mx-word h2 {
-    font-size: 3rem;
-  }
-  .mx-word ul {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
+/* Aseguramos que todo el scroll sea limpio */
+.mx-scroll-words {
+  position: relative;
+  min-height: 300vh;
+  background: var(--blanco);
+  display: block;
 }
 
 /* ✅ MOBILE NAVBAR *********************************************/
