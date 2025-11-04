@@ -47,20 +47,15 @@ navTrigger.addEventListener("change", () => {
 // ✅ GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
+// ✅ 2. ANIMACIÓN PALABRAS (SIN SALIR HACIA ARRIBA)
 const words = gsap.utils.toArray(".mx-word");
 
 words.forEach((word, index) => {
-  const fromX = index % 2 === 0 ? "200px" : "-200px"; // 👉 Alterna entrada derecha/izquierda
+  const fromX = index % 2 === 0 ? "200px" : "-200px";
 
-  // ✅ ENTRA (de costado al centro) — SIN SALIR HACIA ARRIBA
   gsap.fromTo(
     word,
-    {
-      opacity: 0,
-      y: 0,
-      x: fromX,
-      scale: 0.95,
-    },
+    { opacity: 0, y: 0, x: fromX, scale: 0.95 },
     {
       opacity: 1,
       y: 0,
@@ -69,13 +64,66 @@ words.forEach((word, index) => {
       ease: "power3.out",
       scrollTrigger: {
         trigger: ".mx-scroll-words",
-        start: `${index * 30}% center`,  // antes 40%, ahora aparece más rápido
+        start: `${index * 30}% center`,
         end: `${index * 30 + 30}% center`,
         scrub: 1.2,
       }
     }
   );
+});
 
-  // ❌ Eliminamos esta parte ⛔ (ya no se va hacia arriba)
-  // gsap.to(word, { ... });
+// === MÉTRICAS STICKY LIMPIAS (sin blur ni ghosting) ===
+gsap.registerPlugin(ScrollTrigger);
+
+const panels = gsap.utils.toArray(".mx-metric");
+
+panels.forEach((panel) => {
+  const valueEl = panel.querySelector(".mx-metric__value");
+  const labelEl = panel.querySelector(".mx-metric__label");
+  const target = parseFloat(valueEl.dataset.target || "0");
+  let played = false;
+
+  // Estado inicial: todo apagado
+  gsap.set(panel, { opacity: 0, scale: 0.9, filter: "none" });
+  gsap.set(labelEl, { opacity: 0, y: 30 });
+
+  ScrollTrigger.create({
+    trigger: panel,
+    start: "top center",
+    end: "bottom center",
+
+    onEnter: () => activate(),
+    onEnterBack: () => activate(),
+    onLeave: () => deactivate(),
+    onLeaveBack: () => deactivate()
+  });
+
+  function activate() {
+    // Activo visual
+    gsap.to(panel, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
+    gsap.to(labelEl, { opacity: 1, y: 0, duration: 0.4 });
+
+    // Fondo dinámico (opcional)
+    document.documentElement.style.setProperty("--metrics-bg", panel.dataset.bg || "#fff");
+
+    // Animación de número (una sola vez)
+    if (!played) {
+      played = true;
+      gsap.fromTo(
+        valueEl,
+        { textContent: 0 },
+        {
+          textContent: target,
+          duration: 1.2,
+          ease: "power1.out",
+          snap: { textContent: target % 1 === 0 ? 1 : 0.1 }
+        }
+      );
+    }
+  }
+
+  function deactivate() {
+    gsap.to(panel, { opacity: 0, scale: 0.9, duration: 0.3 });
+    gsap.to(labelEl, { opacity: 0, y: 30, duration: 0.3 });
+  }
 });

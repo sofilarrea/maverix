@@ -584,6 +584,84 @@ body {
   height: 20px;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='12' fill='%232CCDBA'/%3E%3Cpath d='M9.5 16.2l-3.5-3.5 1.4-1.4 2.1 2.1 5.6-5.6 1.4 1.4-7 7z' fill='white'/%3E%3C/svg%3E") no-repeat center/contain;
 }
+/* ===== MÉTRICAS STICKY (vertical) ===== */
+.mx-metrics{
+  position: relative;
+  /* altura = cantidad de paneles * 100vh para que cada uno ocupe una “pantalla” */
+  height: 600vh; /* 6 paneles -> 6 * 100vh */
+  background: var(--metrics-bg, #fff);
+  transition: background-color .5s ease;
+}
+
+/* Cada panel ocupa la pantalla y queda “pegado” (sticky) en el top */
+.mx-metric{
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 6rem 2rem;
+  transform: scale(.94);
+  opacity: .35;
+  transition: transform .35s ease, opacity .35s ease, filter .35s ease;
+}
+
+.mx-metric.is-active{
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* Tipografías y colores (usa tu paleta) */
+.mx-metric__kicker{
+  font-weight: 700;
+  letter-spacing: .18em;
+  color: #2b2f33;
+  opacity: .6;
+  margin-bottom: 1rem;
+}
+
+.mx-metric__value{
+  font-weight: 800;
+  font-size: clamp(56px, 12vw, 140px);
+  line-height: .95;
+  color: var(--fucsia); /* tu fucsia */
+  text-transform: uppercase;
+}
+
+.mx-metric__label{
+  margin-top: 1rem;
+  max-width: 900px;
+  font-size: clamp(16px, 2vw, 22px);
+  color: #2b2f33;
+  line-height: 1.5;
+}
+
+/* Fades superior e inferior para efecto “pulido” */
+.mx-metrics::before,
+.mx-metrics::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  height:10vh;
+  pointer-events:none;
+  z-index:2;
+}
+.mx-metrics::before{
+  top:0;
+  background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+.mx-metrics::after{
+  bottom:0;
+  background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px){
+  .mx-metric{ padding: 5rem 1.5rem; }
+  .mx-metric__label{ font-size: 16px; }
+}
 
 
 
