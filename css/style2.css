@@ -460,63 +460,77 @@ body {
 }
 
 /* 🎬 NUEVA ESCENA FULLSCREEN */
+/* ✅ Corrige que cada palabra quede 100% centrada en pantalla */
 .mx-scroll-words {
-  height: 300vh;
-  background: #ffffff; /* limpio, sin triángulos ni hero */
   position: relative;
+  min-height: 300vh;
   overflow: hidden;
 }
 
-/* Contenido centrado */
+/* Cada bloque ocupa la pantalla entera (slide fullscreen) */
 .mx-word {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  max-width: 900px;
   width: 100%;
-  padding: 0 2rem;
+  max-width: 900px;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  opacity: 0; /* aparece con GSAP */
+  pointer-events: none;
 }
 
-/* Palabra gigante */
+/* Títulos más impactantes, centrados */
 .mx-word h2 {
-  font-size: clamp(3rem, 9vw, 9rem);
+  font-size: clamp(3rem, 8vw, 8rem);
   font-weight: 800;
   margin-bottom: 2rem;
-  color: #ff385c;
+  color: var(--fucsia);
 }
 
-/* Hover sutil lila */
-.mx-word h2:hover {
-  color: #852eff;
-}
-
-/* Lista descriptiva */
+/* Lista centrada bajo el título */
 .mx-word ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
   color: #444;
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-size: clamp(1rem, 1.2vw, 1.4rem);
   line-height: 1.6;
+  text-align: center;
   max-width: 650px;
-  margin: 0 auto;
 }
 
 .mx-word ul li {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
   position: relative;
   padding-left: 1rem;
 }
 
 .mx-word ul li::before {
-  content: "—";
+  content: "•";
   position: absolute;
   left: 0;
-  color: #ff385c;
+  color: var(--fucsia);
+  font-weight: bold;
 }
 
+/* Mobile: que siga centrado y no se rompa */
+@media (max-width: 768px) {
+  .mx-word h2 {
+    font-size: 3rem;
+  }
+  .mx-word ul {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
 
 /* ✅ MOBILE NAVBAR *********************************************/
 @media screen and (max-width: 768px) {
