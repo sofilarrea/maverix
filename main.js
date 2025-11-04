@@ -127,3 +127,14 @@ panels.forEach((panel) => {
     gsap.to(labelEl, { opacity: 0, y: 30, duration: 0.3 });
   }
 });
+gsap.to(".mx-final-cta", {
+  scrollTrigger: {
+    trigger: ".mx-metrics",    // se activa después de las métricas
+    start: "bottom bottom",
+    toggleActions: "play none none none",
+  },
+  opacity: 1,
+  y: 0,
+  duration: 1,
+  ease: "power3.out"
+});

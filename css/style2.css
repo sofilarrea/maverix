@@ -597,7 +597,7 @@ body {
 .mx-metric{
   position: sticky;
   top: 0;
-  min-height: 100vh;
+  min-height: 70vh;
   display: grid;
   place-items: center;
   text-align: center;
@@ -662,6 +662,52 @@ body {
   .mx-metric{ padding: 5rem 1.5rem; }
   .mx-metric__label{ font-size: 16px; }
 }
+.container-cta{
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+.mx-final-cta {
+  background-color: #FF315C;
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 2rem;
+  opacity: 0;            /* Inicialmente invisible */
+  transform: translateY(50px);
+  position: relative;
+  z-index: 10;           /* Para que no quede detrás del header */
+}
+
+.mx-final-title {
+  font-size: 9rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.mx-final-button {
+  background: #fff;
+  color: #FF315C;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.mx-final-button:hover {
+  background-color: #ff8fa9;
+  color: white;
+}
+
+
 
 
 
