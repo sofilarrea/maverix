@@ -47,58 +47,42 @@ navTrigger.addEventListener("change", () => {
 // ✅ GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-// ✅ Paleta de fondo para cada palabra
-const bgColors = [
-  "linear-gradient(135deg, #ffffff, #f9f9f9)",
-  "linear-gradient(135deg, #f7e6ff, #f0d8ff)",
-  "linear-gradient(135deg, #e8fbf7, #d4f5ec)",
-];
-
-// ✅ Animación palabras con profundidad + fondo animado
 const words = gsap.utils.toArray(".mx-word");
 
 words.forEach((word, index) => {
-  const fromX = index % 2 === 0 ? "150px" : "-150px";
+  const fromX = index % 2 === 0 ? "200px" : "-200px";
 
+  // ✅ ENTRA — sin opacity, sin blur
   gsap.fromTo(
     word,
-    { opacity: 0, y: 100, x: fromX, scale: 0.9, filter: "blur(6px)" },
     {
-      opacity: 1,
+      y: 150,
+      x: fromX,
+      scale: 0.95
+    },
+    {
       y: 0,
       x: 0,
       scale: 1,
-      filter: "blur(0px)",
       ease: "power3.out",
       scrollTrigger: {
         trigger: ".mx-scroll-words",
-        start: `${index * 33}% center`,
-        end: `${(index + 1) * 33}% center`,
-        scrub: true,
-        onEnter: () =>
-          gsap.to(":root", {
-            "--bg-color": bgColors[index],
-            duration: 1,
-          }),
-        onEnterBack: () =>
-          gsap.to(":root", {
-            "--bg-color": bgColors[index],
-            duration: 1,
-          }),
-      },
+        start: `${index * 40}%`,
+        end: `${index * 40 + 40}%`,
+        scrub: 2
+      }
     }
   );
 
+  // ✅ SALE — solo movimiento, sin opacity
   gsap.to(word, {
-    opacity: 0,
-    y: -100,
+    y: -150,
     scale: 1.05,
-    filter: "blur(6px)",
-    ease: "power3.inOut",
     scrollTrigger: {
       trigger: ".mx-scroll-words",
-      start: `top+=${index * 33 + 20}% center`,
-      scrub: true,
-    },
+      start: `${index * 40 + 25}%`,
+      end: `${index * 40 + 45}%`,
+      scrub: 2
+    }
   });
 });
