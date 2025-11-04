@@ -459,6 +459,26 @@ body {
   opacity: 1;
 }
 
+.mx-scroll-words {
+  height: 300vh; /* Largo para habilitar scroll */
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.mx-word {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  font-size: 12vw;
+  font-weight: 800;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
 
 
 /* ✅ MOBILE NAVBAR *********************************************/
@@ -522,4 +542,5 @@ body {
 }
 .mx-clients-grid__title{
   font-size: 1.5rem;
+}
 }
