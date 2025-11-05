@@ -34,26 +34,19 @@
 
 
 
-  <!-- ✅ PRELOADER (Tu código original sin modificar) -->
-  <div id="loader">
-      <div id="preloader-bg"></div>
+<!-- ✅ PRELOADER -->
+<div id="loader">
   <div id="preloader-bg"></div>
 
-    <div id="preloader-box">
-      <h2 class="mx-somos__title">Somos</h2>
-      <hr class="mx-somos__line">
-      <p class="mx-somos__word">Maverix</p>
-      <p class="mx-somos__desc">
-        <span>[latinismo, del inglés] //<b>Mavericks</b>//</span><br>
-        <strong>1. (sust.)</strong> personas inusuales, inconformistas, <br>
-        que desafían el status quo, que sobresalen de modo diferente.
-      </p>
-      <hr class="mx-somos__line">
-    </div>
-    <div id="white-overlay"></div>
+  <div id="preloader-box">
+    <img src="/assets/images/logo.png" alt="Logo Maverix" class="preloader-logo">
   </div>
 
-<!-- ✅ HERO -->
+  <div id="white-overlay"></div>
+</div>
+
+
+  <!-- ✅ HERO -->
 <!-- ✅ HERO -->
 <section id="hero" class="hero">
   <!-- Primera parte del texto (izquierda arriba) -->
@@ -62,12 +55,6 @@
     <h1 class="hero__big">CONSISTENCIA</h1>
   </div>
 
-  <!-- Logo MAVERIX en formato pill estilo Plus X -->
-  <div class="hero__cta">
-    <a href="#">
-      <img src="/assets/images/logo.png" alt="Maverix">
-    </a>
-  </div>
 
   <!-- Segunda parte del texto (derecha abajo) -->
   <div class="hero__bottom">
@@ -82,23 +69,48 @@
 
 
 <!-- ✅ CLIENTES -->
-<section class="mx-clients-grid reveal" id="clientes">
-  <h2 class="mx-clients-grid__title">
-    Empresas que <span>confían</span> en nosotros
-  </h2>
-
-  <div class="mx-clients-grid__wrapper">
-    <div class="client-card"><img src="/assets/images/naranja.png" alt="Naranja X"></div>
-    <div class="client-card"><img src="/assets/images/logo_comafi.png" alt="Banco Comafi"></div>
-    <div class="client-card"><img src="/assets/images/ultra.png" alt="Ultra"></div>
-    <div class="client-card"><img src="/assets/images/logo-clientes.jpeg" alt="Reba"></div>
-    <div class="client-card"><img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol"></div>
-    <div class="client-card"><img src="/assets/images/CREDITIA.png" alt="Creditia"></div>
-    <div class="client-card"><img src="/assets/images/credicuotas.jpeg" alt="Credicuotas"></div>
-    <div class="client-card"><img src="/assets/images/galicia.png" alt="Galicia"></div>
-    <div class="client-card"><img src="/assets/images/uala.png" alt="Ualá"></div>
+<section class="mx-clients-marquee">
+  <div class="marquee">
+    <div class="marquee__inner">
+      <img src="/assets/images/naranja.png" alt="Naranja X">
+      <img src="/assets/images/logo-clientes.jpeg" alt="Banco Comafi">
+      <img src="/assets/images/ultra.png" alt="Ultra">
+      <img src="/assets/images/reba.png" alt="Reba">
+      <img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol">
+      <img src="/assets/images/creditia.png" alt="Creditia">
+      <img src="/assets/images/galicia.png" alt="Galicia">
+      <img src="/assets/images/uala.png" alt="Ualá">
+      <!-- duplicado para bucle perfecto -->
+      <img src="/assets/images/naranja.png" alt="Naranja X">
+      <img src="/assets/images/logo-clientes.jpeg" alt="Banco Comafi">
+      <img src="/assets/images/ultra.png" alt="Ultra">
+      <img src="/assets/images/reba.png" alt="Reba">
+      <img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol">
+      <img src="/assets/images/creditia.png" alt="Creditia">
+      <img src="/assets/images/galicia.png" alt="Galicia">
+      <img src="/assets/images/uala.png" alt="Ualá">
+    </div>
   </div>
 </section>
+
+<section class="mx-video-words" id="mx-video-words">
+  <!-- 🎥 Video de fondo -->
+  <video class="mx-video-bg" autoplay muted loop playsinline>
+    <source src="/assets/videos/maverix.mp4" type="video/mp4">
+  </video>
+
+  <!-- Palabras -->
+  <div class="mx-words">
+    <h2 class="mx-word">Inconformistas</h2>
+    <h2 class="mx-word">Rebeldes</h2>
+    <h2 class="mx-word">Clientecéntricos</h2>
+    <h2 class="mx-word">Holocráticos</h2>
+    <h2 class="mx-word">Innovadores</h2>
+  </div>
+</section>
+
+<!-- 
+
 <section class="mx-scroll-words">
   <div class="mx-word">
     <span class="mx-word__label">Somos</span>
@@ -110,7 +122,6 @@
           <li>Diseñamos los procesos y herramientas tecnológicas para cada uno de ellos, en función de sus necesidades.</li>
     </ul>
   </div>
-  <!-- ... Repetís para otros 2 bloques -->
    <div class="mx-word">
     <span class="mx-word__label">Somos</span>
     <h2>Holocráticos</h2>
@@ -130,95 +141,8 @@
           <li>Capacidad, descentralización y autonomía son los componentes de nuestra cultura fuertemente innovadora.</li>
     </ul>
   </div>
-</section>
-<section class="mx-metrics" id="metrics">
-  <div class="mx-metric" data-bg="#ffffff">
-    <div class="mx-metric__value" data-target="12">0</div>
-    <p class="mx-metric__label">años en la industria</p>
-  </div>
+</section> -->
 
-  <div class="mx-metric" data-bg="#ffff">
-    <!-- <h3 class="mx-metric__kicker">SOMOS</h3> -->
-    <div class="mx-metric__value" data-target="150">0</div>
-    <p class="mx-metric__label">+ personas en nuestro equipo</p>
-  </div>
-
-  <div class="mx-metric" data-bg="#ffff">
-    <!-- <h3 class="mx-metric__kicker">SOMOS</h3> -->
-    <div class="mx-metric__value" data-target="95%">0</div>
-    <p class="mx-metric__label"> profesionales o estudiantes</p>
-  </div>
-
-  <div class="mx-metric" data-bg="#ffffff">
-    <!-- <h3 class="mx-metric__kicker">SOMOS</h3> -->
-    <div class="mx-metric__value" data-target="8%">0</div>
-    <p class="mx-metric__label"> de rotación anual</p>
-  </div>
-
-  <div class="mx-metric" data-bg="#ffffff">
-    <!-- <h3 class="mx-metric__kicker">SOMOS</h3> -->
-    <div class="mx-metric__value" data-target="4.7">0</div>
-    <p class="mx-metric__label">calificación de deudores en Google</p>
-  </div>
-
-  <div class="mx-metric" data-bg="#ffffff">
-    <!-- <h3 class="mx-metric__kicker">SOMOS</h3> -->
-    <div class="mx-metric__value" data-target="20%">0</div>
-    <p class="mx-metric__label"> mejora de eficiencia promedio</p>
-  </div>
-
-</section>
-<section class="mx-final-cta" id="final-cta">
-  <h2 class="mx-final-title">¿LISTO PARA TRANSFORMAR TU GESTIÓN?</h2>
-  <a href="#contacto" class="hero__cta">Agenda una reunión</a>
-</section>
-<section class="mx-soluciones2" aria-label="Soluciones">
-  <div class="mx-soluciones2__wrap">
-    <h2 class="mx-soluciones2__title">Soluciones</h2>
-
-    <div class="mx-soluciones2__grid ">
-      <!-- 1) Recupero de activos -->
-      <article class="mx-sol2-card">
-        <h3 class="mx-sol2-card__h3">Recupero<br>de activos</h3>
-        <p class="mx-sol2-card__p">
-          Somos especialistas en la gestión de mora en todos sus tramos con un servicio
-          integral enfocado en los resultados. A elección del cliente, la gestión se
-          realiza bajo su nombre, desde nuestra agencia Maverix, o bajo el respaldo de
-          nuestro estudio jurídico Cuervo Abogados.
-        </p>
-        <a href="#contacto" class="mx-sol2-btn">Contactanos</a>
-      </article>
-
-      <!-- 2) BPO -->
-      <article class="mx-sol2-card">
-        <h3 class="mx-sol2-card__h3">BPO</h3><br>
-        <p class="mx-sol2-card__p">
-          Nuestro servicio de outsourcing asume procesos internos de nuestros clientes,
-          poniendo a su disposición nuestra ágil infraestructura humana y poderosas
-          herramientas tecnológicas, generando una mejora en los resultados y reducción
-          en los costos.
-        </p>
-        <a href="#contacto" class="mx-sol2-btn">Contactanos</a>
-      </article>
-
-      <!-- 3) Soluciones tecnológicas -->
-      <article class="mx-sol2-card">
-        <h3 class="mx-sol2-card__h3">Soluciones<br>tecnológicas</h3>
-        <p class="mx-sol2-card__p">
-          Desarrollamos y comercializamos software y tecnología enfocada en los procesos
-          de cobranzas, especialmente en customer contact, CRM y business intelligence.
-          Conocé Core, el sistema de WhatsApp masivo y personalizado que licenciamos a
-          importantes empresas de la industria.
-        </p>
-        <a href="#core" class="mx-sol2-btn mx-sol2-btn--two">
-          Probá Core gratis por un mes
-        </a>
-      </article>
-
-    
-    </div>
-  </div>
-</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
