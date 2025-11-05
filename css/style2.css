@@ -69,7 +69,7 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: clamp(48px, 10vw, 180px); /* Ajustado para que entre 'ACTIVOS' */
+  font-size: clamp(48px, 10vw, 150px); /* Ajustado para que entre 'ACTIVOS' */
   line-height: 1; /* Más alto para que no se corte */
   letter-spacing: -0.03em;
   white-space: nowrap;
