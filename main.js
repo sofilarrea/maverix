@@ -1,7 +1,9 @@
 // ✅ REGISTRO DE GSAP Y ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-// ✅ PRELOADER + HERO
+/* ─────────────────────────────────────────────
+ ✅ PRELOADER + HERO
+────────────────────────────────────────────── */
 window.addEventListener("load", () => {
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
@@ -40,7 +42,9 @@ window.addEventListener("load", () => {
     }, "-=0.5");
 });
 
-// ✅ HERO PARALLAX, BLUR, SCALE AL SCROLLEAR
+/* ─────────────────────────────────────────────
+ ✅ HERO – Parallax + Blur + Scale al scrollear
+────────────────────────────────────────────── */
 gsap.to(".hero", {
   scrollTrigger: {
     trigger: ".hero",
@@ -52,7 +56,7 @@ gsap.to(".hero", {
   opacity: 0.3
 });
 
-// ✅ LOGO DEL HERO SUBE HACIA NAVBAR AL SCROLLEAR
+// ✅ Logo del Hero sube al navbar
 gsap.to(".hero__cta", {
   scrollTrigger: {
     trigger: ".hero",
@@ -65,7 +69,7 @@ gsap.to(".hero__cta", {
   opacity: 0.6
 });
 
-// ✅ PARALLAX DEL TEXTO DEL HERO (LATERAL COMO PLUS-X)
+// ✅ Título del HERO se mueve suavemente lateral
 gsap.to(".hero__title", {
   xPercent: -30,
   scrollTrigger: {
@@ -76,7 +80,9 @@ gsap.to(".hero__title", {
   }
 });
 
-// ✅ ANIMACIÓN GENÉRICA PARA .reveal
+/* ─────────────────────────────────────────────
+ ✅ ANIMACIÓN GENÉRICA PARA TODAS LAS .reveal
+────────────────────────────────────────────── */
 gsap.utils.toArray(".reveal").forEach((section) => {
   gsap.from(section, {
     scrollTrigger: {
@@ -91,7 +97,9 @@ gsap.utils.toArray(".reveal").forEach((section) => {
   });
 });
 
-// ✅ CLIENTES ENTRANDO CON SUAVIDAD
+/* ─────────────────────────────────────────────
+ ✅ CLIENTES – fade in suave
+────────────────────────────────────────────── */
 gsap.from(".client-card img", {
   opacity: 0,
   y: 50,
@@ -105,10 +113,12 @@ gsap.from(".client-card img", {
   }
 });
 
-// ✅ CLIENTES – MARQUEE INFINITO + VELOCIDAD SEGÚN SCROLL
+/* ─────────────────────────────────────────────
+ ✅ MARQUEE INFINITO DE CLIENTES (con velocidad dinámica)
+────────────────────────────────────────────── */
 let marqueeSpeed = 50;
 const marquee = gsap.to(".marquee__inner", {
-  xPercent: -50,     // Recorre la mitad, el resto está duplicado → infinito
+  xPercent: -50,
   repeat: -1,
   ease: "none",
   duration: marqueeSpeed,
@@ -121,35 +131,28 @@ ScrollTrigger.create({
   scrub: 1,
   onUpdate: (self) => {
     let scrollVel = Math.abs(self.getVelocity()) / 500;
-    marquee.timeScale(1 + scrollVel); // Acelera según lo rápido que scrollés
+    marquee.timeScale(1 + scrollVel);
   }
 });
-gsap.registerPlugin(ScrollTrigger);
 
-gsap.utils.toArray(".mx-word").forEach((section, i) => {
-  ScrollTrigger.create({
-    trigger: section,
-    start: "top top",
-    end: "bottom top",
-    pin: true,
-    pinSpacing: false, 
-    scrub: true
-  });
-});
-// ✅ ANIMACIÓN PALABRAS MAVERIX ESTILO PLUS X
-// Genera el texto automático dentro de cada panel
+/* ─────────────────────────────────────────────
+ ✅ SECCIÓN PALABRAS MAVERIX ESTILO PLUS X
+────────────────────────────────────────────── */
 document.querySelectorAll('#mx-words .mx-panel').forEach(panel => {
-  const word = document.createElement('h1');
-  word.className = 'mx-word';
-  word.textContent = panel.dataset.word;
-  panel.appendChild(word);
+  // Crea texto dentro del panel si no existe
+  if (!panel.querySelector('.mx-word')) {
+    const word = document.createElement('h1');
+    word.className = 'mx-word';
+    word.textContent = panel.dataset.word;
+    panel.appendChild(word);
+  }
 });
 
-// Animación de entrada / salida con scroll
-document.querySelectorAll('#mx-words .mx-panel').forEach(panel => {
-  const word = panel.querySelector('.mx-word');
+// Scroll + fade + blur + profundidad
+gsap.utils.toArray(".mx-panel").forEach((panel) => {
+  const word = panel.querySelector(".mx-word");
 
-  let tl = gsap.timeline({
+  gsap.timeline({
     scrollTrigger: {
       trigger: panel,
       start: "top top",
@@ -158,29 +161,17 @@ document.querySelectorAll('#mx-words .mx-panel').forEach(panel => {
       pin: true,
       pinSpacing: false
     }
-  });
-
-  // Entrada
-  gsap.set(word, { opacity: 0, yPercent: 20, scale: 1.1, filter: "blur(8px)" });
-  tl.to(word, {
-    opacity: 1,
-    yPercent: 0,
-    scale: 1,
-    filter: "blur(0px)",
-    duration: 0.4,
-    ease: "power3.out"
-  });
-
-  // Pequeña pausa
-  tl.to(word, { duration: 0.2 });
-
-  // Salida
-  tl.to(word, {
+  })
+  .fromTo(word,
+    { opacity: 0, yPercent: 20, scale: 1.1, filter: "blur(10px)" },
+    { opacity: 1, yPercent: 0, scale: 1, filter: "blur(0px)", duration: 0.5 }
+  )
+  .to(word, { duration: 0.3 }) // pausa sutil
+  .to(word, {
     opacity: 0,
     yPercent: -20,
     scale: 1.05,
-    filter: "blur(8px)",
-    duration: 0.4,
-    ease: "power3.in"
+    filter: "blur(10px)",
+    duration: 0.5
   });
 });

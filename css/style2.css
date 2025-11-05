@@ -217,6 +217,11 @@ body {
   filter: blur(6px);
   transform: scale(1.15);
 }
+.special-word .mx-word:hover {
+  color: var(--lila);
+    transition: all 0.3s ease;
+  cursor: default;
+}
 
 
 
