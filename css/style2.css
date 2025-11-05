@@ -14,6 +14,8 @@
   --blanco: #fff;
   --font-main: "Poppins", sans-serif;
   --font-bold: "Kollektif-Bold", sans-serif;
+   --mx-bg: #000;               /* fondo */
+  --mx-fg: #fff;               /* texto */
 }
 
 /* GLOBAL */
@@ -173,113 +175,51 @@ body {
 }
 
 /* CONTENEDOR COMPLETO CENTRADO */
-.mx-video-words {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: #000;
-  overflow: hidden;
+#mx-words {
+  background: var(--mx-fg);
+  color: var(--fucsia);
 }
 
-.mx-video-bg {
+.mx-panel {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+}
+
+.mx-panel::before {
+  content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  filter: contrast(110%) brightness(60%);
-  opacity: 0.35;
+  inset: 0;
+  background-image: var(--mx-logo);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: min(55vw, 900px);
+  opacity: 0.06;
+  filter: saturate(0) contrast(120%);
   pointer-events: none;
 }
 
-.mx-words {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .mx-word {
-  position: absolute;
-  font-size: clamp(3rem, 9vw, 10rem);
-  font-weight: 800;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 18vw, 5rem);
   text-transform: uppercase;
-  letter-spacing: -0.02em;
-  color: #fff;
-  opacity: 0;
-  transform: translateY(50px) scale(0.9);
-  filter: blur(8px);
-  will-change: transform, filter, opacity;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
   text-align: center;
-  width: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 3;
+
+  /* Estado inicial (JS lo anima) */
+  opacity: 0;
+  filter: blur(6px);
+  transform: scale(1.15);
 }
 
 
 
 /* ✅ MOBILE NAVBAR *********************************************/
 @media screen and (max-width: 768px) {
-  .hero__cta{
-    font-size: 13px;
-  }
-.navbar__logo{
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    padding-left: 0.5rem;
-}
-.nav__logo img{
-    width: 175px;
-    height: auto;
-}
-.nav__logo{
-  top: 18px;
-  left: 1.5rem;
-}
-.nav__trigger-finger{
-    width: 38px;
-    height: 26px;
-    margin: 20px;
-}
-  /* Ajustar título hero en mobile */
-  .hero__title {
-    font-size: 8rem;
-  }
-  .br{
-    display: none;
-  }
-.navbar__logo img{
-    height: 40px;
-}
-.hero__title{
-   font-size: 2rem;
-   
-}
-.nav__list{
- transform: translate(114vw) rotate(45deg);
-}
-.hero{
-  justify-content: flex-start;
-}
-.mx-somos__desc{
-  font-size: 1rem;
-  line-height: 20px;
-  padding: 2rem;
-}
-.mx-somos__word{
-  font-size: 2rem;
-  padding-left: 2rem;
-}
-.mx-somos__line{
-  margin-left: 2rem;
-}
-.mx-somos__title{
-  margin-left: 2rem;
-}
-.mx-clients-grid__title{
-  font-size: 1.5rem;
-}
 }

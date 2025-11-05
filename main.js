@@ -124,40 +124,63 @@ ScrollTrigger.create({
     marquee.timeScale(1 + scrollVel); // Acelera según lo rápido que scrollés
   }
 });
+gsap.registerPlugin(ScrollTrigger);
 
-const words = gsap.utils.toArray(".mx-word");
-
-// Duración total de la sección (scroll)
-const totalScroll = words.length * 1000;
-
-ScrollTrigger.create({
-  trigger: ".mx-video-words",
-  start: "top top",
-  end: `+=${totalScroll}`,
-  scrub: true,
-  pin: true,
+gsap.utils.toArray(".mx-word").forEach((section, i) => {
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top top",
+    end: "bottom top",
+    pin: true,
+    pinSpacing: false, 
+    scrub: true
+  });
+});
+// ✅ ANIMACIÓN PALABRAS MAVERIX ESTILO PLUS X
+// Genera el texto automático dentro de cada panel
+document.querySelectorAll('#mx-words .mx-panel').forEach(panel => {
+  const word = document.createElement('h1');
+  word.className = 'mx-word';
+  word.textContent = panel.dataset.word;
+  panel.appendChild(word);
 });
 
-// Animación para cada palabra
-words.forEach((word, i) => {
-  const tl = gsap.timeline({
+// Animación de entrada / salida con scroll
+document.querySelectorAll('#mx-words .mx-panel').forEach(panel => {
+  const word = panel.querySelector('.mx-word');
+
+  let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".mx-video-words",
-      start: i * 1000 + " top",
-      end: (i + 1) * 1000 + " top",
+      trigger: panel,
+      start: "top top",
+      end: "bottom top",
       scrub: true,
+      pin: true,
+      pinSpacing: false
     }
   });
 
   // Entrada
-  tl.fromTo(word,
-    { opacity: 0, y: 100, scale: 0.9, filter: "blur(8px)" },
-    { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power3.out" }
-  );
+  gsap.set(word, { opacity: 0, yPercent: 20, scale: 1.1, filter: "blur(8px)" });
+  tl.to(word, {
+    opacity: 1,
+    yPercent: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    duration: 0.4,
+    ease: "power3.out"
+  });
+
+  // Pequeña pausa
+  tl.to(word, { duration: 0.2 });
 
   // Salida
-  tl.to(word,
-    { opacity: 0, y: -60, scale: 0.9, filter: "blur(10px)", duration: 0.6, ease: "power3.in" },
-    "+=0.3"
-  );
+  tl.to(word, {
+    opacity: 0,
+    yPercent: -20,
+    scale: 1.05,
+    filter: "blur(8px)",
+    duration: 0.4,
+    ease: "power3.in"
+  });
 });
