@@ -31,63 +31,6 @@
     <span></span><span></span><span></span>
   </div>
 </header> -->
-<nav class="nav">
-   <a href="#" class="nav__logo">
-    <img src="/assets/images/logo.png" alt="Logo">
-  </a>
-  <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation"/>
-  <label class="nav__trigger-finger" for="trigger">
-    <span></span>
-  </label>
-  <ul class="nav__list">
-    <li class="nav__item">
-      <a href="#hoi" class="nav__link">
-        <span class="nav__text">
-          Work
-        </span>
-      </a>
-    </li>
-    <li class="nav__item">
-      <a href="#hoi" class="nav__link">
-        <span class="nav__text">
-          About
-        </span>
-      </a>
-      <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
-      <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
-      <ul class="nav__list-child">
-        <li class="nav__item">
-          <a href="#hoi" class="nav__link">
-            <span class="nav__text">
-              About me
-            </span>
-          </a>
-        </li>
-        <li class="nav__item">
-          <a href="#hoi" class="nav__link">
-            <span class="nav__text">
-              About meerkats
-            </span>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li class="nav__item">
-      <a href="#hoi" class="nav__link">
-        <span class="nav__text">
-          Blog
-        </span>
-      </a>
-    </li>
-    <li class="nav__item">
-      <a href="#hoi" class="nav__link">
-        <span class="nav__text">
-          Contact
-        </span>
-      </a>
-    </li>
-  </ul>
-</nav>
 
 
 
@@ -111,21 +54,32 @@
   </div>
 
 <!-- ✅ HERO -->
+<!-- ✅ HERO -->
 <section id="hero" class="hero">
-  <div class="hero__content">
-    <h1 class="hero__title">
-      Agilidad y consistencia
-      en <br class="br">tu recupero de activos.
-    </h1>
-    <p class="hero__subtitle">
-      Equipos autónomos enfocados en tu negocio,<br>
-      potenciados con la mejor tecnología de la industria.
-    </p>
-    <a href="#content" class="hero__cta">Descubrí cómo lo hacemos</a>
+  <!-- Primera parte del texto (izquierda arriba) -->
+  <div class="hero__top">
+    <h1 class="hero__big">AGILIDAD Y</h1>
+    <h1 class="hero__big">CONSISTENCIA</h1>
   </div>
+
+  <!-- Logo MAVERIX en formato pill estilo Plus X -->
+  <div class="hero__cta">
+    <a href="#">
+      <img src="/assets/images/logo.png" alt="Maverix">
+    </a>
+  </div>
+
+  <!-- Segunda parte del texto (derecha abajo) -->
+  <div class="hero__bottom">
+    <h1 class="hero__big">EN TU</h1>
+    <h1 class="hero__big">RECUPERO DE</h1>
+    <h1 class="hero__big">ACTIVOS</h1>
+  </div>
+
+  <!-- Indicador scroll -->
   <div class="scroll-icon">↓</div>
-  <canvas id="hero-canvas"></canvas>
 </section>
+
 
 <!-- ✅ CLIENTES -->
 <section class="mx-clients-grid reveal" id="clientes">
@@ -272,33 +226,36 @@
 <script src="/main.js"></script> <!-- Si usás este archivo -->
 
 <!-- ✅ Nuevo script de animación -->
-<script>
-  gsap.registerPlugin(ScrollTrigger);
+<<script>
+gsap.registerPlugin(ScrollTrigger);
 
-  // ✅ Título de la sección clientes
-  gsap.from(".mx-clients-grid__title", {
-    scrollTrigger: {
-      trigger: ".mx-clients-grid",
-      start: "top 85%",
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    ease: "power3.out"
-  });
+// 1. Ocultar navbar al inicio
+const navbar = document.querySelector('.nav');
+navbar.classList.add("hidden");
 
-  // ✅ Logos animados uno por uno
-  gsap.from(".mx-clients-grid .client-card", {
-    scrollTrigger: {
-      trigger: ".mx-clients-grid",
-      start: "top 80%",
-    },
-    opacity: 0,
-    y: 40,
-    duration: 0.8,
-    stagger: 0.15,
-    ease: "power3.out"
-  });
+// 2. Mostrar navbar cuando salís del hero
+ScrollTrigger.create({
+  trigger: "#hero",
+  start: "bottom top", // cuando el hero termina
+  onEnter: () => {
+    navbar.classList.remove("hidden");
+  },
+  onLeaveBack: () => {
+    navbar.classList.add("hidden");
+  }
+});
+
+// 3. Mover el logo del hero hacia la navbar
+gsap.to("#heroLogo", {
+  scrollTrigger: {
+    trigger: "#hero",
+    start: "bottom top",
+    scrub: true
+  },
+  y: -200,
+  scale: 0.4,
+  opacity: 0
+});
 </script>
 
 

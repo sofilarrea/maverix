@@ -155,7 +155,7 @@ body {
 
 /* ====== LOGO ====== */
 /* LOGO FIJO ARRIBA A LA IZQUIERDA */
-.nav{
+/* .nav{
   position: fixed;
   width: 100%;
   top: 0;
@@ -166,14 +166,14 @@ body {
 }
 .nav__logo {
   position: fixed;
-  top: 20px;        /* Distancia desde arriba */
-  left: 8rem;       /* Distancia desde la izquierda */
+  top: 20px;        
+  left: 8rem;       
   display: flex;
   align-items: center;
 }
 
 .nav__logo img {
-  height: 67px;     /* Ajustá según el tamaño deseado */
+  height: 67px;     
   width: auto;
   display: block;
  
@@ -183,7 +183,6 @@ body {
 }
 
 
-/* Trigger Finger */
 .nav__trigger-finger {
   position: fixed;
   top: 0;
@@ -241,25 +240,24 @@ body {
 }
 
 /* Ocultar inputs */
-.nav__trigger-input,
+/* .nav__trigger-input,
 .nav__submenu-trigger-input {
   opacity: 0;
   width: 0;
   height: 0;
   appearance: none;
   position: fixed;
-}
+} */
 
 /* Estado focus */
-.nav__trigger-input:focus + label {
+/* .nav__trigger-input:focus + label {
   color: white;
-}
+} 
 
 .nav__trigger-input:focus + label::before {
   opacity: 1;
 }
 
-/* Estado checked (nav abierto) */
 .nav__trigger-input:checked + label {
   height: 10px;
   color: white;
@@ -281,14 +279,12 @@ body {
   transform: rotate(90deg);
 }
 
-/* Mostrar menú al abrir */
 .nav__trigger-input:checked ~ ul {
   z-index: 9;
   transform: none;
   transition: 0.5s cubic-bezier(0.75, 0, 0.25, 1);
 }
 
-/* Lista principal */
 .nav__list {
   width: 100%;
   position: fixed;
@@ -310,7 +306,6 @@ body {
 .nav__item {
   list-style: none;
 }
-/* Cuando no estamos en el hero (scrolleaste) */
 .nav--no-bg {
   background: transparent !important;
   transform: translate(100vw) rotate(0deg) !important;
@@ -321,7 +316,6 @@ body {
   margin-top: 20px;
 }
 
-/* Submenú */
 .nav__submenu-trigger-input:checked + label::after {
   transform: translateY(10px);
 }
@@ -353,14 +347,12 @@ body {
   margin-top: 10px;
   padding-left: 2rem;
 }
-/* La cruz/hamburguesa siempre encima del menú */
 .nav__trigger-finger {
   z-index: 2001 !important;
-}
+} */
 
 
-
-/* 🖥 HERO SECTION */
+/* 
 .hero {
   background: var(--blanco);
   color: var(--fucsia);
@@ -400,61 +392,102 @@ body {
 
 .hero__cta:hover {
   background-color: var(--fucsia);
-}
+} */
 
 /* 🎯 Sección Clientes Maximalista */
-/* ===== CLIENTES ===== */
-.mx-clients-grid {
+.hero {
+  height: 100vh;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 6rem 2rem;
-}
-
-.mx-clients-grid__title {
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 4rem;
-  color:#2b2f33;
-}
-
-.mx-clients-grid__title span {
-  color: #ff3b61; /* color principal de Maverix */
-}
-
-/* Grilla de logos */
-.mx-clients-grid__wrapper {
+  background: var(--fucsia); /* Fondo fucsia pedido */
+  color: var(--blanco);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 3rem;
+  grid-template-rows: 1fr auto 1fr; /* Top / Logo / Bottom */
   align-items: center;
-  justify-content: center;
+  justify-items: stretch;
+  padding: 2vh 4vw; /* Respira un poco arriba y abajo para que entre todo */
+  position: relative;
+  overflow: hidden;
 }
 
-/* Tarjetas de clientes */
-.client-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
+/* ✅ TEXTO MAXIMALISTA */
+.hero__big {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(48px, 10vw, 180px); /* Ajustado para que entre 'ACTIVOS' */
+  line-height: 1; /* Más alto para que no se corte */
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
 }
 
-.client-card img {
-  max-width: 120px;
-  max-height: 60px;
-  transition: 0.3s ease;
+/* Parte superior del texto */
+.hero__top {
+  align-self: end;
+  text-align: left;
 }
 
-.client-card:hover {
-  transform: scale(1.05);
+/* Parte inferior del texto */
+.hero__bottom {
+  align-self: start;
+  text-align: right;
 }
 
-.client-card:hover img {
-  filter: grayscale(0);
-  opacity: 1;
+/* ✅ LOGO EN FORMATO PILL TIPO PLUS X */
+/* LOGO MAVERIX estilo pastilla centrado en el hero */
+.hero__cta {
+  position: absolute;
+  top: 50%;               /* Altura entre el bloque superior e inferior del texto */
+  left: 50%;
+  transform: translate(-50%, -50%);  /* Centrado real */
+  z-index: 10;
 }
 
+
+.hero__cta img {
+  height: 28px;           /* Ajustá si lo querés más grande o chico */
+  width: auto;
+  filter: brightness(0) invert(1); /* Convierte el logo a blanco si es oscuro */
+}
+
+
+/* ✅ ICONO SCROLL ABAJO */
+.scroll-icon {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  animation: scrollBounce 1.5s infinite;
+  color: var(--blanco);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -12px); }
+}
+
+/* ✅ RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    padding: 2vh 3vw;
+  }
+
+  .hero__big {
+    font-size: 14vw;
+    line-height: 1;
+  }
+
+  .hero__cta img {
+    height: 22px;
+  }
+
+  .scroll-icon {
+    font-size: 1.5rem;
+    bottom: 25px;
+  }
+}
 /* 🎬 NUEVA ESCENA FULLSCREEN */
 /* CONTENEDOR COMPLETO CENTRADO */
 .mx-word {
