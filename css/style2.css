@@ -25,6 +25,99 @@ body {
   color: var(--negro);
 }
 
+/* 🔹 NAVBAR INTELIGENTE / SMART NAV */
+/* Navbar inicial oculta arriba del Hero */
+.mx-navbar {
+  position: fixed;
+  top: -100px;          /* 🔹 OCULTA AL INICIO */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  height: 70px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+  z-index: 1000;
+  transition: top 0.5s ease, opacity 0.5s ease;
+}
+
+/* Cuando tiene clase .show → aparece */
+.mx-navbar.show {
+  top: 20px;            /* 🔹 Aparece visible */
+  opacity: 1;
+}
+
+/* Cuando baja y querés ocultarla */
+.mx-navbar.hide {
+  top: -100px;
+  opacity: 0;
+}
+
+/* Logo */
+.mx-navbar__logo img {
+  height: 40px;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(94%) saturate(3030%) hue-rotate(330deg);
+}
+
+/* Enlaces */
+.mx-navbar__links {
+  display: flex;
+  gap: 2rem;
+}
+
+.mx-navbar__links a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #000;
+  position: relative;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.mx-navbar__links a:hover {
+  color: var(--fucsia);
+}
+
+.mx-navbar__links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--fucsia);
+  transition: width 0.3s ease;
+}
+
+.mx-navbar__links a:hover::after {
+  width: 100%;
+}
+
+/* Cuando se oculta al hacer scroll ↓ */
+.mx-navbar.hide {
+  transform: translate(-50%, -120%);
+  opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mx-navbar {
+    height: 60px;
+    padding: 0 1.5rem;
+  }
+  .mx-navbar__links {
+    gap: 1rem;
+  }
+  .mx-navbar__links a {
+    font-size: 0.8rem;
+  }
+}
 
 /* 🎬 PRELOADER */
 /* ✅ PRELOADER centrado con logo */
@@ -177,7 +270,30 @@ body {
 /* CONTENEDOR COMPLETO CENTRADO */
 #mx-words {
   background: var(--mx-fg);
-  color: var(--fucsia);
+  color: var(--mx-fg);
+}
+/* Sección de palabras con efecto de fondo animado */
+#mx-words {
+  position: relative;
+  background: #000; /* Negro o el color que uses en tu identidad */
+  overflow: hidden;
+}
+
+/* Canvas del fondo (partículas + líneas) */
+#mx-words canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Las palabras van por delante del canvas */
+#mx-words .mx-panel,
+#mx-words .mx-word {
+  position: relative;
+  z-index: 2;
 }
 
 .mx-panel {

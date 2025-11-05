@@ -175,3 +175,104 @@ gsap.utils.toArray(".mx-panel").forEach((panel) => {
     duration: 0.5
   });
 });
+
+/* ✅ Navbar aparece recién DESPUÉS del Hero */
+const navbar = document.querySelector(".mx-navbar");
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+  
+  // ✅ Al llegar al final del Hero → aparece
+  if (currentScroll > window.innerHeight * 0.6) {
+    navbar.classList.add("show");
+  } else {
+    navbar.classList.remove("show");
+  }
+
+  // ✅ Ocultar si scrollea para abajo (opcional)
+  if (currentScroll > lastScroll && currentScroll > 200) {
+    navbar.classList.add("hide");
+  } else {
+    navbar.classList.remove("hide");
+  }
+  
+  lastScroll = currentScroll;
+});
+/* ✅ Fondo animado con partículas conectadas */
+const mxWords = document.querySelector("#mx-words");
+const canvas = document.createElement("canvas");
+const ctx = canvas.getContext("2d");
+mxWords.appendChild(canvas);
+
+let particles = [];
+const numberOfParticles = 60; // podés subir si querés más densidad
+
+function initParticles() {
+  canvas.width = mxWords.clientWidth;
+  canvas.height = mxWords.clientHeight;
+
+  particles = [];
+  for (let i = 0; i < numberOfParticles; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,  // velocidad suave
+      vy: (Math.random() - 0.5) * 0.5
+    });
+  }
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#ffffff55";
+
+  // Dibujar partículas
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  // Conectar partículas con líneas
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      let dx = particles[i].x - particles[j].x;
+      let dy = particles[i].y - particles[j].y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 120) {
+        ctx.strokeStyle = "rgba(255,255,255,0.1)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function updateParticles() {
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    // Rebote suave
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+  });
+}
+
+function animate() {
+  drawParticles();
+  updateParticles();
+  requestAnimationFrame(animate);
+}
+
+initParticles();
+animate();
+
+// Ajuste si cambia el tamaño de pantalla
+window.addEventListener("resize", initParticles);
