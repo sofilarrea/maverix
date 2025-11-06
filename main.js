@@ -116,24 +116,30 @@ gsap.from(".client-card img", {
 /* ─────────────────────────────────────────────
  ✅ MARQUEE INFINITO DE CLIENTES (con velocidad dinámica)
 ────────────────────────────────────────────── */
-let marqueeSpeed = 50;
-const marquee = gsap.to(".marquee__inner", {
-  xPercent: -50,
-  repeat: -1,
-  ease: "none",
-  duration: marqueeSpeed,
-});
+ gsap.fromTo(".logos-grid img",
+    { opacity: 0, y: 50, filter: "blur(8px)" },
+    {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0)",
+      stagger: 0.15,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".clientes-section",
+        start: "top 75%",
+      }
+    }
+  );
 
-ScrollTrigger.create({
-  trigger: ".mx-clients-marquee",
-  start: "top bottom",
-  end: "bottom top",
-  scrub: 1,
-  onUpdate: (self) => {
-    let scrollVel = Math.abs(self.getVelocity()) / 500;
-    marquee.timeScale(1 + scrollVel);
-  }
-});
+  // ✅ Luz que sigue al mouse
+  document.querySelector('.clientes-section').addEventListener("mousemove", (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    e.currentTarget.style.setProperty('--x', `${x}%`);
+    e.currentTarget.style.setProperty('--y', `${y}%`);
+  });
 
 /* ─────────────────────────────────────────────
  ✅ SECCIÓN PALABRAS MAVERIX ESTILO PLUS X

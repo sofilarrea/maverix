@@ -1,72 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maverix Scroll Sections</title>
+  <title>Clientes Prueba</title>
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- ✅ Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: #000;
-      color: #fff;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      overflow-x: hidden;
+    :root {
+      --fucsia: #ff385c;
+      --blanco: #fff;
+      --negro: #000;
     }
 
-    section.word {
-      height: 100vh;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--blanco);
+      color: var(--negro);
+      margin: 0;
+    }
+
+    /* ✅ Placeholder hero para probar scroll */
+    .hero {
+      height: 60vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
+      background: var(--fucsia);
+      color: var(--blanco);
+      font-size: 2rem;
+      font-weight: 600;
     }
 
-    section.word h1 {
-      font-size: 16vw; /* Más chico para que no se corte */
-      font-weight: 900;
-      letter-spacing: -3px;
-      text-transform: uppercase;
-      line-height: 0.9;
-      text-align: center;
-      white-space: nowrap;
-    }
+
   </style>
 </head>
 <body>
 
-  <section class="word"><h1>INCONFORMISTAS</h1></section>
-  <section class="word"><h1>CREADORES</h1></section>
-  <section class="word"><h1>HOLACRÁTICOS</h1></section>
-  <section class="word"><h1>REBELS</h1></section>
-  <section class="word"><h1>MAVERIX</h1></section>
+  <section class="hero">
+    Sección Hero (Scroll hacia abajo)
+  </section>
 
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
+  <section class="clientes-section">
+    <h2 class="clientes-title"><span>+20</span> EMPRESAS CONFÍAN EN NOSOTROS</h2>
+    <div class="logos-grid">
+      <img src="/assets/images/naranja.png" alt="Naranja X">
+      <img src="/assets/images/reba.png" alt="Reba">
+      <img src="/assets/images/ultra.png" alt="Ultra">
+      <img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol">
+      <img src="/assets/images/creditia.png" alt="Creditia">
+      <img src="/assets/images/galicia.png" alt="Galicia">
+      <img src="/assets/images/uala.png" alt="Ualá">
+    </div>
+  </section>
 
-    gsap.utils.toArray("section.word").forEach((section) => {
-      gsap.fromTo(section.querySelector("h1"),
-        { opacity: 0, y: 200 },
-        {
-          opacity: 1,
-          y: 0,
-          scrollTrigger: {
-            trigger: section,
-            start: "top center",
-            end: "bottom center",
-            scrub: true,
-            pin: true,
-            pinSpacing: false,
-          }
-        }
-      );
-    });
-  </script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ✅ Animación de logos: fade + blur + desplazamiento
+ 
+</script>
 
 </body>
 </html>
