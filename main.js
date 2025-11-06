@@ -116,22 +116,23 @@ gsap.from(".client-card img", {
 /* ─────────────────────────────────────────────
  ✅ MARQUEE INFINITO DE CLIENTES (con velocidad dinámica)
 ────────────────────────────────────────────── */
+// ✅ MARQUEE INFINITO DINÁMICO
 let marqueeSpeed = 50;
-const marquee = gsap.to(".marquee__inner", {
+const marqueeLoop = gsap.to(".marquee__inner", {
   xPercent: -50,
   repeat: -1,
   ease: "none",
-  duration: marqueeSpeed,
+  duration: marqueeSpeed
 });
 
 ScrollTrigger.create({
-  trigger: ".mx-clients-marquee",
+  trigger: ".mx-clients-section",
   start: "top bottom",
   end: "bottom top",
   scrub: 1,
   onUpdate: (self) => {
-    let scrollVel = Math.abs(self.getVelocity()) / 500;
-    marquee.timeScale(1 + scrollVel);
+    let vel = Math.abs(self.getVelocity()) / 500;
+    marqueeLoop.timeScale(1 + vel);
   }
 });
 

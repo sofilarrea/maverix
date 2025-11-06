@@ -236,36 +236,66 @@ body {
     bottom: 25px;
   }
 }
-/* clientes */
-.mx-clients-marquee {
-  background: #ffffff;
-  padding: 3rem 0;
-  overflow: hidden;
+/* 🎯 CLIENTES SECCIÓN */
+.mx-clients-section {
+  background: #fff;
+  text-align: center;
+  padding: 6rem 0 4rem;
+  color: #000;
+  position: relative;
 }
 
-.marquee {
-  display: flex;
-  align-items: center;
+.mx-clients-title {
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.mx-clients-title span {
+  color: var(--fucsia);
+}
+
+/* Línea animada debajo del título */
+.mx-title-line {
+  height: 3px;
+  width: 0;
+  margin: 0 auto 2.5rem;
+  background: var(--fucsia);
+  animation: lineGrow 1.3s ease forwards;
+}
+
+@keyframes lineGrow {
+  to { width: 140px; }
+}
+
+/* 🎞 Marquee */
+.mx-clients-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 1rem 0;
 }
 
 .marquee__inner {
   display: flex;
   gap: 5rem;
-  white-space: nowrap;
   will-change: transform;
 }
 
 .marquee__inner img {
   height: 70px;
-  opacity: 0.7;
-  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+  filter: grayscale(100%) brightness(0.8);
+  opacity: 0.8;
+  transition: all 0.4s ease;
 }
 
 .marquee__inner img:hover {
-  transform: scale(1.3);
-  filter: grayscale(0%);
+  filter: grayscale(0) brightness(1);
   opacity: 1;
+  transform: scale(1.15);
 }
+
 
 /* CONTENEDOR COMPLETO CENTRADO */
 #mx-words {
@@ -285,7 +315,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   z-index: 1;
 }
 
