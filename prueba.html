@@ -1,71 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clientes Prueba</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test Números Animados (sin GSAP)</title>
 
-  <!-- ✅ Fuentes -->
+  <!-- Fuente (opcional) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
   <style>
-    :root {
-      --fucsia: #ff385c;
-      --blanco: #fff;
-      --negro: #000;
+    :root{
+      --fucsia:#ff385c;
+      --gris-card:#f6f6f6;
+      --text:#222;
+      --bg:#fff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg); color:var(--text);
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--blanco);
-      color: var(--negro);
-      margin: 0;
+    /* Hero para scrollear */
+    .hero{
+      height:50vh; display:flex; align-items:center; justify-content:center;
+      background:var(--fucsia); color:#fff; font-size:2rem; font-weight:700;
+      text-align:center; padding:2rem;
     }
 
-    /* ✅ Placeholder hero para probar scroll */
-    .hero {
-      height: 60vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: var(--fucsia);
-      color: var(--blanco);
-      font-size: 2rem;
-      font-weight: 600;
+    /* Sección de stats */
+    .mx-stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:2rem; padding:5rem 3rem; max-width:1200px; margin:0 auto;
     }
+    .mx-stats__item{
+      background:var(--gris-card);
+      padding:2.5rem; border-radius:16px; text-align:center;
+      transform:translateY(12px); opacity:0; transition:opacity .5s ease, transform .5s ease;
+    }
+    .mx-stats__item.is-visible{
+      opacity:1; transform:translateY(0);
+    }
+    .mx-stats__item h3{
+      font-size:2.6rem; font-weight:700; color:var(--fucsia); margin-bottom:.5rem;
+    }
+    .mx-stats__item p{ font-size:1rem; font-weight:500; line-height:1.4 }
 
-
+    @media (max-width:480px){
+      .mx-stats{ padding:3.5rem 1.25rem }
+      .mx-stats__item{ padding:2rem }
+      .mx-stats__item h3{ font-size:2.2rem }
+    }
   </style>
 </head>
 <body>
 
-  <section class="hero">
-    Sección Hero (Scroll hacia abajo)
-  </section>
+  <section class="hero">Hero de prueba — scrollea ↓</section>
 
-  <section class="clientes-section">
-    <h2 class="clientes-title"><span>+20</span> EMPRESAS CONFÍAN EN NOSOTROS</h2>
-    <div class="logos-grid">
-      <img src="/assets/images/naranja.png" alt="Naranja X">
-      <img src="/assets/images/reba.png" alt="Reba">
-      <img src="/assets/images/ultra.png" alt="Ultra">
-      <img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol">
-      <img src="/assets/images/creditia.png" alt="Creditia">
-      <img src="/assets/images/galicia.png" alt="Galicia">
-      <img src="/assets/images/uala.png" alt="Ualá">
+  <section class="mx-stats" id="stats">
+    <div class="mx-stats__item">
+      <h3 class="count" data-value="12" data-suffix="">0</h3>
+      <p>años en la industria</p>
+    </div>
+    <div class="mx-stats__item">
+      <h3 class="count" data-value="100" data-prefix="+">0</h3>
+      <p>personas en nuestro equipo</p>
+    </div>
+    <div class="mx-stats__item">
+      <h3 class="count" data-value="95" data-suffix="%">0</h3>
+      <p>profesionales o estudiantes</p>
+    </div>
+    <div class="mx-stats__item">
+      <h3 class="count" data-value="8" data-suffix="%">0</h3>
+      <p>rotación anual</p>
     </div>
   </section>
 
-<script>
-  gsap.registerPlugin(ScrollTrigger);
+  <script>
+    // Utilidad: interpolación con easing (suave)
+    function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
 
-  // ✅ Animación de logos: fade + blur + desplazamiento
- 
-</script>
+    // Anima un número desde 0 hasta target
+    function animateNumber(el, target, {duration=1800, decimals=0, prefix="", suffix=""} = {}){
+      const start = performance.now();
+      function frame(now){
+        const p = Math.min(1, (now - start) / duration);
+        const eased = easeOutCubic(p);
+        const current = (target * eased);
+        el.textContent = prefix + current.toFixed(decimals) + suffix;
+        if(p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
 
+    // Observer para tarjetas (fade-in) y números
+    const itemObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const card = entry.target;
+          card.classList.add('is-visible');
+
+          const numEl = card.querySelector('.count');
+          if(numEl && !numEl.dataset.done){
+            const value = parseFloat(numEl.dataset.value || "0");
+            const decimals = parseInt(numEl.dataset.decimals || "0", 10);
+            const prefix = numEl.dataset.prefix || "";
+            const suffix = numEl.dataset.suffix || "";
+            const duration = parseInt(numEl.dataset.duration || "1800", 10);
+            animateNumber(numEl, value, {duration, decimals, prefix, suffix});
+            numEl.dataset.done = "1"; // evita repetir animación
+          }
+
+          itemObserver.unobserve(card);
+        }
+      });
+    },{
+      threshold: 0.35
+    });
+
+    document.querySelectorAll('.mx-stats__item').forEach(el => itemObserver.observe(el));
+  </script>
 </body>
 </html>

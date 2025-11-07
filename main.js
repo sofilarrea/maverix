@@ -53,21 +53,10 @@ gsap.to(".hero", {
     scrub: true
   },
   scale: 1.1,
-  opacity: 0.3
+ 
 });
 
-// ✅ Logo del Hero sube al navbar
-gsap.to(".hero__cta", {
-  scrollTrigger: {
-    trigger: ".hero",
-    start: "top top",
-    end: "bottom top",
-    scrub: true
-  },
-  y: -100,
-  scale: 0.5,
-  opacity: 0.6
-});
+
 
 // ✅ Título del HERO se mueve suavemente lateral
 gsap.to(".hero__title", {
