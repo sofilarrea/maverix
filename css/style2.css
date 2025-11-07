@@ -243,7 +243,7 @@ body {
       min-height: 100vh;
       padding: 5rem 2rem;
       position: relative;
-      background: radial-gradient(circle at var(--x, 50%) var(--y,50%), rgba(255,56,92,0.08), transparent 60%);
+      background:white;
       transition: background 0.2s ease-out;
       text-align: center;
     }
@@ -283,7 +283,9 @@ body {
       filter: drop-shadow(0 0 12px rgba(255,56,92,0.5));
     }
 
-
+#creditia{
+  width: 100px;
+}
 /* CONTENEDOR COMPLETO CENTRADO */
 #mx-words {
   background: var(--mx-fg);
@@ -355,18 +357,6 @@ body {
     transition: all 0.3s ease;
   cursor: default;
 }
-    /* ✅ HERO SIMPLE PARA TEST */
-    .hero {
-      height: 60vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: var(--fucsia);
-      color: var(--blanco);
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
 
     /* ✅ SECCIÓN DE CLIENTES ESTILO MAVERIX + 3D + FONDO OSCURO */
     .mx-clients-3d {
