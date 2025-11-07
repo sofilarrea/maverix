@@ -105,24 +105,25 @@ gsap.from(".client-card img", {
 /* ─────────────────────────────────────────────
  ✅ MARQUEE INFINITO DE CLIENTES (con velocidad dinámica)
 ────────────────────────────────────────────── */
- gsap.fromTo(".logos-grid img",
-    { opacity: 0, y: 50, filter: "blur(8px)" },
-    {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0)",
-      stagger: 0.15,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".clientes-section",
-        start: "top 75%",
-      }
-    }
-  );
+// ✅ MARQUEE INFINITO DINÁMICO
+let marqueeSpeed = 50;
+const marqueeLoop = gsap.to(".marquee__inner", {
+  xPercent: -50,
+  repeat: -1,
+  ease: "none",
+  duration: marqueeSpeed
+});
 
-  // ✅ Luz que sigue al mouse
-
+ScrollTrigger.create({
+  trigger: ".mx-clients-section",
+  start: "top bottom",
+  end: "bottom top",
+  scrub: 1,
+  onUpdate: (self) => {
+    let vel = Math.abs(self.getVelocity()) / 500;
+    marqueeLoop.timeScale(1 + vel);
+  }
+});
 
 /* ─────────────────────────────────────────────
  ✅ SECCIÓN PALABRAS MAVERIX ESTILO PLUS X

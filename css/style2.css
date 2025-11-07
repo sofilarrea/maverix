@@ -237,55 +237,66 @@ body {
   }
 }
 /* 🎯 CLIENTES SECCIÓN */
-
-    /* ✅ Sección clientes */
-    .clientes-section {
-      min-height: 100vh;
-      padding: 5rem 2rem;
-      position: relative;
-      background:white;
-      transition: background 0.2s ease-out;
-      text-align: center;
-    }
-
-    .clientes-title {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 600;
-      margin-bottom: 3rem;
-    }
-
-    .clientes-title span {
-      color: var(--fucsia);
-      font-weight: 700;
-    }
-
-    /* ✅ Grilla de logos */
-    .logos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 3rem;
-      align-items: center;
-      justify-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .logos-grid img {
-      width: 150px;
-      object-fit: contain;
-      transition: transform 0.4s ease, filter 0.4s ease;
-      filter: drop-shadow(0 3px 10px rgba(0,0,0,0.1));
-      opacity: 0; /* para animación */
-    }
-
-    .logos-grid img:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 12px rgba(255,56,92,0.5));
-    }
-
-#creditia{
-  width: 100px;
+.mx-clients-section {
+  background: #fff;
+  text-align: center;
+  padding: 6rem 0 4rem;
+  color: #000;
+  position: relative;
 }
+
+.mx-clients-title {
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.mx-clients-title span {
+  color: var(--fucsia);
+}
+
+/* Línea animada debajo del título */
+.mx-title-line {
+  height: 3px;
+  width: 0;
+  margin: 0 auto 2.5rem;
+  background: var(--fucsia);
+  animation: lineGrow 1.3s ease forwards;
+}
+
+@keyframes lineGrow {
+  to { width: 140px; }
+}
+
+/* 🎞 Marquee */
+.mx-clients-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 1rem 0;
+}
+
+.marquee__inner {
+  display: flex;
+  gap: 5rem;
+  will-change: transform;
+}
+
+.marquee__inner img {
+  height: 70px;
+  filter: grayscale(100%) brightness(0.8);
+  opacity: 0.8;
+  transition: all 0.4s ease;
+}
+
+.marquee__inner img:hover {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+
 /* CONTENEDOR COMPLETO CENTRADO */
 #mx-words {
   background: var(--mx-fg);
