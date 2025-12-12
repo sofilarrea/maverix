@@ -2,125 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <title>Maverix – Cobranzas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maverix</title>
-
-  <!-- ✅ Fuentes y CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style2.css">
-
-  <!-- ✅ GSAP y ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="/css/style2.css" />
 </head>
 
 <body>
 
-<!-- ✅ NAVBAR -->
-<header class="mx-navbar">
-  <div class="mx-navbar__logo">
-    <img src="/assets/images/logo.png" alt="Maverix">
-  </div>
-  <nav class="mx-navbar__links">
-    <a href="#hero">Inicio</a>
-    <a href="#mx-words">Maverix</a>
-    <a href="#clientes">Clientes</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-</header>
+ 
+  <section class="mx-heroBD" id="inicio">
+    <div class="mx-heroBD__stage">
 
+      <!-- BLOQUE IZQUIERDO (ARRIBA/IZQUIERDA) -->
+      <h1 class="mx-heroBD__left">
+        AGILIDAD Y<br>CONSISTENCIA
+      </h1>
 
+      <!-- BLOQUE DERECHO (ABAJO/DERECHA) -->
+      <h2 class="mx-heroBD__right">
+        EN TU RECUPERO<br>DE ACTIVOS
+      </h2>
 
-<!-- ✅ PRELOADER -->
-<div id="loader">
-  <div id="preloader-bg"></div>
+      <!-- CTA (LO VEMOS DESPUÉS) -->
+      <!--
+      <div class="mx-heroBD__footer">
+        <p class="mx-heroBD__desc">
+          Equipos autónomos enfocados en tu negocio,
+          potenciados con la mejor tecnología de la industria.
+        </p>
 
-  <div id="preloader-box">
-    <img src="/assets/images/logo.png" alt="Logo Maverix" class="preloader-logo">
-  </div>
+        <a class="mx-heroBD__cta" href="#contacto">DESCUBRÍ CÓMO LO HACEMOS</a>
+      </div>
+      -->
 
-  <div id="white-overlay"></div>
-</div>
-
-<!-- ✅ HERO -->
-<section id="hero" class="hero">
-  <div class="hero__top">
-    <h1 class="hero__big">AGILIDAD Y</h1>
-    <h1 class="hero__big">CONSISTENCIA</h1>
-  </div>
-
-  <div class="hero__bottom">
-    <h1 class="hero__big">EN TU</h1>
-    <h1 class="hero__big">RECUPERO DE</h1>
-    <h1 class="hero__big">ACTIVOS</h1>
-  </div>
-
-  <div class="scroll-icon">↓</div>
-</section>
-
-<!-- ✅ PALABRAS TIPO PLUS-X -->
-<section id="mx-words">
-  <div class="mx-panel" data-word="INCONFORMISTAS"></div>
-  <div class="mx-panel" data-word="CLIENTECÉNTRICOS"></div>
-  <div class="mx-panel" data-word="INNOVADORES"></div>
-  <div class="mx-panel" data-word="HOLOCRÁTICOS"></div>
-</section>
-
-<!-- ✅ CLIENTES MARQUEE -->
-
-  <section class="clientes-section">
-    <h2 class="clientes-title"><span>+20</span> EMPRESAS CONFÍAN EN NOSOTROS</h2>
-    <div class="logos-grid">
-      <img src="/assets/images/naranja.png" alt="Naranja X">
-      <img src="/assets/images/logo-clientes.jpeg" alt="Reba">
-      <img src="/assets/images/ultra.png" alt="Ultra">
-      <img src="/assets/images/banco-de-sol.jpg" alt="Banco del Sol">
-      <img id="creditia" src="/assets/images/creditia.png" alt="Creditia">
-      <img src="/assets/images/galicia.png" alt="Galicia">
-      <img src="/assets/images/uala.png" alt="Ualá">
     </div>
   </section>
-<!-- ✅ GSAP y ScrollTrigger -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<script src="/main.js"></script> 
-
-<!-- ✅ Nuevo script de animación -->
-<<script>
-gsap.registerPlugin(ScrollTrigger);
-
-// 1. Ocultar navbar al inicio
-const navbar = document.querySelector('.nav');
-navbar.classList.add("hidden");
-
-// 2. Mostrar navbar cuando salís del hero
-ScrollTrigger.create({
-  trigger: "#hero",
-  start: "bottom top", // cuando el hero termina
-  onEnter: () => {
-    navbar.classList.remove("hidden");
-  },
-  onLeaveBack: () => {
-    navbar.classList.add("hidden");
-  }
-});
-
-// 3. Mover el logo del hero hacia la navbar
-gsap.to("#heroLogo", {
-  scrollTrigger: {
-    trigger: "#hero",
-    start: "bottom top",
-    scrub: true
-  },
-  y: -200,
-  scale: 0.4,
-  opacity: 0
-});
-</script>
-
-
 </body>
 </html>
 
+  <!-- JS DE NAVBAR + FLOAT + EFECTOS -->
+  <script src="script.js"></script>
+
+</body>
+</html>

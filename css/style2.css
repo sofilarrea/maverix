@@ -1,425 +1,172 @@
-/* 🎯 RESET GLOBAL */
-* {
-  margin: 0;
-  padding: 0;
+/* =========================================================
+   BASE
+   ========================================================= */
+
+:root{
+  --mx-accent: #ff385c;
+}
+
+*{
   box-sizing: border-box;
 }
 
-:root {
-  --fucsia: #ff385c;
-  --lila: #852eff;
-  --turquesa: #2ccdba;
-  --negro: #000;
-  --gris: #777;
-  --blanco: #fff;
-  --font-main: "Poppins", sans-serif;
-  --font-bold: "Kollektif-Bold", sans-serif;
-   --mx-bg: #000;               /* fondo */
-  --mx-fg: #fff;               /* texto */
+html, body{
+  height: 100%;
 }
 
-/* GLOBAL */
-body {
-  font-family: var(--font-main);
-  background-color: var(--blanco);
-  color: var(--negro);
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #000;
 }
 
-/* 🔹 NAVBAR INTELIGENTE / SMART NAV */
-/* Navbar inicial oculta arriba del Hero */
-.mx-navbar {
-  position: fixed;
-  top: -100px;          /* 🔹 OCULTA AL INICIO */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1200px;
-  height: 70px;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 40px;
+/* =========================================================
+   HERO "BEYOND DESIGN" (15TH VIBE)
+   Fondo fucsia, letras blancas, FULL BLEED sin márgenes
+   ========================================================= */
+
+.mx-heroBD{
+  background: var(--mx-accent);
+  color: #fff;
+
+  /* FULL BLEED REAL incluso dentro de contenedores */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  /* poco padding general */
+  padding: 20px 0 20px;
+}
+
+/* escenario */
+.mx-heroBD__stage{
+  position: relative;
+  width: 100%;
+  height: 100vh; /* clave para que haya MUCHO aire */
+}
+
+/* bloque izquierdo arriba/izquierda */
+.mx-heroBD__left{
+  position: absolute;
+  left: 0;
+  top: 4vh;
+
+  margin: 0;
+  padding-left: 1.4vw; /* casi sin margen */
+
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.86;
+
+  font-size: clamp(54px, 9.6vw, 170px);
+}
+
+/* bloque derecho abajo/derecha */
+.mx-heroBD__right{
+  position: absolute;
+  right: 0;
+  bottom: 6vh;
+
+  margin: 0;
+  padding-right: 1.4vw; /* casi sin margen */
+
+  text-align: right;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.86;
+
+  font-size: clamp(54px, 9.6vw, 170px);
+}
+
+/* =========================================================
+   CTA (DESPUÉS) — si lo activás en HTML
+   ========================================================= */
+
+.mx-heroBD__footer{
+  position: absolute;
+  left: 1.4vw;
+  right: 1.4vw;
+  bottom: 0;
+
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  padding: 0 2rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.07);
-  z-index: 1000;
-  transition: top 0.5s ease, opacity 0.5s ease;
+  gap: 18px;
+
+  border-top: 1px solid rgba(255,255,255,0.35);
+  padding-top: 14px;
+  padding-bottom: 10px;
 }
 
-/* Cuando tiene clase .show → aparece */
-.mx-navbar.show {
-  top: 20px;            /* 🔹 Aparece visible */
+.mx-heroBD__desc{
+  margin: 0;
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+.mx-heroBD__cta{
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 800;
+
+  padding: 10px 0;
+  border-bottom: 2px solid rgba(255,255,255,0.85);
+
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.mx-heroBD__cta:hover{
+  transform: translateY(-2px);
   opacity: 1;
 }
 
-/* Cuando baja y querés ocultarla */
-.mx-navbar.hide {
-  top: -100px;
-  opacity: 0;
-}
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
-/* Logo */
-.mx-navbar__logo img {
-  height: 40px;
-  filter: brightness(0) saturate(100%) invert(27%) sepia(94%) saturate(3030%) hue-rotate(330deg);
-}
-
-/* Enlaces */
-.mx-navbar__links {
-  display: flex;
-  gap: 2rem;
-}
-
-.mx-navbar__links a {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #000;
-  position: relative;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-}
-
-.mx-navbar__links a:hover {
-  color: var(--fucsia);
-}
-
-.mx-navbar__links a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--fucsia);
-  transition: width 0.3s ease;
-}
-
-.mx-navbar__links a:hover::after {
-  width: 100%;
-}
-
-/* Cuando se oculta al hacer scroll ↓ */
-.mx-navbar.hide {
-  transform: translate(-50%, -120%);
-  opacity: 0;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .mx-navbar {
-    height: 60px;
-    padding: 0 1.5rem;
-  }
-  .mx-navbar__links {
-    gap: 1rem;
-  }
-  .mx-navbar__links a {
-    font-size: 0.8rem;
-  }
-}
-
-/* 🎬 PRELOADER */
-/* ✅ PRELOADER centrado con logo */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: #ffffff; /* Fondo blanco (o fucsia si querés) */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  overflow: hidden;
-}
-
-/* ✅ Logo centrado correctamente */
-#loader img {
-  width: 480px;  /* Ajustá según tamaño deseado */
-  height: auto;
-  display: block;
-  filter: brightness(0) saturate(100%)
-          invert(27%) sepia(94%) saturate(3030%)
-          hue-rotate(330deg) brightness(102%) contrast(101%);
-}
-
-
-/* 🎯 Sección Clientes Maximalista */
-.hero {
-  height: 100vh;
-  width: 100%;
-  background: var(--fucsia); /* Fondo fucsia pedido */
-  color: var(--blanco);
-  display: grid;
-  grid-template-rows: 1fr auto 1fr; /* Top / Logo / Bottom */
-  align-items: center;
-  justify-items: stretch;
-  position: relative;
-  overflow: hidden;
-}
-
-/* ✅ TEXTO MAXIMALISTA */
-.hero__big {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: clamp(48px, 10vw, 140px); /* Ajustado para que entre 'ACTIVOS' */
-  line-height: 1.05; /* Más alto para que no se corte */
-  letter-spacing: -0.03em;
-  white-space: nowrap;
-  margin: 0;
-  padding: 0;
-}
-
-/* Parte superior del texto */
-.hero__top {
-  align-self: end;
-  text-align: left;
-}
-
-/* Parte inferior del texto */
-.hero__bottom {
-  align-self: start;
-  text-align: right;
-}
-
-/* ✅ LOGO EN FORMATO PILL TIPO PLUS X */
-/* LOGO MAVERIX estilo pastilla centrado en el hero */
-.hero__cta {
-  position: absolute;
-  top: 50%;               /* Altura entre el bloque superior e inferior del texto */
-  left: 50%;
-  transform: translate(-50%, -50%);  /* Centrado real */
-  z-index: 10;
-}
-
-
-.hero__cta img {
-  height: 28px;           /* Ajustá si lo querés más grande o chico */
-  width: auto;
-  filter: brightness(0) invert(1); /* Convierte el logo a blanco si es oscuro */
-}
-
-
-/* ✅ ICONO SCROLL ABAJO */
-.scroll-icon {
-  position: absolute;
-  bottom: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  animation: scrollBounce 1.5s infinite;
-  color: var(--blanco);
-}
-
-@keyframes scrollBounce {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -12px); }
-}
-
-/* ✅ RESPONSIVE MOBILE */
-@media (max-width: 768px) {
-  .hero {
-    padding: 2vh 3vw;
+@media (max-width: 900px){
+  .mx-heroBD__stage{
+    height: auto;
+    min-height: 100vh;
+    padding-top: 48px;
+    padding-bottom: 24px;
   }
 
-  .hero__big {
-    font-size: 14vw;
-    line-height: 1;
+  .mx-heroBD__left,
+  .mx-heroBD__right{
+    position: static;
+    padding: 0 16px;
+    text-align: left;
+    line-height: 0.92;
+    font-size: clamp(44px, 12.5vw, 92px);
   }
 
-  .hero__cta img {
-    height: 22px;
+  .mx-heroBD__right{
+    margin-top: 12px;
+    text-align: left;
   }
 
-  .scroll-icon {
-    font-size: 1.5rem;
-    bottom: 25px;
+  .mx-heroBD__footer{
+    position: static;
+    margin-top: 24px;
+    padding: 14px 16px 0;
+    flex-direction: column;
+    align-items: flex-start;
   }
-}
-/* 🎯 CLIENTES SECCIÓN */
 
-    /* ✅ Sección clientes */
-    .clientes-section {
-      min-height: 100vh;
-      padding: 5rem 2rem;
-      position: relative;
-      background:white;
-      transition: background 0.2s ease-out;
-      text-align: center;
-    }
-
-    .clientes-title {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 600;
-      margin-bottom: 3rem;
-    }
-
-    .clientes-title span {
-      color: var(--fucsia);
-      font-weight: 700;
-    }
-
-    /* ✅ Grilla de logos */
-    .logos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 3rem;
-      align-items: center;
-      justify-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .logos-grid img {
-      width: 150px;
-      object-fit: contain;
-      transition: transform 0.4s ease, filter 0.4s ease;
-      filter: drop-shadow(0 3px 10px rgba(0,0,0,0.1));
-      opacity: 0; /* para animación */
-    }
-
-    .logos-grid img:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 12px rgba(255,56,92,0.5));
-    }
-
-#creditia{
-  width: 100px;
-}
-/* CONTENEDOR COMPLETO CENTRADO */
-#mx-words {
-  background: var(--mx-fg);
-  color: var(--mx-fg);
-}
-/* Sección de palabras con efecto de fondo animado */
-#mx-words {
-  position: relative;
-  background: #000; /* Negro o el color que uses en tu identidad */
-  overflow: hidden;
-}
-
-/* Canvas del fondo (partículas + líneas) */
-#mx-words canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  z-index: 1;
-}
-
-/* Las palabras van por delante del canvas */
-#mx-words .mx-panel,
-#mx-words .mx-word {
-  position: relative;
-  z-index: 2;
-}
-
-.mx-panel {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  isolation: isolate;
-}
-
-.mx-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: var(--mx-logo);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: min(55vw, 900px);
-  opacity: 0.06;
-  filter: saturate(0) contrast(120%);
-  pointer-events: none;
-}
-
-.mx-word {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-weight: 900;
-  font-size: clamp(2rem, 18vw, 5rem);
-  text-transform: uppercase;
-  letter-spacing: -0.04em;
-  line-height: 0.85;
-  text-align: center;
-  z-index: 3;
-
-  /* Estado inicial (JS lo anima) */
-  opacity: 0;
-  filter: blur(6px);
-  transform: scale(1.15);
-}
-.special-word .mx-word:hover {
-  color: var(--lila);
-    transition: all 0.3s ease;
-  cursor: default;
-}
-
-    /* ✅ SECCIÓN DE CLIENTES ESTILO MAVERIX + 3D + FONDO OSCURO */
-    .mx-clients-3d {
-      background: #000; /* fondo negro */
-      color: var(--blanco);
-      padding: 6rem 0;
-      overflow: hidden;
-      perspective: 900px; /* profundidad */
-    }
-
-    /* ✅ Título */
-    .mx-clients-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .mx-clients-title h2 {
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 600;
-      color: var(--blanco);
-    }
-
-    .mx-clients-title span {
-      color: var(--fucsia);
-      font-weight: 700;
-    }
-
-    /* ✅ Contenedor del marquee */
-    .mx-clients-track {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .mx-clients-inner {
-      display: flex;
-      gap: 5rem;
-      animation: scroll-logos 25s linear infinite;
-      transform-style: preserve-3d;
-    }
-
-    .mx-clients-inner img {
-      height: 70px;
-      transition: all 0.4s ease;
-      transform: translateZ(0px);
-    }
-
-    .mx-clients-inner img:hover {
-      transform: translateZ(100px) scale(1.2);
-      opacity: 1;
-      filter: grayscale(0%) drop-shadow(0 0 15px var(--fucsia));
-    }
-
-    @keyframes scroll-logos {
-      from { transform: translateX(0) rotateY(0deg); }
-      to   { transform: translateX(-50%) rotateY(-5deg); }
-    }
-
-/* ✅ MOBILE NAVBAR *********************************************/
-@media screen and (max-width: 768px) {
-   .hero__big {
-    font-size: clamp(32px, 14vw, 90px);
-    line-height: 1.1;
-    white-space: normal;
+  .mx-heroBD__cta{
+    width: 100%;
   }
 }
