@@ -9,39 +9,74 @@
 
 <body>
 
- 
-  <section class="mx-heroBD" id="inicio">
+  <!-- NAVBAR AUTO COLOR -->
+  <header class="mx-navAuto" id="mxNavAuto">
+    <div class="mx-navAuto__inner">
+
+      <a href="#inicio" class="mx-navAuto__brand">
+        <img src="/assets/images/logo.png" alt="Maverix" class="mx-navAuto__logo">
+      </a>
+
+      <nav class="mx-navAuto__links" id="mxNavAutoLinks">
+        <a class="mx-navAuto__link" href="#inicio">Inicio</a>
+        <a class="mx-navAuto__link" href="#clientes">Clientes</a>
+        <a class="mx-navAuto__link" href="#servicios">Servicios</a>
+        <a class="mx-navAuto__link" href="#somos">Somos</a>
+        <a class="mx-navAuto__cta" href="#contacto">Hablemos</a>
+        <span class="mx-navAuto__indicator" id="mxNavAutoInd"></span>
+      </nav>
+
+      <button class="mx-navAuto__toggle" id="mxNavAutoToggle" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- HERO FUCSIA -->
+  <section class="mx-heroBD" id="inicio" data-nav="fuchsia">
     <div class="mx-heroBD__stage">
 
-      <!-- BLOQUE IZQUIERDO (ARRIBA/IZQUIERDA) -->
       <h1 class="mx-heroBD__left">
         AGILIDAD Y<br>CONSISTENCIA
       </h1>
 
-      <!-- BLOQUE DERECHO (ABAJO/DERECHA) -->
       <h2 class="mx-heroBD__right">
         EN TU RECUPERO<br>DE ACTIVOS
       </h2>
 
-      <!-- CTA (LO VEMOS DESPUÉS) -->
-      <!--
-      <div class="mx-heroBD__footer">
-        <p class="mx-heroBD__desc">
-          Equipos autónomos enfocados en tu negocio,
-          potenciados con la mejor tecnología de la industria.
-        </p>
-
-        <a class="mx-heroBD__cta" href="#contacto">DESCUBRÍ CÓMO LO HACEMOS</a>
-      </div>
-      -->
-
     </div>
   </section>
-</body>
-</html>
 
-  <!-- JS DE NAVBAR + FLOAT + EFECTOS -->
-  <script src="script.js"></script>
+  <!-- CLIENTES BLANCO -->
+  <section class="mx-clientsWhite mx-clientsWhite--twoCol" id="clientes" data-nav="white">
+    <div class="mx-clientsWhite__inner">
 
+      <div class="mx-clientsWhite__grid">
+
+        <header class="mx-clientsWhite__copy">
+          <h2 class="mx-clientsWhite__title">
+            Más de 20 clientes han confiado en nosotros.
+          </h2>
+          <p class="mx-clientsWhite__subtitle">
+            Trabajamos con bancos, fintechs y compañías que buscan
+            performance real en su recupero de activos.
+          </p>
+        </header>
+
+        <div class="mx-clientsWhite__logos">
+          <img src="/assets/images/naranja.png" alt="Naranja X">
+          <img src="/assets/images/logo-clientes.jpeg" alt="Banco Comafi">
+          <img src="/assets/images/ultra.png" alt="Ultra">
+          <img src="/assets/images/credicuotas.jpeg" alt="Reba">
+          <img src="/assets/images/uala.png" alt="Ualá">
+          <img src="/assets/images/galicia.png" alt="Banco Galicia">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="/main.js"></script>
 </body>
 </html>
