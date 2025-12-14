@@ -1,10 +1,9 @@
-// /js/navbar-auto.js
-
 (() => {
   const nav = document.getElementById('mxNavAuto');
   if (!nav) return;
 
-  // THEMES (fucsia sobre hero, blanco sobre secciones blancas)
+  const hero = document.getElementById('inicio');
+
   const NAV_THEMES = {
     fuchsia: {
       bg: 'rgba(255,56,92,0.98)',
@@ -14,12 +13,7 @@
       hover: '#ffffff',
       indicator: '#ffffff',
       logoFilter: 'brightness(0) invert(1)',
-      cta: {
-        border: 'rgba(255,255,255,.95)',
-        fg: '#ffffff',
-        hoverBg: '#ffffff',
-        hoverFg: '#ff385c'
-      }
+      cta: { border:'#ffffff', fg:'#ffffff', hoverBg:'#ffffff', hoverFg:'#ff385c' }
     },
     white: {
       bg: 'rgba(255,255,255,0.92)',
@@ -29,12 +23,7 @@
       hover: '#ff385c',
       indicator: '#ff385c',
       logoFilter: 'none',
-      cta: {
-        border: '#ff385c',
-        fg: '#ff385c',
-        hoverBg: '#ff385c',
-        hoverFg: '#ffffff'
-      }
+      cta: { border:'#ff385c', fg:'#ff385c', hoverBg:'#ff385c', hoverFg:'#ffffff' }
     }
   };
 
@@ -55,31 +44,41 @@
     nav.style.setProperty('--nav-cta-hover-fg', t.cta.hoverFg);
   }
 
-  function probeY() {
-    const h = nav.getBoundingClientRect().height;
-    return Math.max(1, Math.round(h + 2));
-  }
-
   function sectionUnderNav() {
-    const y = probeY();
-    const el = document.elementFromPoint(Math.min(window.innerWidth / 2, 340), y);
+    const y = nav.getBoundingClientRect().height + 2;
+    const el = document.elementFromPoint(window.innerWidth / 2, y);
     return el?.closest('[data-nav]') || null;
   }
 
+  // Mostrar navbar SOLO después del hero
+  function syncVisibility() {
+    if (!hero) {
+      // fallback: aparece a los 40px
+      nav.classList.toggle('is-visible', window.scrollY > 40);
+      return;
+    }
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    nav.classList.toggle('is-visible', window.scrollY > heroBottom - 80);
+  }
+
   let raf = 0;
-  function syncTheme() {
+  function syncAll() {
     cancelAnimationFrame(raf);
     raf = requestAnimationFrame(() => {
-      const sec = sectionUnderNav();
-      const theme = sec?.getAttribute('data-nav') || 'white';
-      applyTheme(theme);
+      syncVisibility();
+
+      // Solo tiene sentido actualizar color cuando está visible
+      if (nav.classList.contains('is-visible')) {
+        const sec = sectionUnderNav();
+        applyTheme(sec?.dataset.nav || 'white');
+      }
     });
   }
 
-  // Underline indicator
+  // Indicator
   function initIndicator() {
     const wrap = document.getElementById('mxNavAutoLinks');
-    const ind = document.getElementById('mxNavAutoInd');
+    const ind  = document.getElementById('mxNavAutoInd');
     if (!wrap || !ind) return;
 
     const links = [...wrap.querySelectorAll('.mx-navAuto__link')];
@@ -110,11 +109,11 @@
   }
 
   // Init
-  syncTheme();
+  applyTheme('fuchsia'); // por si aparece justo al final del hero
+  syncAll();
   initIndicator();
   initMobile();
 
-  window.addEventListener('scroll', syncTheme, { passive: true });
-  window.addEventListener('resize', syncTheme);
-
+  window.addEventListener('scroll', syncAll, { passive: true });
+  window.addEventListener('resize', syncAll);
 })();

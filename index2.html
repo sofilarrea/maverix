@@ -2,81 +2,139 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Maverix – Cobranzas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maverix – Nuevo diseño lila</title>
   <link rel="stylesheet" href="/css/style2.css" />
 </head>
-
 <body>
 
-  <!-- NAVBAR AUTO COLOR -->
-  <header class="mx-navAuto" id="mxNavAuto">
-    <div class="mx-navAuto__inner">
-
-      <a href="#inicio" class="mx-navAuto__brand">
-        <img src="/assets/images/logo.png" alt="Maverix" class="mx-navAuto__logo">
+  <!-- NAVBAR glass -->
+  <header class="mx2-nav">
+    <div class="mx2-nav__inner">
+      <a href="/" class="mx2-nav__logo">
+        <img src="/assets/images/logo.png" alt="Maverix" />
       </a>
 
-      <nav class="mx-navAuto__links" id="mxNavAutoLinks">
-        <a class="mx-navAuto__link" href="#inicio">Inicio</a>
-        <a class="mx-navAuto__link" href="#clientes">Clientes</a>
-        <a class="mx-navAuto__link" href="#servicios">Servicios</a>
-        <a class="mx-navAuto__link" href="#somos">Somos</a>
-        <a class="mx-navAuto__cta" href="#contacto">Hablemos</a>
-        <span class="mx-navAuto__indicator" id="mxNavAutoInd"></span>
+      <nav class="mx2-nav__links" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#metodo">Método</a>
+        <a href="#casos">Casos</a>
+        <a href="#nosotros">Nosotros</a>
       </nav>
 
-      <button class="mx-navAuto__toggle" id="mxNavAutoToggle" aria-label="Abrir menú">
-        <span></span><span></span>
-      </button>
-
+      <a class="mx2-nav__cta" href="#contacto">Hablemos</a>
     </div>
   </header>
 
-  <!-- HERO FUCSIA -->
-  <section class="mx-heroBD" id="inicio" data-nav="fuchsia">
-    <div class="mx-heroBD__stage">
+  <!-- HERO -->
+  <main>
+    <section class="mx2-hero" id="top">
+      <div class="mx2-hero__bg">
+        <div class="mx2-orb mx2-orb--a"></div>
+        <div class="mx2-orb mx2-orb--b"></div>
+        <div class="mx2-orb mx2-orb--c"></div>
+        <div class="mx2-grid"></div>
+      </div>
 
-      <h1 class="mx-heroBD__left">
-        AGILIDAD Y<br>CONSISTENCIA
-      </h1>
+      <div class="mx2-hero__inner">
+        <div class="mx2-hero__left">
 
-      <h2 class="mx-heroBD__right">
-        EN TU RECUPERO<br>DE ACTIVOS
-      </h2>
+          <div class="mx2-chiprow">
+            <span class="mx2-chip">B2B</span>
+            <span class="mx2-chip">Gestión integral</span>
+            <span class="mx2-chip">KPIs &amp; tableros</span>
+          </div>
 
-    </div>
-  </section>
+          <h1 class="mx2-title">
+            Agilidad y consistencia<br />
+            en tu recupero<br />
+            de activos.
+          </h1>
 
-  <!-- CLIENTES BLANCO -->
-  <section class="mx-clientsWhite mx-clientsWhite--twoCol" id="clientes" data-nav="white">
-    <div class="mx-clientsWhite__inner">
-
-      <div class="mx-clientsWhite__grid">
-
-        <header class="mx-clientsWhite__copy">
-          <h2 class="mx-clientsWhite__title">
-            Más de 20 clientes han confiado en nosotros.
-          </h2>
-          <p class="mx-clientsWhite__subtitle">
-            Trabajamos con bancos, fintechs y compañías que buscan
-            performance real en su recupero de activos.
+          <p class="mx2-sub">
+            Convertimos carteras complejas en flujos de cobro predecibles.
+            Estrategia, segmentación y ejecución con foco en resultados.
           </p>
-        </header>
 
-        <div class="mx-clientsWhite__logos">
-          <img src="/assets/images/naranja.png" alt="Naranja X">
-          <img src="/assets/images/logo-clientes.jpeg" alt="Banco Comafi">
-          <img src="/assets/images/ultra.png" alt="Ultra">
-          <img src="/assets/images/credicuotas.jpeg" alt="Reba">
-          <img src="/assets/images/uala.png" alt="Ualá">
-          <img src="/assets/images/galicia.png" alt="Banco Galicia">
+          <div class="mx2-actions">
+            <a class="mx2-btn mx2-btn--primary" href="#contacto">Agendar llamada ↗</a>
+            <a class="mx2-btn mx2-btn--ghost" href="#metodo">Ver metodología</a>
+          </div>
+
+          <div class="mx2-metrics">
+            <div class="mx2-metric">
+              <div class="mx2-metric__kpi">Aging</div>
+              <div class="mx2-metric__txt">Priorización por mora y riesgo</div>
+            </div>
+            <div class="mx2-metric">
+              <div class="mx2-metric__kpi">Playbooks</div>
+              <div class="mx2-metric__txt">Secuencias por segmento</div>
+            </div>
+            <div class="mx2-metric">
+              <div class="mx2-metric__kpi">Data</div>
+              <div class="mx2-metric__txt">Seguimiento y reporting</div>
+            </div>
+          </div>
+
         </div>
 
-      </div>
-    </div>
-  </section>
+        <aside class="mx2-hero__right" aria-label="Panel de cartera">
+          <div class="mx2-panel">
+            <div class="mx2-panel__top">
+              <div>
+                <div class="mx2-panel__label">Panel de cartera</div>
+                <div class="mx2-panel__big">Recupero</div>
+              </div>
+              <span class="mx2-badge">LIVE</span>
+            </div>
 
-  <script src="/main.js"></script>
+            <div class="mx2-panel__stat">
+              <div class="mx2-panel__value">+48%</div>
+              <div class="mx2-panel__desc">conversión de promesas a pago</div>
+            </div>
+
+            <div class="mx2-bars">
+              <div class="mx2-bar">
+                <span>0–30</span>
+                <i style="width:82%"></i>
+              </div>
+              <div class="mx2-bar">
+                <span>31–60</span>
+                <i style="width:64%"></i>
+              </div>
+              <div class="mx2-bar">
+                <span>61–90</span>
+                <i style="width:45%"></i>
+              </div>
+              <div class="mx2-bar">
+                <span>90+</span>
+                <i style="width:30%"></i>
+              </div>
+            </div>
+
+            <div class="mx2-mini">
+              <div class="mx2-mini__card">
+                <div class="mx2-mini__num">−35%</div>
+                <div class="mx2-mini__txt">días de mora promedio</div>
+              </div>
+              <div class="mx2-mini__card">
+                <div class="mx2-mini__num">+12%</div>
+                <div class="mx2-mini__txt">cobro en primer contacto</div>
+              </div>
+            </div>
+
+            <div class="mx2-panel__foot">
+              <span class="mx2-dot"></span>
+              <span>Segmentación dinámica · Alertas tempranas</span>
+            </div>
+          </div>
+
+          <div class="mx2-panel-ghost"></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
 </body>
 </html>
+
