@@ -253,3 +253,110 @@ body {
 .fucsia-text {
     color: var(--fucsia);
 }
+/**** Section: Definition *****/
+.dictionary-section {
+    padding: 15vh 5vw;
+    background: #000;
+    border-top: 1px solid rgba(255, 56, 92, 0.2);
+}
+
+.label {
+    font-family: var(--font-mono);
+    color: var(--fucsia);
+    font-size: 14px;
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.word {
+    font-size: 10vw;
+    line-height: 0.8;
+    margin-bottom: 40px;
+}
+
+.phonetic {
+    font-family: var(--font-mono);
+    font-size: 2vw;
+    color: #444;
+    font-style: italic;
+    vertical-align: middle;
+}
+
+.definition-text {
+    font-size: 4vw;
+    line-height: 1.1;
+    color: #888;
+    max-width: 80%;
+}
+
+.highlight {
+    color: #fff;
+    text-decoration: underline var(--fucsia);
+}
+
+/**** Section: Pillars *****/
+.pillars-section {
+    padding: 100px 0;
+    background: #000;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas limpias */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pillar-card {
+    padding: 60px 40px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100vh; /* Secciones altas para impacto */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.4s ease;
+}
+
+.pillar-card:last-child { border-right: none; }
+
+.pillar-card:hover {
+    background: #0a0a0a;
+}
+
+.num {
+    font-family: var(--font-mono);
+    color: var(--fucsia);
+    font-size: 18px;
+    display: block;
+    margin-bottom: 40px;
+}
+
+.pillar-card h3 {
+    font-size: 5vw;
+    line-height: 0.85;
+    text-transform: uppercase;
+}
+
+.pillar-body p {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.tag {
+    font-family: var(--font-mono);
+    color: var(--fucsia);
+    font-size: 12px;
+    border: 1px solid var(--fucsia);
+    padding: 5px 10px;
+    width: fit-content;
+}
+
+.outline-text {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #fff;
+}
+
+.fucsia-text { color: var(--fucsia); }

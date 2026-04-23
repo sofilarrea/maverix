@@ -95,3 +95,35 @@ gsap.from(".section-title", {
     duration: 1,
     ease: "power2.out"
 });
+/**** script.js: Scroll Animations *****/
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Animación para la Definición
+gsap.from(".entry > *", {
+    scrollTrigger: {
+        trigger: ".dictionary-section",
+        start: "top 70%",
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: "power3.out"
+});
+
+// Animación para los Pilares
+gsap.from(".pillar-card", {
+    scrollTrigger: {
+        trigger: ".pillars-grid",
+        start: "top 60%",
+    },
+    y: 150,
+    opacity: 0,
+    duration: 1.2,
+    stagger: 0.3,
+    ease: "expo.out"
+});
+
+// Habilitar scroll
+document.body.style.overflowY = "auto";
