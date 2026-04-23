@@ -68,3 +68,30 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(".image-montage", { x: -x, y: -y, duration: 2 });
     });
 });
+/**** Scroll Animation for Services *****/
+gsap.registerPlugin(ScrollTrigger);
+
+// Animación de los bloques de la grilla
+gsap.from(".bento-item", {
+    scrollTrigger: {
+        trigger: ".services",
+        start: "top 80%", // Empieza cuando la sección entra al viewport
+    },
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2, // Los bloques entran uno tras otro
+    ease: "power4.out"
+});
+
+// Animación del título de sección
+gsap.from(".section-title", {
+    scrollTrigger: {
+        trigger: ".section-title",
+        start: "top 90%",
+    },
+    x: -50,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out"
+});
