@@ -127,3 +127,28 @@ gsap.from(".pillar-card", {
 
 // Habilitar scroll
 document.body.style.overflowY = "auto";
+
+
+
+/**** script.js: Metrics CountUp Animation *****/
+
+// Registrar el plugin si no lo hiciste antes
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".count").forEach(count => {
+    const target = parseInt(count.getAttribute("data-target"));
+    
+    gsap.to(count, {
+        innerText: target,
+        duration: 2.5,
+        ease: "power4.out",
+        scrollTrigger: {
+            trigger: count,
+            start: "top 85%", // La animación empieza cuando el número asoma
+        },
+        onUpdate: function() {
+            // Esto asegura que el número sea entero durante la animación
+            count.innerText = Math.ceil(this.targets()[0].innerText);
+        }
+    });
+});

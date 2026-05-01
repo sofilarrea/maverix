@@ -360,3 +360,59 @@ body {
 }
 
 .fucsia-text { color: var(--fucsia); }
+
+/**** Section: Metrics *****/
+.metrics-section {
+    padding: 100px 5vw;
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas para que los números sean GIGANTES */
+    gap: 80px 40px;
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-value {
+    display: flex;
+    align-items: baseline;
+    margin: 10px 0;
+}
+
+.metric-item .count {
+    font-size: 15vw;
+    line-height: 0.8;
+    font-weight: 900;
+    color: #fff;
+}
+
+.metric-item .symbol {
+    font-size: 5vw;
+    color: var(--fucsia);
+    font-family: var(--font-mono);
+    margin-left: 10px;
+}
+
+.metric-item p {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.accent-metric .count {
+    color: var(--fucsia); /* El 0% de rotación es un dato clave, lo destacamos */
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+    .metrics-grid { grid-template-columns: 1fr; }
+    .metric-item .count { font-size: 25vw; }
+}
