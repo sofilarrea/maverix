@@ -152,27 +152,42 @@ gsap.utils.toArray(".count").forEach(count => {
         }
     });
 });
-// Dentro de la función revealHero() en tu script.js
+gsap.registerPlugin(ScrollTrigger);
 
-function revealHero() {
-    const mainTl = gsap.timeline();
-
-    mainTl
-        // ... (tus animaciones anteriores)
-        .to(".navbar", { opacity: 1, duration: 1 }, "-=1") // Aparece la navbar
-        .to("#globalCta", { x: 0, duration: 0.8, ease: "expo.out" }, "-=0.5"); // Entra el botón flotante
-
-    // ...
-}
-
-// Animación de aparición para el CTA final
-gsap.from(".cta-wrap", {
-    scrollTrigger: {
-        trigger: ".final-cta-section",
-        start: "top 70%",
-    },
-    y: 100,
-    opacity: 0,
-    duration: 1.5,
-    ease: "power4.out"
+// 1. Entrada de la sidebar
+gsap.to("#sidebar", {
+    x: 0,
+    duration: 1.2,
+    ease: "power4.out",
+    delay: 0.8
 });
+
+// 2. Animación de la regla de progreso
+gsap.to(".ruler-progress", {
+    height: "100%",
+    ease: "none",
+    scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.3
+    }
+});
+
+// 3. Highlight de items según la sección
+const items = document.querySelectorAll('.side-item');
+items.forEach(item => {
+    const sectionId = item.getAttribute('href');
+    ScrollTrigger.create({
+        trigger: sectionId,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => setActive(item),
+        onEnterBack: () => setActive(item)
+    });
+});
+
+function setActive(link) {
+    items.forEach(i => i.classList.remove('active'));
+    link.classList.add('active');
+}
