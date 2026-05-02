@@ -152,3 +152,27 @@ gsap.utils.toArray(".count").forEach(count => {
         }
     });
 });
+// Dentro de la función revealHero() en tu script.js
+
+function revealHero() {
+    const mainTl = gsap.timeline();
+
+    mainTl
+        // ... (tus animaciones anteriores)
+        .to(".navbar", { opacity: 1, duration: 1 }, "-=1") // Aparece la navbar
+        .to("#globalCta", { x: 0, duration: 0.8, ease: "expo.out" }, "-=0.5"); // Entra el botón flotante
+
+    // ...
+}
+
+// Animación de aparición para el CTA final
+gsap.from(".cta-wrap", {
+    scrollTrigger: {
+        trigger: ".final-cta-section",
+        start: "top 70%",
+    },
+    y: 100,
+    opacity: 0,
+    duration: 1.5,
+    ease: "power4.out"
+});
