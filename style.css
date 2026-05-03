@@ -19,16 +19,93 @@ body {
     width: 100vw;
     height: 100vh;
 }
+
+/**** Preloader Styles *****/
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 10000; /* Asegura que tape absolutamente todo */
+    background-color: #FFFFFF; /* Fondo blanco puro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#counter {
+    font-size: 15vw; /* Número gigante */
+    letter-spacing: -0.05em;
+    font-style: italic;
+    color: var(--text); /* Texto negro absoluto */
+    font-family: var(--font-main); /* Tu fuente principal */
+    line-height: 1;
+}
+
+/**** Sidebar Industrial (White Version) *****/
+.industrial-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px; 
+    height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--text); /* Borde negro afilado */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    z-index: 9999;
+}
+
+.side-logo {
+    font-weight: 900;
+    color: var(--fucsia); /* Fucsia */
+    font-size: 1.2rem;
+    transform: rotate(-90deg);
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-top: -50px;
+}
+
+.side-item {
+    text-decoration: none;
+    color: #888; /* Gris oscuro inactivo */
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.side-item span { color: var(--fucsia); font-size: 9px; margin-bottom: 10px; }
+.side-item:hover, .side-item.active { color: var(--text); transform: rotate(180deg) translateX(5px); }
+
+/* La Regla (Ruler) */
+.sidebar-ruler { position: relative; height: 200px; width: 100%; display: flex; justify-content: center; }
+.ruler-line { position: absolute; width: 1px; height: 100%; background: var(--border-dark); }
+.ruler-progress { position: absolute; top: 0; width: 2px; height: 0%; background: var(--fucsia); }
+.ruler-marks { display: flex; flex-direction: column; justify-content: space-between; height: 100%; font-family: var(--font-mono); font-size: 8px; color: #666; padding-left: 20px; }
+
+
 /**** Hero Section (Tu original, pero en BLANCO REAL) *****/
 .hero {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: #FFFFFF; /* Blanco puro de fondo */
+    background-color: var(--surface); /* Blanco puro de fondo */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    /* Le sumamos 80px de padding izquierdo para que el contenido esquive la barra lateral */
+    padding-left: 80px; 
+    box-sizing: border-box;
 }
 
 /* El ruido sutil */
@@ -41,16 +118,24 @@ body {
     pointer-events: none;
     mix-blend-mode: multiply;
 }
-
-/* LA CLAVE: Una viñeta que difumina las fotos hacia el BLANCO */
 .vignette {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle, transparent 15%, #FFFFFF 95%);
+    /* Aumentamos el centro transparente al 40% para que se vea la foto */
+    background: radial-gradient(circle, transparent 40%, #FFFFFF 100%);
     z-index: 5;
     pointer-events: none;
 }
 
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out; /* Backup por si falla GSAP */
+    filter: grayscale(100%) brightness(0.8) contrast(1.2);
+}
 /* Las fotos a pantalla completa, pero como textura de fondo */
 .image-montage {
     position: absolute;
@@ -64,17 +149,26 @@ body {
     inset: 0;
     background-size: cover;
     background-position: center;
-    /* Escala de grises, alto contraste, pero baja opacidad para no ensuciar */
-  
+    /* La opacidad base en 0 para las que están "apagadas" */
+    opacity: 0; 
+    filter: grayscale(100%) contrast(120%); 
 }
 
+/* EL SALVAVIDAS: Obligamos a que la primera foto arranque visible (al 25%) */
+.slide:first-child {
+    opacity: 0.25; 
+}
+
+/* Centramos el wrapper para que ponga el logo y el CTA en columna */
 .hero-title-wrapper {
     position: relative;
     z-index: 10;
     width: 100%;
     display: flex;
-    justify-content: center;
-    pointer-events: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Separación entre logo y botón */
+    pointer-events: auto; /* IMPORTANTE: Para poder hacer click en el CTA */
 }
 
 .title-mask {
@@ -89,29 +183,68 @@ body {
     max-width: 1100px;
     height: auto;
     display: block;
- 
-    transform: translateY(115%); /* Mantenemos tu animación original */
+    pointer-events: none;
+    /* transform: translateY(115%); <-- Lo dejo comentado por ahora. Descomentalo si tu JS lo anima! */
 }
 
+
+/**** CTA Brutalista *****/
+.brutalist-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 35px;
+    background: transparent;
+    color: var(--text); /* Texto Negro */
+    border: 1px solid var(--text); /* Borde Negro */
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.brutalist-cta:hover {
+    background: var(--fucsia);
+    color: var(--surface);
+    border-color: var(--fucsia);
+    transform: translateY(-5px); /* Se levanta al pasar el mouse */
+    box-shadow: 6px 6px 0px #050505; /* Sombra dura estilo editorial */
+}
+
+.brutalist-cta .arrow {
+    transition: transform 0.3s ease;
+}
+
+.brutalist-cta:hover .arrow {
+    transform: translateX(5px); /* La flechita empuja hacia la derecha */
+}
+
+
 /**** Interfaz Hero *****/
+/* Ajuste del Footer y Scroll Explore para esquivar la barra lateral */
 .tech-footer {
     position: absolute;
     bottom: 40px;
     width: 100%;
-    padding: 0 5vw;
+    padding: 0 5vw 0 calc(5vw + 80px); /* 5vw base + 80px de la barra */
     display: flex;
     justify-content: space-between;
     z-index: 20;
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: bold;
-    color: #050505; /* Texto negro */
+    color: var(--text); /* Texto negro */
     letter-spacing: 3px;
-    opacity: 0; /* Para tu animación inicial */
+    /* opacity: 0; <-- Comentado para que se vea sin necesidad del JS */
 }
 
 .tech-footer span:first-child {
-    color: #FF385C; /* Mantenemos tu fucsia vivo */
+    color: var(--fucsia); /* Mantenemos tu fucsia vivo */
 }
 
 .scroll-explore {
@@ -126,13 +259,13 @@ body {
     letter-spacing: 0.4em;
     text-transform: uppercase;
     font-weight: bold;
-    color: #050505; /* Texto negro */
-    opacity: 0; /* Para tu animación inicial */
+    color: var(--text); /* Texto negro */
+    /* opacity: 0; <-- Comentado para que se vea sin necesidad del JS */
 }
 
 .scroll-arrow {
     font-size: 18px;
     margin-top: 10px;
-    color: #FF385C; /* Flecha fucsia */
+    color: var(--fucsia); /* Flecha fucsia */
     animation: bounce 2s infinite;
 }
