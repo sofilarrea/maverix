@@ -1,0 +1,94 @@
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --fucsia: #FF385C;
+    --gray-light: #f5f5f5;
+    --font-main: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
+    overflow: hidden; 
+}
+
+/* Noise sutil para textura */
+.noise-light {
+    position: fixed; inset: 0;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05; z-index: 2000; pointer-events: none;
+    filter: invert(1);
+}
+
+/* NAVBAR LIGHT GLASS */
+.navbar {
+    position: fixed; top: 0; width: 100%; z-index: 9999;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transform: translateY(-100%);
+}
+
+.nav-container {
+    max-width: 1400px; margin: 0 auto; padding: 20px 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.nav-logo { font-weight: 900; font-size: 24px; color: #000; letter-spacing: 2px; }
+.nav-link { color: #666; text-decoration: none; font-size: 11px; font-weight: 900; letter-spacing: 2px; transition: 0.3s; }
+.nav-link:hover { color: var(--fucsia); }
+.nav-button { background: #000; color: #fff; padding: 12px 25px; text-decoration: none; font-weight: 900; font-size: 11px; }
+
+.nav-progress-bar { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--fucsia); width: 0%; }
+
+/* PRELOADER LIGHT */
+#preloader { position: fixed; inset: 0; z-index: 1000; background: #fff; display: flex; justify-content: center; align-items: center; }
+.cell { border: 0.5px solid rgba(0,0,0,0.03); background: #fff; }
+#counter { font-size: 15vw; font-weight: 900; color: #000; position: relative; z-index: 10; }
+
+/* HERO LIGHT */
+.hero { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; visibility: hidden; background: #fff; }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; filter: grayscale(100%) brightness(1.1); opacity: 0; }
+.hero-logo { width: 65vw; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.1)); transform: translateY(115%); }
+
+.tech-footer-light {
+    position: absolute; bottom: 40px; width: 100%; padding: 0 5vw;
+    display: flex; justify-content: space-between;
+    font-size: 10px; font-weight: 900; color: #aaa; letter-spacing: 3px;
+}
+
+/* DICTIONARY LIGHT */
+.dict-section { padding: 150px 8vw; }
+.dict-white { background: #fff; }
+.dict-fucsia { background: var(--fucsia); color: #000; }
+.dict-word { font-size: 12vw; font-weight: 900; line-height: 0.8; letter-spacing: -0.05em; }
+.dict-text { font-size: 4.5vw; font-weight: 900; line-height: 1; margin-top: 40px; color: #333; }
+.highlight-dark { text-decoration: underline var(--fucsia) 8px; color: #000; }
+
+/* METRICS LIGHT */
+.metrics-section-light { padding: 150px 5vw; background: var(--gray-light); }
+.metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 100px; }
+.metric-item .count { font-size: 15vw; font-weight: 900; line-height: 0.75; color: #000; }
+.metric-item .symbol { color: var(--fucsia); font-size: 5vw; margin-left: 15px; }
+.metric-item p { font-size: 12px; font-weight: 900; color: #888; letter-spacing: 3px; margin-top: 15px; }
+
+/* HORIZONTAL WORKFLOW LIGHT */
+.horizontal-section-light { overflow: hidden; background: #fff; }
+.horizontal-wrapper { display: flex; width: 300vw; height: 100vh; }
+.slide-hor { width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 10vw; border-right: 1px solid #eee; }
+.slide-hor h2 { font-size: 10vw; font-weight: 900; line-height: 0.8; }
+.outline-text-dark { color: transparent; -webkit-text-stroke: 2px black; }
+
+/* FINAL CTA LIGHT */
+.final-cta-light { padding: 200px 5vw; text-align: center; background: #fff; }
+.cta-title { font-size: 10vw; font-weight: 900; line-height: 0.8; margin-bottom: 80px; }
+.big-button-dark { 
+    font-size: 1.5vw; font-weight: 900; background: #000; color: #fff; 
+    padding: 30px 60px; text-decoration: none; transition: 0.4s; 
+}
+.big-button-dark:hover { background: var(--fucsia); transform: scale(1.05); }
+
+.fucsia-text { color: var(--fucsia); }

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAVERIX | Global Connectivity (Light Edition)</title>
+    
+    <!-- Fuentes y GSAP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="noise-light"></div>
+
+    <!-- NAVBAR HUD LIGHT -->
+    <nav class="navbar" id="mainNavbar">
+        <div class="nav-container">
+            <div class="nav-logo"><span class="fucsia-text">M</span>AVERIX</div>
+            <div class="nav-menu">
+                <a href="#hero" class="nav-link" data-scanner>HOME</a>
+                <a href="#dict" class="nav-link" data-scanner>CONCEPT</a>
+                <a href="#metrics" class="nav-link" data-scanner>IMPACT</a>
+                <a href="#workflow" class="nav-link" data-scanner>METHOD</a>
+                <a href="https://somosmaverix.com/" target="_blank" class="nav-button">LET'S TALK //</a>
+            </div>
+        </div>
+        <div class="nav-progress-bar"></div>
+    </nav>
+
+    <!-- PRELOADER (Líneas oscuras sobre blanco) -->
+    <div id="preloader">
+        <div class="grid-container-light" id="grid"></div>
+        <div class="counter-light" id="counter">00</div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="vignette-light"></div>
+        <div class="image-montage" id="montage">
+            <!-- Fotos con filtro grayscale -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2069');"></div>
+        </div>
+
+        <div class="hero-title-wrapper">
+            <div class="title-mask">
+                <!-- Usar el logo en negro para esta versión -->
+                <img src="/assets/images/logo-maverix-black.png" alt="Maverix Logo" class="hero-logo" id="heroLogo">
+            </div>
+        </div>
+
+        <div class="tech-footer-light" id="techFooter">
+            <span>// SYSTEM_STATUS: STABLE</span>
+            <span>MENDOZA / ARG / 2026</span>
+        </div>
+    </section>
+
+    <!-- DICCIONARIO 01: MAVERICK -->
+    <section class="dict-section dict-white" id="dict">
+        <div class="dict-container">
+            <span class="tech-label">// MAVERICK [definition]</span>
+            <div class="word-wrap">
+                <h2 class="dict-word">MAVERICK</h2>
+                <span class="phonetic">/ˈmav(ə)rɪk/</span>
+            </div>
+            <p class="dict-text">
+                Personas inusuales, inconformistas, que <span class="highlight-dark">desafían el status quo</span> y sobresalen de modo diferente.
+            </p>
+        </div>
+    </section>
+
+    <!-- DICCIONARIO 02: IDENTIDAD FUCSIA (Este se mantiene fucsia para el punch) -->
+    <section class="dict-section dict-fucsia">
+        <div class="dict-container">
+            <span class="tech-label" style="color: #000;">// MAVERIX [identity]</span>
+            <div class="word-wrap">
+                <h2 class="dict-word">SOMOS MAVERIX</h2>
+                <span class="phonetic" style="color: rgba(0,0,0,0.4);">[latinismo, del inglés] //Mavericks//</span>
+            </div>
+            <p class="dict-text" style="color: #000;">
+                1. (sust.) personas inusuales, inconformistas, que <span>desafían el status quo</span>, que sobresalen de modo diferente.
+            </p>
+        </div>
+    </section>
+
+    <!-- MÉTRICAS (Negro sobre Blanco) -->
+    <section class="metrics-section-light" id="metrics">
+        <div class="metrics-grid">
+            <div class="metric-item">
+                <span class="tech-label-gray">// LEGACY</span>
+                <div class="metric-value"><h2 class="count" data-target="11">0</h2><span class="symbol">AÑOS</span></div>
+                <p>LIDERANDO LA INDUSTRIA</p>
+            </div>
+            <div class="metric-item">
+                <span class="tech-label-gray">// HUMAN_CAPITAL</span>
+                <div class="metric-value"><span class="symbol">+</span><h2 class="count" data-target="100">0</h2></div>
+                <p>TALENTOS EN EQUIPO</p>
+            </div>
+            <div class="metric-item accent-metric">
+                <span class="tech-label-gray">// STABILITY</span>
+                <div class="metric-value"><h2 class="count" data-target="0">0</h2><span class="symbol">%</span></div>
+                <p>ROTACIÓN ANUAL</p>
+            </div>
+            <div class="metric-item">
+                <span class="tech-label-gray">// PERFORMANCE</span>
+                <div class="metric-value"><h2 class="count" data-target="25">0</h2><span class="symbol">%</span></div>
+                <p>MEJORA EN EFICIENCIA</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKFLOW HORIZONTAL -->
+    <section class="horizontal-section-light" id="workflow">
+        <div class="horizontal-wrapper">
+            <div class="slide-hor">
+                <div class="slide-number">01</div>
+                <h2>STRATEGY</h2>
+                <p>Analizamos datos para construir imperios.</p>
+            </div>
+            <div class="slide-hor" style="background: var(--fucsia); color: #000;">
+                <div class="slide-number" style="color: #000;">02</div>
+                <h2 class="outline-text-dark">TRAINING</h2>
+                <p>Conversiones con precisión quirúrgica.</p>
+            </div>
+            <div class="slide-hor" style="background: #000; color: #fff;">
+                <div class="slide-number" style="color: var(--fucsia);">03</div>
+                <h2>SUCCESS</h2>
+                <p>Escalar está en nuestro ADN.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta-light">
+        <div class="cta-wrap">
+            <h2 class="cta-title">¿LISTO PARA <br><span class="outline-text-dark">DESAFIAR</span> TODO?</h2>
+            <a href="https://somosmaverix.com/" class="big-button-dark">HABLEMOS AHORA //</a>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
