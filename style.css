@@ -126,15 +126,15 @@ body {
     z-index: 5;
     pointer-events: none;
 }
-
 .slide {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
     opacity: 0; 
-    transition: opacity 1.5s ease-in-out; /* Backup por si falla GSAP */
-    filter: grayscale(100%) brightness(0.8) contrast(1.2);
+    /* ELIMINÁ cualquier transition: opacity... que tengas aquí */
+    transition: none !important; 
+    filter: grayscale(100%) contrast(120%);
 }
 /* Las fotos a pantalla completa, pero como textura de fondo */
 .image-montage {
