@@ -163,12 +163,12 @@ body {
 .hero-title-wrapper {
     position: relative;
     z-index: 10;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px; /* Separación entre logo y botón */
-    pointer-events: auto; /* IMPORTANTE: Para poder hacer click en el CTA */
+    gap: 20px; /* Reducimos fuerte la distancia para que estén juntitos */
+    margin-bottom: 0; /* Le sacamos cualquier margen inferior que esté molestando */
+    transform: translateY(-5%); /* Opcional: Sube todo el combo (logo+botón) un pelín para compensar el centro óptico */
 }
 
 .title-mask {
@@ -193,19 +193,29 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 15px;
-    padding: 15px 35px;
-    background: transparent;
-    color: var(--text); /* Texto Negro */
-    border: 1px solid var(--text); /* Borde Negro */
+    padding: 16px 40px; /* Un poquito más de respiro interno */
+    background: var(--surface); /* CLAVE: Fondo blanco sólido para tapar el ruido de atrás */
+    color: var(--text); 
+    border: 2px solid var(--text); /* Borde de 2px para que se vea más agresivo e industrial */
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 13px; /* Un punto más grande ayuda a la lectura rápida */
     font-weight: bold;
     letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
-    overflow: hidden;
+    z-index: 20; 
+    box-shadow: 4px 4px 0px var(--text); /* Sombra dura brutalista fija para que "flote" sobre el plano */
+}
+
+/* El efecto al pasar el mouse (Hover) */
+.brutalist-cta:hover {
+    background: var(--fucsia); /* Cambia al color de acento */
+    color: #FFFFFF;
+    border-color: var(--fucsia);
+    box-shadow: 8px 8px 0px var(--text); /* La sombra se hace más larga */
+    transform: translate(-4px, -4px); /* El botón "sube" hacia el mouse */
 }
 
 .brutalist-cta:hover {
